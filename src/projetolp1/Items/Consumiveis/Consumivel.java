@@ -9,16 +9,27 @@ package projetolp1;
  *
  * @author Batata
  */
-public abstract class Consumivel {
+public abstract class Consumivel extends Item {
     
   private int quantidade;
   
+  public int getQuantidade(){
+    return quantidade;
+  }
+
+  public int setQuantidade(int q){
+    this.quantidade = q;
+  }
+
+
   public int Consumir(int quant, Personagem p){
   quantidade =  quantidade - quant;
   efeito(p);
   return quantidade;
   }
+  
+
 
   public abstract int efeito(Personagem p);
-
+  
 }
