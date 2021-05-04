@@ -10,6 +10,9 @@ package projetolp1;
  * @author felip
  */
 public  abstract class Humano extends RacaBase {
-    
+  Humano(){
+    modAtributo(p, 0); // Vida
+    modAtributo(p, 0); // Vida
+  }
 
 }

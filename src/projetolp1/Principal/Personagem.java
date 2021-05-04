@@ -13,12 +13,14 @@ public class Personagem {
     private String nome;
     private int vidaMaxima;
     private int danoRecebido; 
-    private int manaAtual;
     private int manaGasta;
-    private int defesa;
-    private int status;
+    private int manaMaxima;
+    private int danoBase;
+    private int Defesa;
+    //private int status; // Transformar em classe
     private int qtdMovimento;
     private int posicaoNoMapa;
+    private float modDano;
     // Equip equipamento -- talvez separar em slots? cabeca, armadura, botas.
     //ArrayList<item> Inventario = new ArrayList;
     // Dano dano;
@@ -29,6 +31,15 @@ public class Personagem {
       this.nome = nome;
       this.classe = classe;
       this.raca = raca;
+      this.modDano = 1;
+
+      this.danoBase = 20;
+      this.Defesa = 5;
+      this.manaMaxima = 50;
+      this.vidaMaxima = 100;
+      this.danoRecebido = 0;
+      // this.status = 0;
+
     }
     /**
      * @return the nome
@@ -68,29 +79,29 @@ public class Personagem {
     /**
      * @return the manaAtual
      */
-    public int getManaAtual() {
-        return manaAtual;
-    }
-
-    /**
-     * @param manaAtual the manaAtual to set
-     */
-    public void setManaAtual(int manaAtual) {
-        this.manaAtual = manaAtual;
-    }
-
-    /**
-     * @return the manaGasta
-     */
     public int getManaGasta() {
         return manaGasta;
     }
 
     /**
-     * @param manaGasta the manaGasta to set
+     * @param manaAtual the manaAtual to set
      */
     public void setManaGasta(int manaGasta) {
         this.manaGasta = manaGasta;
+    }
+
+    /**
+     * @return the manaMaxima
+     */
+    public int getManaMaxima() {
+        return manaMaxima;
+    }
+
+    /**
+     * @param manaMaxima the manaMaxima to set
+     */
+    public void setManaMaxima(int manaMaxima) {
+        this.manaMaxima = manaMaxima;
     }
 
     /**
@@ -149,5 +160,10 @@ public class Personagem {
         this.posicaoNoMapa = posicaoNoMapa;
     }
    
-
-    }
+  public float getDanoBase(){
+    return this.modDano;
+  }
+  public void setDanoBase(float modDano){
+    this.modDano = modDano;
+  }
+}

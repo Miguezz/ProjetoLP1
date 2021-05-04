@@ -10,6 +10,9 @@ package projetolp1;
  * @author felip
  */
 public abstract  class Elfo extends RacaBase {
-    
+   Elfo(){
+     modAtributo(p, 0); // Vida
+    modAtributo(p, 0); // Vida
+   } 
 
 }

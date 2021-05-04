@@ -9,7 +9,11 @@ package projetolp1;
  *
  * @author felip
  */
-public  abstract class Orc extends RacaBase {
+public abstract class Orc extends RacaBase {
     
+  Orc(){
+    modAtributo(p, 0); // Vida
+    modAtributo(p, 0); // Vida
+  }
 
 }

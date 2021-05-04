@@ -10,6 +10,9 @@ package projetolp1;
  * @author felip
  */
 public abstract class Tiefling extends RacaBase {
-    
+    Tiefling(){
+      modAtributo(p, 0); // Vida
+      modAtributo(p, 0); // Vida
+    }
 
 }

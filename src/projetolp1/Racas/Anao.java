@@ -10,5 +10,8 @@ package projetolp1;
  * @author felip
  */
 public  abstract class Anao extends RacaBase {
-
+  Anao(){
+    modAtributo(p, 0); // Vida
+    modAtributo(p, 0); // Vida
+  }
 }
