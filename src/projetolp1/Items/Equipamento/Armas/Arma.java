@@ -1,5 +1,5 @@
-package projetolp1;
-
+package projetolp1.Items.Equipamento.Armas;
+import projetolp1.Items.Item;
 class Arma extends Item {
   private int range;
   private int danoArma;
@@ -7,7 +7,7 @@ class Arma extends Item {
   private float modDanoQtdMaos;
   
   Arma(String nome, String desc, int range, int danoArma, int qtdMaos, float modDanoQtdMaos){
-    super(nome, desc)
+    super(nome, desc);
     this.range = range;
     this.danoArma = danoArma;
     this.qtdMaos = qtdMaos;

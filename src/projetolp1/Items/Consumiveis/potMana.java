@@ -3,8 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package projetolp1;
-
+package projetolp1.Items.Consumiveis;
+import projetolp1.Principal.Personagem;
 /**
  *
  * @author Batata
