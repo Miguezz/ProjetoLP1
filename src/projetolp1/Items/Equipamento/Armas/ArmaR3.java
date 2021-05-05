@@ -1,4 +1,4 @@
-package projetolp1;
+package projetolp1.Items.Equipamento.Armas;
 
 class ArmaR3 extends Arma {
 

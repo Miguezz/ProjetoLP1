@@ -1,8 +1,7 @@
+package projetolp1.Misc;
 import java.util.Random;
 
-package projetolp1;
-
-public class Random{
+public class Randomfunc{
 
 private Random Aleatorio = new Random(System.currentTimeMillis());
 

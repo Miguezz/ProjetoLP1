@@ -1,5 +1,5 @@
-package projetolp1;
-
+package projetolp1.Items.Equipamento;
+import projetolp1.Items.Item;
 class Armadura extends Item {
 
 private int defArmadura;

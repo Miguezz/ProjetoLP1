@@ -1,4 +1,4 @@
-package projetolp1;
+package projetolp1.Misc;
 
 public class Dano{
   private int tipo;
