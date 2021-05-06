@@ -16,6 +16,7 @@ public class Item {
     
    public Item(){
     this.nome = this.getClass().getName();
+    this.descricao = "";
     }
     
    public Item(String descricao){

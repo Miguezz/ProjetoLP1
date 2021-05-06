@@ -17,12 +17,12 @@ public class Batata extends Consumivel {
     Batata(int a, Inventario x) {
         super(a,x); 
     }
-    Batata(String a, int b, Inventario x) {
+    /*Batata(String a, int b, Inventario x) {
         super(a,b,x);
     }
     Batata(String a, String b, int c, Inventario x) {
         super(a,b,c,x); // Coloca nome de variavel melhor, pq senao daq a pouco vc nem sabe oq isso é
-    }
+    }*/
     
     public int efeito(Personagem p){
     int cura = Rand.New() % 11; int Mana = Rand.New() % 6; 

@@ -4,15 +4,23 @@ class Arma extends Item {
   private int range;
   private int danoArma;
   private int qtdMaos;
-  private float modDanoQtdMaos;
+  private double modDanoQtdMaos;
   
-  Arma(String nome, String desc, int range, int danoArma, int qtdMaos, float modDanoQtdMaos){
+  Arma(String nome, String desc, int range, int danoArma, int qtdMaos, double modDanoQtdMaos){
     super(nome, desc);
     this.range = range;
     this.danoArma = danoArma;
     this.qtdMaos = qtdMaos;
     this.modDanoQtdMaos = modDanoQtdMaos;
   }
+  Arma(int range, int danoArma, int qtdMaos, double modDanoQtdMaos){
+    super();
+    this.range = range;
+    this.danoArma = danoArma;
+    this.qtdMaos = qtdMaos;
+    this.modDanoQtdMaos = modDanoQtdMaos;
+  }
+  
   public int getRange(){
     return this.range;
   }
@@ -22,7 +30,7 @@ class Arma extends Item {
   public int getQtdMaos(){
     return this.qtdMaos;
   }
-  public float getModDanoQtdMaos(){
+  public double getModDanoQtdMaos(){
     return this.modDanoQtdMaos;
   }
   public void setRange(int valor){

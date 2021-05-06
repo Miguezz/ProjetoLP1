@@ -18,12 +18,12 @@ public class PotionMana extends Consumivel {
     PotionMana(int a, Inventario x) {
         super(a,x);
     }
-    PotionMana(String a, int b, Inventario x) {
+    /*PotionMana(String a, int b, Inventario x) {
         super(a,b,x);
     }
     PotionMana(String a, String b, int c, Inventario x) {
         super(a,b,c,x); // Coloca nome de variavel melhor, pq senao daq a pouco vc nem sabe oq isso é
-    }
+    }*/
     
     public int efeito(Personagem p){
     int Mana = Rand.New() % 11;
