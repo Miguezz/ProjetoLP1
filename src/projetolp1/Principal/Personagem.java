@@ -5,6 +5,11 @@
  */
 package projetolp1.Principal;
 
+import projetolp1.Classes.ClasseMae;
+import projetolp1.Items.Inventario;
+import projetolp1.Misc.Status;
+import projetolp1.Racas.RacaBase;
+
 /**
  *
  * @author Batata
@@ -17,12 +22,12 @@ public class Personagem {
     private int manaMaxima;
     private int danoBase;
     private int Defesa;
-    //private int status; // Transformar em classe
+    private Status status;
     private int qtdMovimento;
     private int posicaoNoMapa;
     private float modDano;
+    private Inventario inventario;
     // Equip equipamento -- talvez separar em slots? cabeca, armadura, botas.
-    //ArrayList<item> Inventario = new ArrayList;
     // Dano dano;
     RacaBase  raca;
     ClasseMae classe;
