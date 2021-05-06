@@ -2,8 +2,30 @@ package projetolp1.Items.Equipamento.Armas;
 
 class ArmaR1 extends Arma {
 
-  ArmaR1(String nome, String desc, int qtdMaos){
-    super(nome, desc, 1/*Range*/, danoArma, qtdMaos, qtdMaos*1.5/*modQtdMaos*/);
+  ArmaR1(int qtdMaos){
+    super(1/*Range*/, 1 /*Dano*/, qtdMaos, qtdMaos*1.5/*modQtdMaos*/);
   }
 
+  
+  
+  
+  
+  
+  
+}
+
+
+class Espada extends ArmaR1 {
+    
+    Espada() {
+        super(1);
+    }
+    
+}
+
+class Machado extends ArmaR1 {
+    
+    Machado(){
+        super(1);
+    }
 }
