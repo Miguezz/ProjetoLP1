@@ -22,7 +22,7 @@ public class PotionMana extends Consumivel {
         super(a,b,x);
     }
     PotionMana(String a, String b, int c, Inventario x) {
-        super(a,b,c,x);
+        super(a,b,c,x); // Coloca nome de variavel melhor, pq senao daq a pouco vc nem sabe oq isso é
     }
     
     public int efeito(Personagem p){
