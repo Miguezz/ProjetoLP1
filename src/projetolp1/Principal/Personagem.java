@@ -27,7 +27,7 @@ public class Personagem {
     private int qtdMovimento;
     private int posicaoNoMapa;
     private float modDano;
-    private Inventario inventario;
+    //Inventario Removido
     // Equip equipamento -- talvez separar em slots? cabeca, armadura, botas.
     private Dano dano;
     private RacaBase  raca;

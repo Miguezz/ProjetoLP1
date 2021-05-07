@@ -42,7 +42,7 @@ public class Item {
     public String getDescricao() {
         return descricao;
     }
-    public int getQuantidade(){
+    public int getQuantidade(){ // Sempre retorna 1, para dar override em Consumivel
       return 1;  
     }
 }

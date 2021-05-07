@@ -15,14 +15,14 @@ import projetolp1.Principal.Personagem;
  */
 public class PotionVida extends Consumivel{
     
-    PotionVida(int a, Inventario x){
-        super(a,x );
+    PotionVida(int a, Inventario x) {
+        super("Pot de Vida" , "Restaura uma certa quantidade de vida" ,a,x);
     }
-    /*PotionVida(String a, int b, Inventario x) {
-        super(a,b, x);
+  /*PotionVida(String desc, int qtd, Inventario x) {
+        super(desc,qtd,x);
     }
-    PotionVida(String a, String b, int c, Inventario x) {
-        super(a,b,c,x); // Coloca nome de variavel melhor, pq senao daq a pouco vc nem sabe oq isso é
+    PotionVida (String name, String desc, int qtd, Inventario x) {
+        super(name,desc,qtd,x); 
     }*/
     
     public int efeito(Personagem p){

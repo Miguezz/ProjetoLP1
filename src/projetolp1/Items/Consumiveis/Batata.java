@@ -14,14 +14,14 @@ import projetolp1.Misc.Rand;
  */
 public class Batata extends Consumivel {
     
-    Batata(int a, Inventario x) {
-        super(a,x); 
+    Batata(int qtd, Inventario x) {
+        super("Uma batata, Restaura uma pequena quantidade de vida e mana", qtd,x); 
     }
-    /*Batata(String a, int b, Inventario x) {
-        super(a,b,x);
+    /*Batata(String desc, int qtd, Inventario x) {
+        super(desc,qtd,x);
     }
-    Batata(String a, String b, int c, Inventario x) {
-        super(a,b,c,x); // Coloca nome de variavel melhor, pq senao daq a pouco vc nem sabe oq isso é
+    Batata(String name, String desc, int qtd, Inventario x) {
+        super(name,desc,qtd,x); 
     }*/
     
     public int efeito(Personagem p){

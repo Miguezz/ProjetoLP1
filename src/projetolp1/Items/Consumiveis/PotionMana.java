@@ -16,15 +16,14 @@ import projetolp1.Principal.Personagem;
 public class PotionMana extends Consumivel {
     
     PotionMana(int a, Inventario x) {
-        super(a,x);
+        super("Pot de Mana" , "Restaura uma certa quantidade de mana" ,a,x);
     }
-    /*PotionMana(String a, int b, Inventario x) {
-        super(a,b,x);
+  /*PotionMana(String desc, int qtd, Inventario x) {
+        super(desc,qtd,x);
     }
-    PotionMana(String a, String b, int c, Inventario x) {
-        super(a,b,c,x); // Coloca nome de variavel melhor, pq senao daq a pouco vc nem sabe oq isso é
+    PotionMana (String name, String desc, int qtd, Inventario x) {
+        super(name,desc,qtd,x); 
     }*/
-    
     public int efeito(Personagem p){
     int Mana = Rand.New() % 11;
     Mana += 20;
