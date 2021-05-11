@@ -7,6 +7,6 @@ package projetolp1.Items.Equipamento;
 
 class Manteau extends Armadura{
   Manteau(){
-    super("Manteau", "XXXX", 1);
+    super("Manteau", "Uma capa de couro", 2);
   }
 }
