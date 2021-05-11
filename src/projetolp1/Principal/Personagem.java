@@ -27,6 +27,9 @@ public class Personagem {
     private int qtdMovimento;
     private int posicaoNoMapa;
     private float modDano;
+    private int shield;
+    
+    
     //Inventario Removido
     // Equip equipamento -- talvez separar em slots? cabeca, armadura, botas.
     private Dano dano;
@@ -45,9 +48,13 @@ public class Personagem {
       this.defesa = 5;
       this.manaMaxima = 50;
       this.vidaMaxima = 100;
+      this.shield = 0;
       this.danoRecebido = 0;
       // this.status = 0;
 
+    }
+    public RacaBase getRaca(){
+        return raca;
     }
     /**
      * @return the nome
@@ -55,7 +62,22 @@ public class Personagem {
     public String getNome() {
         return nome;
     }
+    
+    /**
+     * @return the shield
+     */
+    public int getshield() {
+        return shield;
+    }
 
+    /**
+     * @param shield the shield to set
+     */
+    public void setshield(int shield) {
+        this.shield = shield;
+    }
+    
+    
     /**
      * @return the vidaMaxima
      */

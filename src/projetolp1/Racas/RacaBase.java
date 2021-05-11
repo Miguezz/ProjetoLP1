@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package projetolp1.Racas;
+import projetolp1.Principal.Personagem;
 
 /**
  *
@@ -11,20 +12,34 @@ package projetolp1.Racas;
  */
 
 public abstract class RacaBase { 
-  public abstract int HabUtility(Personagem alvo);
 
+    /**
+     * @return the armaFavorita
+     */
+    public String getArmaFavorita() {
+        return "";
+    }
+
+  public abstract boolean HabUtility();
+  
+  
+/** 
+ *  Modificador de atributo baseado na raca do personagem
+     * @param p
+     * @param atr
+ */
   public void modAtributo(Personagem p, int atr){
     switch(atr){
-      case 0:
-        p.setVida(p.getVidaMaxima() + 20);
+      case 0: //aumenta 20 de vidaMaxima
+        p.setVidaMaxima(p.getVidaMaxima() + 20); 
         break;
-      case 1:
+      case 1: //aumenta 10 de manaMaxima
         p.setManaMaxima(p.getManaMaxima() + 10);
         break;
-      case 2:
+      case 2: //aumenta 5 de defesa
         p.setDefesa(p.getDefesa() + 5);
         break;
-      case 3:
+      case 3: //aumenta 5 de dano
         p.setDanoBase(p.getDanoBase() + 5);
         break;
     }
