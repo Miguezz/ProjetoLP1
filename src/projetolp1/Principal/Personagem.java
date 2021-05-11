@@ -5,6 +5,12 @@
  */
 package projetolp1.Principal;
 
+import projetolp1.Classes.ClasseMae;
+import projetolp1.Items.Inventario;
+import projetolp1.Misc.Status;
+import projetolp1.Racas.RacaBase;
+import projetolp1.Misc.Dano;
+
 /**
  *
  * @author Batata
@@ -12,34 +18,43 @@ package projetolp1.Principal;
 public class Personagem {
     private String nome;
     private int vidaMaxima;
-    private int danoRecebido; 
+    private float danoRecebido; // vidaMaxima - danoRecebido = vidaAtual
     private int manaGasta;
     private int manaMaxima;
-    private int danoBase;
-    private int Defesa;
-    //private int status; // Transformar em classe
+    private float danoBase;
+    private int defesa;
+    private Status status;
     private int qtdMovimento;
     private int posicaoNoMapa;
     private float modDano;
+    private int shield;
+    
+    
+    //Inventario Removido
     // Equip equipamento -- talvez separar em slots? cabeca, armadura, botas.
-    //ArrayList<item> Inventario = new ArrayList;
-    // Dano dano;
-    RacaBase  raca;
-    ClasseMae classe;
+    private Dano dano;
+    private RacaBase  raca;
+    private ClasseMae classe;
     
     Personagem(String nome, ClasseMae classe, RacaBase raca){
       this.nome = nome;
       this.classe = classe;
       this.raca = raca;
       this.modDano = 1;
-
       this.danoBase = 20;
-      this.Defesa = 5;
+      
+      this.dano = new Dano(0, danoBase * modDano);
+      
+      this.defesa = 5;
       this.manaMaxima = 50;
       this.vidaMaxima = 100;
+      this.shield = 0;
       this.danoRecebido = 0;
       // this.status = 0;
 
+    }
+    public RacaBase getRaca(){
+        return raca;
     }
     /**
      * @return the nome
@@ -47,7 +62,22 @@ public class Personagem {
     public String getNome() {
         return nome;
     }
+    
+    /**
+     * @return the shield
+     */
+    public int getshield() {
+        return shield;
+    }
 
+    /**
+     * @param shield the shield to set
+     */
+    public void setshield(int shield) {
+        this.shield = shield;
+    }
+    
+    
     /**
      * @return the vidaMaxima
      */
@@ -65,14 +95,20 @@ public class Personagem {
     /**
      * @return the danoRecebido
      */
-    public int getDanoRecebido() {
+    public float getDanoRecebido() {
         return danoRecebido;
     }
 
     /**
      * @param danoRecebido the danoRecebido to set
      */
-    public void setDanoRecebido(int danoRecebido) {
+    public void setDanoRecebido(Dano danoRecebido) { 
+        // com a classe Dano, tem como verificar o tipo do dano
+        
+        this.danoRecebido = danoRecebido.getValor();
+    }
+    
+    public void setDanoRecebido(float danoRecebido) { // Usado para cura ou "dano normal" (sem atributos)
         this.danoRecebido = danoRecebido;
     }
 
@@ -84,7 +120,7 @@ public class Personagem {
     }
 
     /**
-     * @param manaAtual the manaAtual to set
+     * @param manaGasta the manaGasta to set
      */
     public void setManaGasta(int manaGasta) {
         this.manaGasta = manaGasta;
@@ -108,7 +144,7 @@ public class Personagem {
      * @return the defesa
      */
     public int getDefesa() {
-        return defesa;
+        return this.defesa;
     }
 
     /**
@@ -121,14 +157,14 @@ public class Personagem {
     /**
      * @return the status
      */
-    public int getStatus() {
+    public Status getStatus() {
         return status;
     }
 
     /**
      * @param status the status to set
      */
-    public void setStatus(int status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
@@ -160,10 +196,17 @@ public class Personagem {
         this.posicaoNoMapa = posicaoNoMapa;
     }
    
-  public float getDanoBase(){
-    return this.modDano;
-  }
-  public void setDanoBase(float modDano){
-    this.modDano = modDano;
-  }
+    public float getDanoBase(){
+      return this.modDano;
+    }
+    
+    public void setDanoBase(float modDano){
+      this.modDano = modDano;
+    }
+    
+    public Dano getDano(){
+        return this.dano;
+    }
+
+    
 }

@@ -5,14 +5,21 @@
  */
 package projetolp1.Racas;
 
+import projetolp1.Principal.Personagem;
+
 /**
  *
  * @author felip
  */
 public abstract class Tiefling extends RacaBase {
-    Tiefling(){
-      modAtributo(p, 0); // Vida
-      modAtributo(p, 0); // Vida
+    Tiefling(Personagem p){
+        modAtributo(p, 1); // Mana
+        modAtributo(p, 3); // Dano
     }
 
+    public boolean HabUtility(Personagem p){
+           p.setshield((int) ((p.getshield() + p.getDanoRecebido())/2));
+        return true;
+    }
+    
 }

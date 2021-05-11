@@ -12,13 +12,16 @@ import projetolp1.Principal.Personagem;
  */
 public abstract class ClasseMae {
     
-    public int range;
+    int[] ranges = new int[4];
+    Personagem self;
+    public ClasseMae(Personagem self){
+        this.self = self;
+    }
     
+    public abstract boolean habDano(Personagem target);
     
-    public abstract int HabDano(Personagem alvo);
-    
-    public abstract int HabDef(Personagem alvo);
+    public abstract boolean habDef(Personagem target);
 
-    public abstract int Ultimate(Personagem alvo);
+    public abstract boolean ultimate(Personagem alvo);
 
 }

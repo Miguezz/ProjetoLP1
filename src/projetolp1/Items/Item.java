@@ -14,7 +14,17 @@ public class Item {
     private String nome;
     private String descricao;
     
-    Item(String nome, String descricao){
+   public Item(){
+    this.nome = this.getClass().getName();
+    this.descricao = "";
+    }
+    
+   public Item(String descricao){
+    this.nome = this.getClass().getName();
+    this.descricao = descricao;
+    }
+    
+    public Item(String nome, String descricao){
       this.nome = nome;
       this.descricao = descricao;
     }
@@ -32,5 +42,7 @@ public class Item {
     public String getDescricao() {
         return descricao;
     }
-
+    public int getQuantidade(){ // Sempre retorna 1, para dar override em Consumivel
+      return 1;  
+    }
 }
