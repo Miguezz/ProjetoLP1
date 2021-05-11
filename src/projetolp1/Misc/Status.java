@@ -35,7 +35,7 @@ public class Status {
           statusPlayer.get(cont).decTempo();
             if(statusPlayer.get(cont).getTempo() == 0){
                 statusPlayer.remove(cont); cont--;
-                  }
+            }
           }
       }
     public int cureStatus(int tipo){

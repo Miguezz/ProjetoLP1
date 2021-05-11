@@ -20,7 +20,7 @@ public abstract class RacaBase {
         return "";
     }
 
-  public abstract boolean HabUtility();
+  public abstract boolean HabUtility(Personagem p);
   
   
 /** 

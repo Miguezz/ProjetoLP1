@@ -12,21 +12,21 @@ import projetolp1.Principal.Personagem;
  *
  * @author felip
  */
-public abstract  class Assassino extends ClasseMae {
+public class Assassino extends ClasseMae {
 
-    public Assassino(Personagem self) {
-        super(self);
-    }
+//    public Assassino(Personagem self) {
+//        super(self);
+//    }
     // Lembrar de implementar formulas melhores pra as funcoes
     /**
      *
      * @param target Personagem alvo
      * @return
      */
-    @Override
-    public boolean habDano(Personagem target){
-        if(target.getPosicaoNoMapa() - this.self.getPosicaoNoMapa() <= this.ranges[0]){
-            float formulaDano = 10 + this.self.getDano().getValor();
+        @Override
+    public boolean habDano(Personagem self, Personagem target){
+        if(target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= this.ranges[0]){
+            float formulaDano = 10 + self.getDano().getValor();
             Dano dano = new Dano(0, formulaDano);
             target.setDanoRecebido(dano);
         }
@@ -34,17 +34,17 @@ public abstract  class Assassino extends ClasseMae {
     }
     
     @Override
-    public boolean habDef(Personagem target){
-        if(target.getPosicaoNoMapa() - this.self.getPosicaoNoMapa() <= this.ranges[1]){
+    public boolean habDef(Personagem self, Personagem target){
+        if(target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= this.ranges[1]){
             System.out.println("Defesa");
         }
         return true;
     }
     
     @Override
-    public boolean ultimate(Personagem target){
-        if(target.getPosicaoNoMapa() - this.self.getPosicaoNoMapa() <= this.ranges[2]){
-            float formulaDano = 20 + this.self.getDano().getValor(); 
+    public boolean ultimate(Personagem self, Personagem target){
+        if(target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= this.ranges[2]){
+            float formulaDano = 20 + self.getDano().getValor(); 
             Dano dano = new Dano(0, formulaDano);
             target.setDanoRecebido(dano);
         }

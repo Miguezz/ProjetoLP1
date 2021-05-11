@@ -11,12 +11,13 @@ import projetolp1.Principal.Personagem;
  *
  * @author felip
  */
-public abstract class Anao extends RacaBase {
-    Anao(Personagem p){
+public class Anao extends RacaBase {
+    public Anao(Personagem p){
         modAtributo(p, 0); // Vida
         modAtributo(p, 2); // Defesa
      }
   
+    @Override
     public boolean HabUtility(Personagem p){
            p.setshield((int) ((p.getshield() + p.getDanoRecebido())/2)); //recebe shield
         return true;

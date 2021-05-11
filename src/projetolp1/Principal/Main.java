@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package projetolp1.Principal;
-
+import projetolp1.Classes.*;
+import projetolp1.Racas.*;
 /**
  *
  * @author FelipeBrasileiro
@@ -16,7 +17,14 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println("Teste");
+        Personagem p = new Personagem("Teste 1", 1, 0);
+        Personagem p2 = new Personagem("Teste 2", 3, 2);
+        System.out.println(p);
+        p2.getClasse().habDano(p2, p);
+        
+        p.getRaca().HabUtility(p);
+        System.out.println(p);
+        
     }
     
 }

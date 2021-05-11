@@ -11,8 +11,8 @@ import projetolp1.Principal.Personagem;
  *
  * @author felip
  */
-public abstract class Dragonborn extends RacaBase {
-    Dragonborn(Personagem p){
+public class Dragonborn extends RacaBase {
+    public Dragonborn(Personagem p){
         modAtributo(p, 2); // Def
         modAtributo(p, 3); // Dano
     }

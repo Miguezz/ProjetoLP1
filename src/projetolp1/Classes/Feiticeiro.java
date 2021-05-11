@@ -12,15 +12,15 @@ import projetolp1.Principal.Personagem;
  *
  * @author felip
  */
-public abstract  class Feiticeiro extends ClasseMae {
+public class Feiticeiro extends ClasseMae {
 
-    public Feiticeiro(Personagem self) {
-        super(self);
-    }
-    @Override
-    public boolean habDano(Personagem target){
-        if(target.getPosicaoNoMapa() - this.self.getPosicaoNoMapa() <= this.ranges[0]){
-            float formulaDano = 10 + this.self.getDano().getValor();
+//    public Feiticeiro(Personagem self) {
+//        super(self);
+//    }
+        @Override
+    public boolean habDano(Personagem self, Personagem target){
+        if(target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= this.ranges[0]){
+            float formulaDano = 10 + self.getDano().getValor();
             Dano dano = new Dano(0, formulaDano);
             target.setDanoRecebido(dano);
         }
@@ -28,17 +28,17 @@ public abstract  class Feiticeiro extends ClasseMae {
     }
     
     @Override
-    public boolean habDef(Personagem target){
-        if(target.getPosicaoNoMapa() - this.self.getPosicaoNoMapa() <= this.ranges[1]){
+    public boolean habDef(Personagem self, Personagem target){
+        if(target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= this.ranges[1]){
             System.out.println("Defesa");
         }
         return true;
     }
     
     @Override
-    public boolean ultimate(Personagem target){
-        if(target.getPosicaoNoMapa() - this.self.getPosicaoNoMapa() <= this.ranges[2]){
-            float formulaDano = 20 + this.self.getDano().getValor(); 
+    public boolean ultimate(Personagem self, Personagem target){
+        if(target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= this.ranges[2]){
+            float formulaDano = 20 + self.getDano().getValor(); 
             Dano dano = new Dano(0, formulaDano);
             target.setDanoRecebido(dano);
         }

@@ -11,8 +11,8 @@ import projetolp1.Principal.Personagem;
  *
  * @author felip
  */
-public abstract class Tiefling extends RacaBase {
-    Tiefling(Personagem p){
+public class Tiefling extends RacaBase {
+    public Tiefling(Personagem p){
         modAtributo(p, 1); // Mana
         modAtributo(p, 3); // Dano
     }

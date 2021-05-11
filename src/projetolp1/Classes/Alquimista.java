@@ -10,10 +10,9 @@ import projetolp1.Misc.Dano;
  *
  * @author felip
  */
-public abstract class Alquimista extends ClasseMae {
+public class Alquimista extends ClasseMae {
     Personagem self; // Link para o personagem dono da que possui a classe Alquimista
-    public Alquimista(Personagem self){
-        super(self);
+    public Alquimista(){
         this.ranges[0] = 1;
         this.ranges[1] = 1;
         this.ranges[2] = 1;
@@ -27,9 +26,9 @@ public abstract class Alquimista extends ClasseMae {
      * @return
      */
     @Override
-    public boolean habDano(Personagem target){
-        if(target.getPosicaoNoMapa() - this.self.getPosicaoNoMapa() <= this.ranges[0]){
-            float formulaDano = 10 + this.self.getDano().getValor();
+    public boolean habDano(Personagem self, Personagem target){
+        if(target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= this.ranges[0]){
+            float formulaDano = 10 + self.getDano().getValor() - target.getDefesa();
             Dano dano = new Dano(0, formulaDano);
             target.setDanoRecebido(dano);
         }
@@ -37,17 +36,17 @@ public abstract class Alquimista extends ClasseMae {
     }
     
     @Override
-    public boolean habDef(Personagem target){
-        if(target.getPosicaoNoMapa() - this.self.getPosicaoNoMapa() <= this.ranges[1]){
+    public boolean habDef(Personagem self, Personagem target){
+        if(target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= this.ranges[1]){
             System.out.println("Defesa");
         }
         return true;
     }
     
     @Override
-    public boolean ultimate(Personagem target){
-        if(target.getPosicaoNoMapa() - this.self.getPosicaoNoMapa() <= this.ranges[2]){
-            float formulaDano = 20 + this.self.getDano().getValor(); 
+    public boolean ultimate(Personagem self, Personagem target){
+        if(target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= this.ranges[2]){
+            float formulaDano = 20 + self.getDano().getValor(); 
             Dano dano = new Dano(0, formulaDano);
             target.setDanoRecebido(dano);
         }

@@ -11,8 +11,8 @@ import projetolp1.Principal.Personagem;
  *
  * @author felip
  */
-public abstract class Elfo extends RacaBase {
-    Elfo(Personagem p){
+public class Elfo extends RacaBase {
+    public Elfo(Personagem p){
         modAtributo(p, 1); // Mana
         modAtributo(p, 1); // Mana
     } 

@@ -11,8 +11,8 @@ import projetolp1.Principal.Personagem;
  *
  * @author felip
  */
-public abstract class Orc extends RacaBase {
-    Orc(Personagem p){
+public class Orc extends RacaBase {
+    public Orc(Personagem p){
         modAtributo(p, 0); // Vida
         modAtributo(p, 0); // Vida
     }

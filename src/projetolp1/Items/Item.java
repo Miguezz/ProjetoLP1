@@ -15,12 +15,12 @@ public class Item {
     private String descricao;
     
    public Item(){
-    this.nome = this.getClass().getName();
+    this.nome = this.getClass().getSimpleName();
     this.descricao = "";
     }
     
    public Item(String descricao){
-    this.nome = this.getClass().getName();
+    this.nome = this.getClass().getSimpleName();
     this.descricao = descricao;
     }
     

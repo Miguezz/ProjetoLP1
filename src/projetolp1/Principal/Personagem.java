@@ -5,11 +5,11 @@
  */
 package projetolp1.Principal;
 
-import projetolp1.Classes.ClasseMae;
+import projetolp1.Classes.*;
 import projetolp1.Items.Inventario;
 import projetolp1.Misc.Status;
-import projetolp1.Racas.RacaBase;
 import projetolp1.Misc.Dano;
+import projetolp1.Racas.*;
 
 /**
  *
@@ -36,10 +36,11 @@ public class Personagem {
     private RacaBase  raca;
     private ClasseMae classe;
     
-    Personagem(String nome, ClasseMae classe, RacaBase raca){
+    Personagem(String nome, int classe, int raca){
       this.nome = nome;
-      this.classe = classe;
-      this.raca = raca;
+      this.classe = this.getSetClasse(classe);
+      this.raca = this.getSetRaca(raca);
+      
       this.modDano = 1;
       this.danoBase = 20;
       
@@ -53,9 +54,69 @@ public class Personagem {
       // this.status = 0;
 
     }
+    
+    @Override
+    public String toString(){
+        return ("Nome: " + this.nome +
+                "\nRaca " + this.raca.getClass().getSimpleName() + 
+                "\nClasse: " + this.classe.getClass().getSimpleName() +
+                "\nVida Max: " + this.vidaMaxima + 
+                "\nVida Atual: " + (this.vidaMaxima - this.danoRecebido) +
+                "\nMana Max: " + this.manaMaxima + 
+                "\nMana Atual: " + (this.manaMaxima - this.manaGasta) +
+                "\nDano: " + this.dano.getValor() + 
+                "\nDefesa: " + this.defesa + 
+                "\nShield: " + this.shield + "\n");
+    }
+    
+    private RacaBase getSetRaca(int raca){
+        switch(raca){
+            case 0:
+                return new Laponico(this);
+            case 1:
+                return new Anao(this);
+            case 2:
+                return new Dragonborn(this);
+            case 3:
+                return new Elfo(this);
+            case 4:
+                return new Orc(this);
+            case 5:
+                return new Tiefling(this);
+      }
+        
+        return new Laponico(this);
+    }
+    
+    private ClasseMae getSetClasse(int classe){
+        switch(classe){
+            case 0:
+                return new Alquimista();
+            case 1:
+                return new Assassino();
+            case 2:
+                return new Bruxo();
+            case 3:
+                return new Cacador();
+            case 4:
+                return new Cavaleiro();
+            case 5:
+                return new Feiticeiro();
+            case 6:
+                return new Sacerdote();
+      }
+        
+        return new Cavaleiro();
+    }
+    
     public RacaBase getRaca(){
         return raca;
     }
+    
+    public ClasseMae getClasse(){
+        return this.classe;
+    }
+    
     /**
      * @return the nome
      */
@@ -208,5 +269,8 @@ public class Personagem {
         return this.dano;
     }
 
+    public void endOfTurn(){
+        this.status.ReduzirTempoNoFimDoTurno();
+    }
     
 }
