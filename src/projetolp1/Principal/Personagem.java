@@ -261,7 +261,7 @@ public class Personagem {
       return this.modDano;
     }
     
-    public void setDanoBase(float modDano){
+    public void setDanoBase(float modDano){ //rever, setDanoBase deveria conter this.setDanoBase
       this.modDano = modDano;
     }
     
