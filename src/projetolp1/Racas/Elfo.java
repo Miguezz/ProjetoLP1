@@ -13,8 +13,8 @@ import projetolp1.Principal.Personagem;
  */
 public class Elfo extends RacaBase {
     public Elfo(Personagem p){
-        modAtributo(p, 1); // Mana
-        modAtributo(p, 1); // Mana
+        modAtributo(1); // Mana
+        modAtributo(1); // Mana
     } 
    
     public boolean HabUtility(Personagem p){

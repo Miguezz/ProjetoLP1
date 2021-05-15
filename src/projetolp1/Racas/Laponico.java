@@ -13,8 +13,8 @@ import projetolp1.Principal.Personagem;
  */
 public class Laponico extends RacaBase {
     public Laponico(Personagem p){
-        modAtributo(p, 0); // Vida
-        modAtributo(p, 1); // Mana
+        modAtributo(0); // Vida
+        modAtributo(1); // Mana
     }
   
     public boolean HabUtility(Personagem p){

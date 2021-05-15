@@ -20,7 +20,7 @@ public class Cacador extends ClasseMae {
      @Override
     public boolean habDano(Personagem self, Personagem target){
         if(target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= this.ranges[0]){
-            float formulaDano = 10 + self.getDano().getValor() - target.getDefesa();
+            float formulaDano = 10 + self.getDano() - target.getDefesa();
             Dano dano = new Dano(0, formulaDano);
             target.setDanoRecebido(dano);
         }
@@ -38,7 +38,7 @@ public class Cacador extends ClasseMae {
     @Override
     public boolean ultimate(Personagem self, Personagem target){
         if(target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= this.ranges[2]){
-            float formulaDano = 20 + self.getDano().getValor(); 
+            float formulaDano = 20 + self.getDano(); 
             Dano dano = new Dano(0, formulaDano);
             target.setDanoRecebido(dano);
         }

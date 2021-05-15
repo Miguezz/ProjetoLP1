@@ -13,8 +13,8 @@ import projetolp1.Principal.Personagem;
  */
 public class Tiefling extends RacaBase {
     public Tiefling(Personagem p){
-        modAtributo(p, 1); // Mana
-        modAtributo(p, 3); // Dano
+        modAtributo(1); // Mana
+        modAtributo(3); // Dano
     }
 
     public boolean HabUtility(Personagem p){

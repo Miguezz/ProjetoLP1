@@ -6,6 +6,7 @@
 package projetolp1.Principal;
 
 import projetolp1.Classes.*;
+import projetolp1.Items.Equip;
 import projetolp1.Items.Inventario;
 import projetolp1.Misc.Status;
 import projetolp1.Misc.Dano;
@@ -16,23 +17,37 @@ import projetolp1.Racas.*;
  * @author Batata
  */
 public class Personagem {
+
+    /**
+     * @return the equipamento
+     */
+    public Equip getEquipamento() {
+        return equipamento;
+    }
+
+    /**
+     * @param equipamento the equipamento to set
+     */
+    public void setEquipamento(Equip equipamento) {
+        this.equipamento = equipamento;
+    }
     private String nome;
     private int vidaMaxima;
     private float danoRecebido; // vidaMaxima - danoRecebido = vidaAtual
     private int manaGasta;
     private int manaMaxima;
-    private float danoBase;
+    private int danoBase;
     private int defesa;
     private Status status;
     private int qtdMovimento;
     private int posicaoNoMapa;
     private float modDano;
     private int shield;
-    
+    private Equip equipamento;
     
     //Inventario Removido
     // Equip equipamento -- talvez separar em slots? cabeca, armadura, botas.
-    private Dano dano;
+    private int dano;
     private RacaBase  raca;
     private ClasseMae classe;
     
@@ -42,16 +57,18 @@ public class Personagem {
       this.raca = this.getSetRaca(raca);
       
       this.modDano = 1;
-      this.danoBase = 20;
+      this.danoBase = 5 + this.raca.getModDanoBase();
       
-      this.dano = new Dano(0, danoBase * modDano);
       
-      this.defesa = 5;
-      this.manaMaxima = 50;
-      this.vidaMaxima = 100;
+      //this.dano = new Dano(0, danoBase * modDano);
+      
+      this.defesa = 5 + this.raca.getModDefBase();
+      this.manaMaxima = 50 + this.raca.getModManaMax();
+      this.vidaMaxima = 100 + this.raca.getModVidaMax();
       this.shield = 0;
       this.danoRecebido = 0;
-      // this.status = 0;
+      this.equipamento = new Equip();
+      this.status = new Status();
 
     }
     
@@ -64,8 +81,8 @@ public class Personagem {
                 "\nVida Atual: " + (this.vidaMaxima - this.danoRecebido) +
                 "\nMana Max: " + this.manaMaxima + 
                 "\nMana Atual: " + (this.manaMaxima - this.manaGasta) +
-                "\nDano: " + this.dano.getValor() + 
-                "\nDefesa: " + this.defesa + 
+                "\nDano: " + getDano() + 
+                "\nDefesa: " + this.getEquipamento().getDef() +
                 "\nShield: " + this.shield + "\n");
     }
     
@@ -205,7 +222,7 @@ public class Personagem {
      * @return the defesa
      */
     public int getDefesa() {
-        return this.defesa;
+        return this.defesa + this.equipamento.getDef();
     }
 
     /**
@@ -265,8 +282,8 @@ public class Personagem {
       this.modDano = modDano;
     }
     
-    public Dano getDano(){
-        return this.dano;
+    public int getDano(){
+        return this.danoBase + this.equipamento.getAtk();
     }
 
     public void endOfTurn(){

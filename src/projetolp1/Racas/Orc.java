@@ -13,8 +13,8 @@ import projetolp1.Principal.Personagem;
  */
 public class Orc extends RacaBase {
     public Orc(Personagem p){
-        modAtributo(p, 0); // Vida
-        modAtributo(p, 0); // Vida
+        modAtributo(0); // Vida
+        modAtributo(0); // Vida
     }
   
     public boolean HabUtility(Personagem p){
