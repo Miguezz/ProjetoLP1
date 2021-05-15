@@ -14,6 +14,34 @@ import projetolp1.Principal.Personagem;
 public abstract class RacaBase { 
 
     /**
+     * @return the modVidaMax
+     */
+    public int getModVidaMax() {
+        return modVidaMax;
+    }
+
+    /**
+     * @return the modDefMax
+     */
+    public int getModDefBase() {
+        return modDefBase;
+    }
+
+    /**
+     * @return the modManaMax
+     */
+    public int getModManaMax() {
+        return modManaMax;
+    }
+
+    /**
+     * @return the modDanoBase
+     */
+    public int getModDanoBase() {
+        return modDanoBase;
+    }
+
+    /**
      * @return the armaFavorita
      */
     public String getArmaFavorita() {
@@ -28,19 +56,39 @@ public abstract class RacaBase {
      * @param p
      * @param atr
  */
-  public void modAtributo(Personagem p, int atr){
+    private int modVidaMax = 0;
+/** 
+ *  Modificador de atributo baseado na raca do personagem
+     * @param p
+     * @param atr
+ */
+    private int modDefBase = 0;
+/** 
+ *  Modificador de atributo baseado na raca do personagem
+     * @param p
+     * @param atr
+ */
+    private int modManaMax = 0;
+/** 
+ *  Modificador de atributo baseado na raca do personagem
+     * @param p
+     * @param atr
+ */
+    private int modDanoBase = 0;
+    
+  public void modAtributo(int atr){
     switch(atr){
       case 0: //aumenta 20 de vidaMaxima
-        p.setVidaMaxima(p.getVidaMaxima() + 20); 
+        this.modVidaMax += 20; 
         break;
       case 1: //aumenta 10 de manaMaxima
-        p.setManaMaxima(p.getManaMaxima() + 10);
+        this.modManaMax += 10;
         break;
       case 2: //aumenta 5 de defesa
-        p.setDefesa(p.getDefesa() + 5);
+        this.modDefBase += 5;
         break;
       case 3: //aumenta 5 de dano
-        p.setDanoBase(p.getDanoBase() + 5);
+        this.modDanoBase += 5;
         break;
     }
   }

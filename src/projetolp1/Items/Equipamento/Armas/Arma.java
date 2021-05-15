@@ -1,6 +1,6 @@
 package projetolp1.Items.Equipamento.Armas;
 import projetolp1.Items.Item;
-class Arma extends Item {
+public class Arma extends Item {
   private int range;
   private int danoArma;
   private int qtdMaos;

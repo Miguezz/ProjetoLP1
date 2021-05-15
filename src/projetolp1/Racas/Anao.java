@@ -13,8 +13,8 @@ import projetolp1.Principal.Personagem;
  */
 public class Anao extends RacaBase {
     public Anao(Personagem p){
-        modAtributo(p, 0); // Vida
-        modAtributo(p, 2); // Defesa
+        modAtributo(0); // Vida
+        modAtributo(2); // Defesa
      }
   
     @Override

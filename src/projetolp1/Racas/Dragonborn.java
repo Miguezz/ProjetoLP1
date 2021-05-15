@@ -13,8 +13,8 @@ import projetolp1.Principal.Personagem;
  */
 public class Dragonborn extends RacaBase {
     public Dragonborn(Personagem p){
-        modAtributo(p, 2); // Def
-        modAtributo(p, 3); // Dano
+        modAtributo(2); // Def
+        modAtributo(3); // Dano
     }
     
     public boolean HabUtility(Personagem p){
