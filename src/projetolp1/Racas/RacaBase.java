@@ -5,13 +5,13 @@
  */
 package projetolp1.Racas;
 import projetolp1.Principal.Personagem;
-
+import java.io.Serializable;
 /**
  *
  * @author Batata
  */
 
-public abstract class RacaBase { 
+public abstract class RacaBase implements Serializable{ 
 
     /**
      * @return the modVidaMax

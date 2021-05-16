@@ -4,12 +4,13 @@
  * and open the template in the editor.
  */
 package projetolp1.Items;
+import java.io.Serializable;
 
 /**
  *
  * @author Batata
  */
-public class Item {
+public class Item implements Serializable{
     
     private String nome;
     private String descricao;

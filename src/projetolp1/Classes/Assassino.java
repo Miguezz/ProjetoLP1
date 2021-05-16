@@ -7,7 +7,6 @@ package projetolp1.Classes;
 
 import projetolp1.Misc.MultipDano;
 import projetolp1.Principal.Personagem;
-
 /**
  *
  * @author felip

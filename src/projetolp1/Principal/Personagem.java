@@ -9,12 +9,13 @@ import projetolp1.Classes.*;
 import projetolp1.Items.Equip;
 import projetolp1.Misc.Status;
 import projetolp1.Racas.*;
+import java.io.Serializable;
 
 /**
  *
  * @author Batata
  */
-public class Personagem {
+public class Personagem implements Serializable{
 
     /**
      * @return the equipamento

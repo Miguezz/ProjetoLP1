@@ -5,12 +5,12 @@
  */
 package projetolp1.Classes;
 import projetolp1.Principal.Personagem;
-
+import java.io.Serializable;
 /**
  *
  * @author Batata
  */
-public abstract class ClasseMae {
+public abstract class ClasseMae implements Serializable{
     
     public abstract boolean habDano(Personagem self, Personagem target);
     

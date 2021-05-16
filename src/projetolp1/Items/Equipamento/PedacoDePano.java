@@ -7,6 +7,6 @@ package projetolp1.Items.Equipamento;
 
 public class PedacoDePano extends Armadura{
     public PedacoDePano(){
-    super("Pedaço de pano", "Pedaço de pano sujo, só protege do frio", 1);
+    super("Pedaço de pano", "Pedaço de pano sujo, só protege do frio", 1, 6);
   }
 }

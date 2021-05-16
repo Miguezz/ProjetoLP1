@@ -7,8 +7,9 @@ package projetolp1.Items;
 import projetolp1.Items.Equipamento.Armadura;
 import projetolp1.Items.Equipamento.Armas.Arma;
 import projetolp1.Items.Equipamento.Secundaria;
+import java.io.Serializable;
 
-public class Equip {
+public class Equip implements Serializable{
 		int elemento;
 		public Armadura getArmor() {
         return armor;

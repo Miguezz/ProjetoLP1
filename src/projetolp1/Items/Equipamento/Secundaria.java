@@ -1,8 +1,8 @@
 package projetolp1.Items.Equipamento;
 import projetolp1.Items.Item;
-import projetolp1.Principal.Personagem;
+import java.io.Serializable;
 
-public class Secundaria extends Item{
+public class Secundaria extends Item implements Serializable{
 
     /**
      * @return the buffAtacar

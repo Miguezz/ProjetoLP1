@@ -6,11 +6,11 @@ class ArmaR2 extends Arma {
  * @author Mingre Dingre
  */
   ArmaR2(int qtdMaos){
-    super(1/*Range*/, 2 /*Dano*/, qtdMaos, qtdMaos*1.5/*modQtdMaos*/);
+    super(1/*Range*/, 2 /*Dano*/, qtdMaos, qtdMaos*1.5/*modQtdMaos*/, 6);
   }
   
     ArmaR2(String nome, String desc,int qtdMaos){
-    super(nome, desc, 2/*Range*/, 1 /*Dano*/, qtdMaos, qtdMaos*1.5/*modQtdMaos*/);
+    super(nome, desc, 2/*Range*/, 1 /*Dano*/, qtdMaos, qtdMaos*1.5/*modQtdMaos*/, 6);
   }
   
 }

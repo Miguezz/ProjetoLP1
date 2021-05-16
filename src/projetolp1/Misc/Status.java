@@ -6,12 +6,12 @@
 package projetolp1.Misc;
 
 import java.util.ArrayList;
-
+import java.io.Serializable;
 /**
  *
  * @author Batata
  */
-public class Status {
+public class Status implements Serializable{
       
     private ArrayList<StatusUnit> statusPlayer = new ArrayList<StatusUnit>(); 
     //ex:

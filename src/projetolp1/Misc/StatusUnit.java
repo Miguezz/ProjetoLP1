@@ -4,13 +4,13 @@
  * and open the template in the editor.
  */
 package projetolp1.Misc;
-
+import java.io.Serializable;
 
 /**
  *
  * @author Batata
  */
-public class StatusUnit {
+public class StatusUnit implements Serializable{
 
     StatusUnit(int tipo, int dur){
      this.tipo = tipo;

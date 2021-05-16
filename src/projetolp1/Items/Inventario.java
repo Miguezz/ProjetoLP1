@@ -6,12 +6,13 @@
 package projetolp1.Items;
 
 import java.util.ArrayList;
+import java.io.Serializable;
 
 /**
  *
  * @author Batata
  */
-public class Inventario {
+public class Inventario implements Serializable{
     
     private ArrayList<Item> arrayItem = new ArrayList<Item>();
     
