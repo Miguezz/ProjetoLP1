@@ -5,22 +5,28 @@ public class Arma extends Item {
   private int danoArma;
   private int qtdMaos;
   private double modDanoQtdMaos;
-  
-  Arma(String nome, String desc, int range, int danoArma, int qtdMaos, double modDanoQtdMaos){
+	private int elemento; 
+
+  Arma(String nome, String desc, int range, int danoArma, int qtdMaos, double modDanoQtdMaos, int elemento){
     super(nome, desc);
     this.range = range;
     this.danoArma = danoArma;
     this.qtdMaos = qtdMaos;
     this.modDanoQtdMaos = modDanoQtdMaos;
+		this.elemento = elemento;
   }
-  Arma(int range, int danoArma, int qtdMaos, double modDanoQtdMaos){
+  Arma(int range, int danoArma, int qtdMaos, double modDanoQtdMaos, int elemento){
     super();
     this.range = range;
     this.danoArma = danoArma;
     this.qtdMaos = qtdMaos;
     this.modDanoQtdMaos = modDanoQtdMaos;
+		this.elemento = elemento;
   }
-  
+	public int getElemento(){
+		return this.elemento;
+	} 
+		
   public int getRange(){
     return this.range;
   }

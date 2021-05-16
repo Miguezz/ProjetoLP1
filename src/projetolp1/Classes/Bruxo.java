@@ -5,7 +5,7 @@
  */
 package projetolp1.Classes;
 
-import projetolp1.Misc.Dano;
+import projetolp1.Misc.MultipDano;
 import projetolp1.Principal.Personagem;
 
 /**
@@ -17,32 +17,30 @@ public class Bruxo extends ClasseMae {
 //    public Bruxo(Personagem self) {
 //        super(self);
 //    }
-        @Override
+ 		@Override
     public boolean habDano(Personagem self, Personagem target){
-        if(target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= this.ranges[0]){
-            float formulaDano = 10 + self.getDano();
-            Dano dano = new Dano(0, formulaDano);
-            target.setDanoRecebido(dano);
+			int range = 1;
+        if(target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= range){
+						int elemento = 0;
+            double formulaDano = 10 + self.getDano();
+						double mult = new MultipDano().resultado(elemento, target.getEquipamento().getDefElemental());
+						formulaDano = formulaDano * mult;
+            target.setDanoRecebido(formulaDano);
         }
         return true;
     }
     
-    @Override
-    public boolean habDef(Personagem self, Personagem target){
-        if(target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= this.ranges[1]){
-            System.out.println("Defesa");
-        }
-        return true;
-    }
-    
+   
     @Override
     public boolean ultimate(Personagem self, Personagem target){
-        if(target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= this.ranges[2]){
-            float formulaDano = 20 + self.getDano(); 
-            Dano dano = new Dano(0, formulaDano);
-            target.setDanoRecebido(dano);
+			int range = 1;
+        if(target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= range){
+						int elemento = 0;
+            double formulaDano = 20 + self.getDano();
+						double mult = new MultipDano().resultado(elemento, target.getEquipamento().getDefElemental());
+						formulaDano = formulaDano * mult;
+            target.setDanoRecebido(formulaDano);
         }
-        
-        return true;
-    }
+        return true;    
+		}
 }

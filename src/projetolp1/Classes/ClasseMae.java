@@ -12,13 +12,8 @@ import projetolp1.Principal.Personagem;
  */
 public abstract class ClasseMae {
     
-    int[] ranges = new int[4];
-
-    
     public abstract boolean habDano(Personagem self, Personagem target);
     
-    public abstract boolean habDef(Personagem self, Personagem target);
-
     public abstract boolean ultimate(Personagem self, Personagem alvo);
 
 }

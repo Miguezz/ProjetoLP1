@@ -5,52 +5,45 @@
  */
 package projetolp1.Classes;
 import projetolp1.Principal.Personagem;
-import projetolp1.Misc.Dano;
+import projetolp1.Misc.MultipDano;
 /**
  *
  * @author felip
  */
 public class Alquimista extends ClasseMae {
     Personagem self; // Link para o personagem dono da que possui a classe Alquimista
-    public Alquimista(){
-        this.ranges[0] = 1;
-        this.ranges[1] = 1;
-        this.ranges[2] = 1;
-        this.self = self;
-    }
-    
+		
     // Lembrar de implementar formulas melhores pra as funcoes
     /**
-     *
+     * @param self Proprio Personagem
      * @param target Personagem alvo
      * @return
      */
-    @Override
+    
+		@Override
     public boolean habDano(Personagem self, Personagem target){
-        if(target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= this.ranges[0]){
-            float formulaDano = 10 + self.getDano() - target.getDefesa();
-            Dano dano = new Dano(0, formulaDano);
-            target.setDanoRecebido(dano);
+			int range = 1;
+        if(target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= range){
+						int elemento = 0;
+            double formulaDano = 10 + self.getDano();
+						double mult = new MultipDano().resultado(elemento, target.getEquipamento().getDefElemental());
+						formulaDano = formulaDano * mult;
+            target.setDanoRecebido(formulaDano);
         }
         return true;
     }
     
-    @Override
-    public boolean habDef(Personagem self, Personagem target){
-        if(target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= this.ranges[1]){
-            System.out.println("Defesa");
-        }
-        return true;
-    }
-    
+   
     @Override
     public boolean ultimate(Personagem self, Personagem target){
-        if(target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= this.ranges[2]){
-            float formulaDano = 20 + self.getDano(); 
-            Dano dano = new Dano(0, formulaDano);
-            target.setDanoRecebido(dano);
+			int range = 1;
+        if(target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= range){
+						int elemento = 0;
+            double formulaDano = 20 + self.getDano();
+						double mult = new MultipDano().resultado(elemento, target.getEquipamento().getDefElemental());
+						formulaDano = formulaDano * mult;
+            target.setDanoRecebido(formulaDano);
         }
-        
-        return true;
-    }
+        return true;    
+		}
 }

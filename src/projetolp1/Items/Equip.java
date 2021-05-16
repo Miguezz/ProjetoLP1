@@ -9,11 +9,25 @@ import projetolp1.Items.Equipamento.Armas.Arma;
 import projetolp1.Items.Equipamento.Secundaria;
 
 public class Equip {
-
-    public Armadura getArmor() {
+		int elemento;
+		public Armadura getArmor() {
         return armor;
     }
-    
+	
+		public int getDefElemental(){
+			if(armor == null)	{
+				return 7;
+			}
+			return armor.getElemento();
+		}
+
+		public int getAtkElemental(){
+			if(arma == null){
+				return 7;
+			}
+			return arma.getElemento();
+		}
+
     public int getDef(){
         int def = 0;
         if(this.armor != null ) def += this.armor.getDefArmadura();

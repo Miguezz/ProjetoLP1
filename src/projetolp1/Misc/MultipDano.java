@@ -10,6 +10,13 @@ package projetolp1.Misc;
  * @author Batata
  */
 public class MultipDano {
+	// 0 - Fogo
+	// 1 - Agua
+	// 2 - Terra
+	// 3 - Vento
+	// 4 - Sagrado
+	// 5 - Sombrio
+	// 6 - Neutro
    private double[][] tabela = {{0.1,0.5,1.5,1,0.9,1.2,1},
                                 {1.5,0.1,1,0.5,0.9,1.2,1},
                                 {0.5,1,0.1,1.5,0.9,1.2,1},

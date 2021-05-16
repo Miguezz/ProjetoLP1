@@ -7,9 +7,7 @@ package projetolp1.Principal;
 
 import projetolp1.Classes.*;
 import projetolp1.Items.Equip;
-import projetolp1.Items.Inventario;
 import projetolp1.Misc.Status;
-import projetolp1.Misc.Dano;
 import projetolp1.Racas.*;
 
 /**
@@ -33,7 +31,7 @@ public class Personagem {
     }
     private String nome;
     private int vidaMaxima;
-    private float danoRecebido; // vidaMaxima - danoRecebido = vidaAtual
+    private double danoRecebido; // vidaMaxima - danoRecebido = vidaAtual
     private int manaGasta;
     private int manaMaxima;
     private int danoBase;
@@ -173,20 +171,15 @@ public class Personagem {
     /**
      * @return the danoRecebido
      */
-    public float getDanoRecebido() {
+    public double getDanoRecebido() {
         return danoRecebido;
     }
 
     /**
      * @param danoRecebido the danoRecebido to set
      */
-    public void setDanoRecebido(Dano danoRecebido) { 
-        // com a classe Dano, tem como verificar o tipo do dano
-        
-        this.danoRecebido = danoRecebido.getValor();
-    }
     
-    public void setDanoRecebido(float danoRecebido) { // Usado para cura ou "dano normal" (sem atributos)
+    public void setDanoRecebido(double danoRecebido) { // Usado para cura ou "dano normal" (sem atributos)
         this.danoRecebido = danoRecebido;
     }
 
