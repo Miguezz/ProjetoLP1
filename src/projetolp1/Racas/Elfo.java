@@ -17,8 +17,9 @@ public class Elfo extends RacaBase {
         modAtributo(1); // Mana
     } 
    
+    @Override
     public boolean HabUtility(Personagem p){
-           p.setshield((int) ((p.getshield() + p.getDanoRecebido())/2));
+
         return true;
     }
 

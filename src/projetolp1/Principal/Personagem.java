@@ -181,7 +181,14 @@ public class Personagem implements Serializable{
      */
     
     public void setDanoRecebido(double danoRecebido) { // Usado para cura ou "dano normal" (sem atributos)
-        this.danoRecebido = danoRecebido;
+        if(getshield() >= 0 && getshield() >= danoRecebido){ //para reduzir so o shield e 0 de vida
+            setshield((int) (getshield() - danoRecebido));
+        } else if(getshield() > 0 && getshield() < danoRecebido){ // reduzir o resto do shield e o restante do dano na vida
+            this.danoRecebido = danoRecebido - getshield();
+            setshield(0);
+        } else {
+            this.danoRecebido = danoRecebido;
+        }
     }
 
     /**

@@ -16,10 +16,16 @@ public class Tiefling extends RacaBase {
         modAtributo(1); // Mana
         modAtributo(3); // Dano
     }
-
-    public boolean HabUtility(Personagem p){
-           p.setshield((int) ((p.getshield() + p.getDanoRecebido())/2));
-        return true;
+    
+    @Override
+    public boolean HabUtility(Personagem self, Personagem target){ //Troca equivalente - Troca 20 de vida atual por 30 de mana
+           if(self.getVidaMaxima() - self.getDanoRecebido() > 20){
+               self.setManaGasta(self.getManaGasta() - 30);
+               return true;
+           } else {
+               System.out.println("Não é possivel usar a Troca Equivalente(Vida insuficiente)");
+               return false;
+           }
     }
     
 }

@@ -17,9 +17,15 @@ public class Orc extends RacaBase {
         modAtributo(0); // Vida
     }
   
-    public boolean HabUtility(Personagem p){
-           p.setshield((int) ((p.getshield() + p.getDanoRecebido())/2));
+    @Override
+    public boolean HabUtility(Personagem self, Personagem target){ //Endurecimento - Ganha shield e defesa +10 por 3 turnos
+        if(self.getManaMaxima()- self.getManaGasta() >= 25){
+            self.setshield((int) ((self.getDanoRecebido())/4)); //recebe shield
+            
         return true;
-    }
+        } else {
+            System.out.println("Não é possivel usar o Endurecimento(Mana insuficiente)");
+            return false;
+        }
 
 }
