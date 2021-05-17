@@ -245,6 +245,7 @@ public class Personagem implements Serializable{
     public int getDefesa() {
         int deftotal = this.defesa + this.equipamento.getDef();
                if (getStatus().isStatus(7)) deftotal += 20;
+               if (getStatus().isStatus(10)) deftotal += 10;
            return  deftotal;
     }
 

@@ -20,12 +20,13 @@ public class Dragonborn extends RacaBase {
     
     @Override
     public boolean HabUtility(Personagem self, Personagem target){ //Flamethrower - Lança chamas tirando 20 de dano e status burn
-        if(self.getManaMaxima()-self.getManaGasta() >= 30){
-        int range = 1;
+        if(self.getMana() >= 30){
+        int range = 3;
         if(target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= range){
+            self.setManaGasta(30);
             int elemento = 0;
             double formulaDano = 20;
-            double mult = new MultipDano().resultado(elemento, target.getEquipamento().getDefElemental());
+            double mult = MultipDano.resultado(elemento, target.getEquipamento().getDefElemental());
             formulaDano = formulaDano * mult;
             target.addDanoRecebido(formulaDano);
             target.getStatus().addStatus(1,3);
