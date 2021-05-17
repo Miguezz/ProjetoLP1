@@ -18,7 +18,7 @@ public class Laponico extends RacaBase {
     }
     
     @Override
-    public boolean HabUtility(Personagem p){ // polimorfismo laponico
+    public boolean HabUtility(Personagem p, Personagem q){ // polimorfismo laponico
            
         return true;
     }

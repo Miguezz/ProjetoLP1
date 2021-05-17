@@ -28,7 +28,7 @@ public class Feiticeiro extends ClasseMae {
 						double mult = new MultipDano().resultado(elemento, target.getEquipamento().getDefElemental());
 						formulaDano = formulaDano * mult;
 						formulaDano -= target.getDefesa();
-            target.setDanoRecebido(formulaDano);
+            target.addDanoRecebido(formulaDano);
         }
         return true;
 			}
@@ -57,7 +57,7 @@ public class Feiticeiro extends ClasseMae {
 						double mult = new MultipDano().resultado(elemento, target.getEquipamento().getDefElemental());
 						formulaDano = formulaDano * mult;
 						formulaDano -= target.getDefesa();
-            target.setDanoRecebido(formulaDano);
+            target.addDanoRecebido(formulaDano);
         }
         return true;
 			}

@@ -26,7 +26,7 @@ public class Sacerdote extends ClasseMae {
 						double mult = new MultipDano().resultado(elemento, target.getEquipamento().getDefElemental());
 						formulaDano = formulaDano * mult;
 						formulaDano -= target.getDefesa();
-            target.setDanoRecebido(formulaDano);
+            target.addDanoRecebido(formulaDano);
         }
         return true;
 			}
@@ -40,7 +40,7 @@ public class Sacerdote extends ClasseMae {
 				self.setManaGasta(custo); // Diminui a mana do lançador de acordo com o valor da habilidade
 				// TODO: Implementar limpesa de Status (congelamento, paralisia, maldicao)
 				if(target.getDanoRecebido() >= 15){
-					target.setDanoRecebido(-15);
+					target.addDanoRecebido(-15);
 				}
 			}
 			return false;
@@ -59,7 +59,7 @@ public class Sacerdote extends ClasseMae {
             double formulaDano = 20 + self.getDano();
 						double mult = new MultipDano().resultado(elemento, target.getEquipamento().getDefElemental());
 						formulaDano = formulaDano * mult;
-            target.setDanoRecebido(formulaDano);
+            target.addDanoRecebido(formulaDano);
         }
         return true;
 			}

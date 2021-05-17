@@ -29,9 +29,9 @@ public class PotionVida extends Consumivel{
     int cura = Rand.New() % 21;
     cura += 30;
     if(p.getDanoRecebido() < cura){
-    p.setDanoRecebido(0);
+    p.addDanoRecebido(0);
     }else{
-    p.setDanoRecebido(p.getDanoRecebido() - cura);
+    p.addDanoRecebido(p.getDanoRecebido() - cura);
     }
     return 1;
     }

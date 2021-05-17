@@ -30,7 +30,7 @@ public class Bruxo extends ClasseMae {
 						formulaDano = formulaDano * mult;
 						formulaDano -= target.getDefesa();
 						// TODO: Implementar Status	de Maldição que causa 10 de dano por 3 turnos
-            target.setDanoRecebido(formulaDano);
+            target.addDanoRecebido(formulaDano);
         }
         return true;
 			}
@@ -40,7 +40,7 @@ public class Bruxo extends ClasseMae {
 		public boolean habDef(Personagem self){
 			int custo =	(self.getVidaMaxima())/5;
 			if(self.getVidaMaxima() - self.getDanoRecebido() > custo){
-				self.setDanoRecebido(custo); // TODO: Verificar se vai ser compativel com a mudança no setDanoRecebido que Leao ficou de fazer
+				self.addDanoRecebido(custo); // TODO: Verificar se vai ser compativel com a mudança no addDanoRecebido que Leao ficou de fazer
 				// TODO: Implementar escudo de 3x vidaAtual
 				// TODO: Implementar fim do escudo quando cura
 			}
@@ -61,7 +61,7 @@ public class Bruxo extends ClasseMae {
 						double mult = new MultipDano().resultado(elemento, target.getEquipamento().getDefElemental());
 						formulaDano = formulaDano * mult;
 						// Por enquanto ta sem a defesa do alvo
-            target.setDanoRecebido(formulaDano);
+            target.addDanoRecebido(formulaDano);
         }
         return true;
 			}

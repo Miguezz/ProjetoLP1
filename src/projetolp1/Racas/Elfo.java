@@ -18,7 +18,7 @@ public class Elfo extends RacaBase {
     } 
    
     @Override
-    public boolean HabUtility(Personagem p){
+    public boolean HabUtility(Personagem p, Personagem q){
 
         return true;
     }

@@ -17,7 +17,7 @@ public class MultipDano {
 	// 4 - Sagrado
 	// 5 - Sombrio
 	// 6 - Neutro
-   private double[][] tabela = {{0.1,0.5,1.5,1,0.9,1.2,1},
+   private static double[][] tabela = {{0.1,0.5,1.5,1,0.9,1.2,1},
                                 {1.5,0.1,1,0.5,0.9,1.2,1},
                                 {0.5,1,0.1,1.5,0.9,1.2,1},
                                 {1,1.5,0.5,0.1,0.9,1.2,1},
@@ -25,7 +25,7 @@ public class MultipDano {
                                 {1.1,1.1,1.1,1.1,2,0.1,1.5},
                                 {1,1,1,1,0.5,1.2,1}};
     
-    public double resultado(int ataque, int def){
+    public static double resultado(int ataque, int def){
         return tabela[ataque][def];
     }
     
