@@ -26,9 +26,7 @@ public class Cavaleiro extends ClasseMae {
 						self.setManaGasta(custo); // Diminui a mana do lançador de acordo com o valor da habilidade
 						int elemento = self.getEquipamento().getAtkElemental();
             double formulaDano = 5 + self.getEquipamento().getAtk() * 1.5;
-						double mult = new MultipDano().resultado(elemento, target.getEquipamento().getDefElemental());
-						formulaDano = formulaDano * mult;
-						formulaDano -= target.getDefesa();
+						formulaDano = MultipDano.getDanoPelaFormula(target, formulaDano, elemento, false);
             target.addDanoRecebido(formulaDano);
         }
         return true;
@@ -39,9 +37,9 @@ public class Cavaleiro extends ClasseMae {
 		public boolean habDef(Personagem self){
 			int custo = 40;
 			if(self.getMana() >= custo){
-                            self.getStatus().addStatus(9, 2); //status 9, status do cavaleiro
-                            self.setManaGasta(self.getManaGasta() + 40);
-                        }
+				self.getStatus().addStatus(9, 2); //status 9, status do cavaleiro
+				self.setManaGasta(self.getManaGasta() + 40);
+			}
 			return true;
 		}
    
@@ -54,9 +52,7 @@ public class Cavaleiro extends ClasseMae {
 						self.setManaGasta(custo); // Diminui a mana do lançador de acordo com o valor da habilidade
 						int elemento = self.getEquipamento().getAtkElemental();
             double formulaDano = self.getEquipamento().getAtk() * 3;
-						double mult = new MultipDano().resultado(elemento, target.getEquipamento().getDefElemental());
-						formulaDano = formulaDano * mult;
-						formulaDano -= target.getDefesa();
+						formulaDano = MultipDano.getDanoPelaFormula(target, formulaDano, elemento, false);
             target.addDanoRecebido(formulaDano);
         }
         return true;

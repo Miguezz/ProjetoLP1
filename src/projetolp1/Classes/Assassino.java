@@ -29,13 +29,11 @@ public class Assassino extends ClasseMae {
 			int range = 1;
 			if(self.getMana() >= custo){
 				if(target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= range){
-						self.setManaGasta(custo); // Diminui a mana do lançador de acordo com o valor da habilidade
+						self.setManaGasta(self.getMana() - custo); // Diminui a mana do lançador de acordo com o valor da habilidade
 						int elemento = 5; // Sombrio
             double formulaDano = 25;
-						double mult = new MultipDano().resultado(elemento, target.getEquipamento().getDefElemental());
-						formulaDano = formulaDano * mult;
-						formulaDano -= target.getDefesa();
-            target.addDanoRecebido(formulaDano);
+						formulaDano = MultipDano.getDanoPelaFormula(target, formulaDano, elemento, false);
+						target.addDanoRecebido(formulaDano);
         }
         return true;
 			}
@@ -46,7 +44,7 @@ public class Assassino extends ClasseMae {
 			int custo = 30;
 			if(self.getMana() >= custo){
 				self.getStatus().addStatus(8, 2);
-                                self.setManaGasta(self.getManaGasta() + 30);
+        self.setManaGasta(self.getManaGasta() + 30);
 			}
 			return true;
 		}
@@ -57,12 +55,10 @@ public class Assassino extends ClasseMae {
 			int range = 2;
 			if(self.getMana() >= custo){
 				if(target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= range){
-						self.setManaGasta(custo); // Diminui a mana do lançador de acordo com o valor da habilidade
+						self.setManaGasta(self.getMana() - custo); // Diminui a mana do lançador de acordo com o valor da habilidade
 						int elemento = 5; // Sombrio
             double formulaDano = 20 + (self.getEquipamento().getAtk() * 2);
-						double mult = new MultipDano().resultado(elemento, target.getEquipamento().getDefElemental());
-						formulaDano = formulaDano * mult;
-						formulaDano -= target.getDefesa();
+						formulaDano = MultipDano.getDanoPelaFormula(target, formulaDano, elemento, false);
 						target.addDanoRecebido(formulaDano);
         }
         return true;

@@ -26,10 +26,8 @@ public class Bruxo extends ClasseMae {
 						self.setManaGasta(custo); // Diminui a mana do lançador de acordo com o valor da habilidade
 						int elemento = 5; // Sombrio
             double formulaDano = 10 + self.getEquipamento().getAtk();
-						double mult = new MultipDano().resultado(elemento, target.getEquipamento().getDefElemental());
-						formulaDano = formulaDano * mult;
-						formulaDano -= target.getDefesa();
-						// TODO: Implementar Status	de Maldição que causa 10 de dano por 3 turnos
+						formulaDano = MultipDano.getDanoPelaFormula(target, formulaDano, elemento, false);
+						target.getStatus().addStatus(6, 3);
             target.addDanoRecebido(formulaDano);
         }
         return true;
