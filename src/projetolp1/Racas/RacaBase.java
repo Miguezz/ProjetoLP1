@@ -48,7 +48,9 @@ public abstract class RacaBase implements Serializable{
         return "";
     }
 
-  public abstract boolean HabUtility(Personagem p);
+
+  public abstract boolean HabUtility(Personagem self, Personagem target);
+
   
   
 /** 
@@ -82,7 +84,7 @@ public abstract class RacaBase implements Serializable{
         this.modVidaMax += 20; 
         break;
       case 1: //aumenta 10 de manaMaxima
-        this.modManaMax += 10;
+        this.modManaMax += 20;
         break;
       case 2: //aumenta 5 de defesa
         this.modDefBase += 5;

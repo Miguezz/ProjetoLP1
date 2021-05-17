@@ -16,9 +16,10 @@ public class Laponico extends RacaBase {
         modAtributo(0); // Vida
         modAtributo(1); // Mana
     }
-  
-    public boolean HabUtility(Personagem p){
-           p.setshield((int) ((p.getshield() + p.getDanoRecebido())/2));
+    
+    @Override
+    public boolean HabUtility(Personagem p){ // polimorfismo laponico
+           
         return true;
     }
 

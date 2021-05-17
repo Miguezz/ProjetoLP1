@@ -14,12 +14,15 @@ import java.io.Serializable;
 public class Status implements Serializable{
       
     private ArrayList<StatusUnit> statusPlayer = new ArrayList<StatusUnit>(); 
-    //ex:
-    //1 - Envenenado
-    //2 - Sono
-    //3 - Petrificado
-    //4 - Queimando
-     
+
+    /*
+    Status-
+    1-Queimando(dano 5 por turno)
+    
+    */
+    
+    
+    
     /*Essa função vai servir para retornar 0/1 dependendo do status e situação
     ex: Situação 1, final do turno. Status 1, envenenado.  Retorna 1, ele toma dano
     ex2: Situação 2, Quero realizar uma ação, Petrificado, Retorna 1, ele não pode mover
@@ -47,6 +50,7 @@ public class Status implements Serializable{
           }
          return removidos;
       }
+    
    }
     
      
