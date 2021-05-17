@@ -18,6 +18,10 @@ public class Status implements Serializable{
     /*
     Status-
     1-Queimando(dano 5 por turno)
+    2-Stun(Não pode fazer nada, 1 turno)
+    3-Congelar(um Stun com outro nome)
+    4-Paralisia(um stun com outro nome)
+    5-Armadilha(impede de se mover por 2 turnos)
     6-Maldicao (dano 10 dark 3 turnos)
     7-status do alquimista, defensivo (2 turnos, 20 armor)
     8-status do assassino, defensivo ( 2 turnos, 1 hit)
