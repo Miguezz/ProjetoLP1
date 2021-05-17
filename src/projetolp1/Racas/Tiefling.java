@@ -5,6 +5,7 @@
  */
 package projetolp1.Racas;
 
+import projetolp1.Mapa.Mapas;
 import projetolp1.Principal.Personagem;
 
 /**
@@ -18,7 +19,7 @@ public class Tiefling extends RacaBase {
     }
     
     @Override
-    public boolean HabUtility(Personagem self, Personagem target){ //Troca equivalente - Troca 20 de vida atual por 30 de mana
+    public boolean HabUtility(Mapas mapa, Personagem self, Personagem target){ //Troca equivalente - Troca 20 de vida atual por 30 de mana
            if(self.getVidaMaxima() - self.getDanoRecebido() > 20){
                self.setManaGasta(self.getManaGasta() - 30);
                return true;

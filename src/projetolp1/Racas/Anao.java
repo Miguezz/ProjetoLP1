@@ -5,6 +5,7 @@
  */
 package projetolp1.Racas;
 
+import projetolp1.Mapa.Mapas;
 import projetolp1.Principal.Personagem;
 
 /**
@@ -18,7 +19,7 @@ public class Anao extends RacaBase {
      }
   
     @Override
-    public boolean HabUtility(Personagem self, Personagem target){ //Pele de pedra - recebe shield com base na vida perdida atual
+    public boolean HabUtility(Mapas mapa, Personagem self, Personagem target){ //Pele de pedra - recebe shield com base na vida perdida atual
         if(self.getManaMaxima()-self.getManaGasta() >= 25){
             self.setShield((int) ((self.getDanoRecebido())/2)); //recebe shield
         return true;

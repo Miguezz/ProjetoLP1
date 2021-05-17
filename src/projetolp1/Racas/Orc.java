@@ -5,6 +5,7 @@
  */
 package projetolp1.Racas;
 
+import projetolp1.Mapa.Mapas;
 import projetolp1.Principal.Personagem;
 
 /**
@@ -18,7 +19,7 @@ public class Orc extends RacaBase {
     }
   
     @Override
-    public boolean HabUtility(Personagem self, Personagem target){ //Endurecimento - Ganha shield e defesa +10 por 3 turnos
+    public boolean HabUtility(Mapas mapa, Personagem self, Personagem target){ //Endurecimento - Ganha shield e defesa +10 por 3 turnos
         if(self.getManaMaxima()- self.getManaGasta() >= 25){
             self.setShield((int) ((self.getDanoRecebido())/4)); //recebe shield
             

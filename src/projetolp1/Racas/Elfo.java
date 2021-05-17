@@ -5,6 +5,7 @@
  */
 package projetolp1.Racas;
 
+import projetolp1.Mapa.Mapas;
 import projetolp1.Principal.Personagem;
 
 /**
@@ -18,7 +19,7 @@ public class Elfo extends RacaBase {
     } 
    
     @Override
-    public boolean HabUtility(Personagem p, Personagem q){
+    public boolean HabUtility(Mapas mapa, Personagem p, Personagem q){
 
         return true;
     }

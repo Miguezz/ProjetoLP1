@@ -217,7 +217,7 @@ public class Personagem implements Serializable{
         }
         if(getShield() > 0){
            if(getShield() >= danoRecebido ){
-               setShield(((Math.floor(getShield()-danoRecebido))));
+               setShield((int)Math.floor(getShield()-danoRecebido));
                danoRecebido = 0;
            }else{
                danoRecebido -= getShield();
