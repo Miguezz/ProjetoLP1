@@ -29,7 +29,7 @@ public class Cavaleiro extends ClasseMae {
 						double mult = new MultipDano().resultado(elemento, target.getEquipamento().getDefElemental());
 						formulaDano = formulaDano * mult;
 						formulaDano -= target.getDefesa();
-            target.setDanoRecebido(formulaDano);
+            target.addDanoRecebido(formulaDano);
         }
         return true;
 			}
@@ -39,8 +39,9 @@ public class Cavaleiro extends ClasseMae {
 		public boolean habDef(Personagem self){
 			int custo = 40;
 			if(self.getMana() >= custo){
-				// TODO: Implementar divisao do dano em 2 e efeito em 2 turnos. Pode ser feito usando Status...
-			}
+                            self.getStatus().addStatus(9, 2); //status 9, status do cavaleiro
+                            self.setManaGasta(self.getManaGasta() + 40);
+                        }
 			return true;
 		}
    
@@ -56,7 +57,7 @@ public class Cavaleiro extends ClasseMae {
 						double mult = new MultipDano().resultado(elemento, target.getEquipamento().getDefElemental());
 						formulaDano = formulaDano * mult;
 						formulaDano -= target.getDefesa();
-            target.setDanoRecebido(formulaDano);
+            target.addDanoRecebido(formulaDano);
         }
         return true;
 			}

@@ -33,17 +33,18 @@ public class Alquimista extends ClasseMae {
 						formulaDano = formulaDano * mult;
 						formulaDano -= target.getDefesa();
 						// TODO: Implementar status de Burn
-            target.setDanoRecebido(formulaDano);
+            target.addDanoRecebido(formulaDano);
 						return true;
         }
 			}
 			return false;
 		}
     
-		public boolean habDef(Personagem self){
+		public boolean habDef(Personagem self, Personagem target){
 			int custo = 30;
 			if(self.getMana() >= custo){
-				// TODO: Implementar defesa de 20 por 2 turnos. Pode criar um tipo Status pra isso...
+				target.getStatus().addStatus(7, 2);
+                                self.setManaGasta(self.getManaGasta() + 30);
 			}
 			return true;
 		}
@@ -61,7 +62,7 @@ public class Alquimista extends ClasseMae {
 						double mult = new MultipDano().resultado(elemento, target.getEquipamento().getDefElemental());
 						formulaDano = formulaDano * mult;
 						// Ataque ignora defesa
-            target.setDanoRecebido(formulaDano);
+            target.addDanoRecebido(formulaDano);
 						//TODO: Implementar paralisia de 1 turno
         }
 				return true; 

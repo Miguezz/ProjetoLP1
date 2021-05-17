@@ -10,7 +10,8 @@ import projetolp1.Items.Equip;
 import projetolp1.Misc.Status;
 import projetolp1.Racas.*;
 import java.io.Serializable;
-
+import java.lang.Math;
+import projetolp1.Misc.MultipDano;
 /**
  *
  * @author Batata
@@ -143,14 +144,14 @@ public class Personagem implements Serializable{
     /**
      * @return the shield
      */
-    public int getshield() {
+    public int getShield() {
         return shield;
     }
 
     /**
      * @param shield the shield to set
      */
-    public void setshield(int shield) {
+    public void setShield(int shield) {
         this.shield = shield;
     }
     
@@ -180,15 +181,31 @@ public class Personagem implements Serializable{
      * @param danoRecebido the danoRecebido to set
      */
     
-    public void setDanoRecebido(double danoRecebido) { // Usado para cura ou "dano normal" (sem atributos)
-        if(getshield() >= 0 && getshield() >= danoRecebido){ //para reduzir so o shield e 0 de vida
-            setshield((int) (getshield() - danoRecebido));
-        } else if(getshield() > 0 && getshield() < danoRecebido){ // reduzir o resto do shield e o restante do dano na vida
-            this.danoRecebido = danoRecebido - getshield();
-            setshield(0);
-        } else {
-            this.danoRecebido = danoRecebido;
+    public void addDanoRecebido(double danoRecebido) { // Usado para cura ou "dano normal" (sem atributos)
+        if(getStatus().isStatus(8)){
+            danoRecebido = 0;
+            getStatus().cureStatus(8);
         }
+        if(danoRecebido > 0 && getStatus().isStatus(9)){
+            danoRecebido = Math.floor(danoRecebido/2);
+        }
+        if(getShield() > 0){
+           if(getShield() >= danoRecebido ){
+               setShield(((Math.floor(getShield()-danoRecebido))));
+               danoRecebido = 0;
+           }else{
+               danoRecebido -= getShield();
+               setShield(0);
+           }
+        }
+        
+        setDanoRecebido(getDanoRecebido() - danoRecebido);
+        }
+    
+    
+    public void setDanoRecebido(double danoRecebido){
+        this.danoRecebido = danoRecebido;
+        //if(this.doRecebido == this.getVidaMaxima()) kill
     }
 
     /**
@@ -226,7 +243,9 @@ public class Personagem implements Serializable{
      * @return the defesa
      */
     public int getDefesa() {
-        return this.defesa + this.equipamento.getDef();
+        int deftotal = this.defesa + this.equipamento.getDef();
+               if (getStatus().isStatus(7)) deftotal += 20;
+           return  deftotal;
     }
 
     /**
@@ -291,7 +310,9 @@ public class Personagem implements Serializable{
     }
 
     public void endOfTurn(){
-        this.status.ReduzirTempoNoFimDoTurno();
+        this.getStatus().ReduzirTempoNoFimDoTurno();
+        if(this.getStatus().isStatus(1)) this.addDanoRecebido(Math.ceil(5 * MultipDano.resultado(0, this.getEquipamento().getDefElemental())));
+        if(this.getStatus().isStatus(6)) this.setDanoRecebido(this.getDanoRecebido() + 10);
     }
     
 }

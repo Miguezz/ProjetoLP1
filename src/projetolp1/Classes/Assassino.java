@@ -35,7 +35,7 @@ public class Assassino extends ClasseMae {
 						double mult = new MultipDano().resultado(elemento, target.getEquipamento().getDefElemental());
 						formulaDano = formulaDano * mult;
 						formulaDano -= target.getDefesa();
-            target.setDanoRecebido(formulaDano);
+            target.addDanoRecebido(formulaDano);
         }
         return true;
 			}
@@ -45,7 +45,8 @@ public class Assassino extends ClasseMae {
 		public boolean habDef(Personagem self){
 			int custo = 30;
 			if(self.getMana() >= custo){
-				// TODO: Implementar escudo de 999, que é destruido por qualquer dano		
+				self.getStatus().addStatus(8, 2);
+                                self.setManaGasta(self.getManaGasta() + 30);
 			}
 			return true;
 		}
@@ -62,7 +63,7 @@ public class Assassino extends ClasseMae {
 						double mult = new MultipDano().resultado(elemento, target.getEquipamento().getDefElemental());
 						formulaDano = formulaDano * mult;
 						formulaDano -= target.getDefesa();
-						target.setDanoRecebido(formulaDano);
+						target.addDanoRecebido(formulaDano);
         }
         return true;
 			}

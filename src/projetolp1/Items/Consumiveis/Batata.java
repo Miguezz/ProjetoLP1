@@ -28,9 +28,9 @@ public class Batata extends Consumivel {
     int cura = Rand.New() % 11; int Mana = Rand.New() % 6; 
     cura += 15;Mana += 10;
     if(p.getDanoRecebido() < cura){
-        p.setDanoRecebido(0);
+        p.addDanoRecebido(0);
         }else{
-        p.setDanoRecebido(p.getDanoRecebido() - cura);
+        p.addDanoRecebido(p.getDanoRecebido() - cura);
     }
     if(p.getManaGasta() < Mana){
         p.setManaGasta(0);
