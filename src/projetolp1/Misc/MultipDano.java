@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package projetolp1.Misc;
-
+import projetolp1.Principal.Personagem;
 /**
  *
  * @author Batata
@@ -28,5 +28,13 @@ public class MultipDano {
     public static double resultado(int ataque, int def){
         return tabela[ataque][def];
     }
-    
+		
+		public static double getDanoPelaFormula(Personagem target, double formula, int elemento, boolean ignoraDef){
+				double mult = MultipDano.resultado(elemento, target.getEquipamento().getDefElemental());
+				formula = formula * mult;
+				if(!ignoraDef) formula -= target.getDefesa();
+				if(formula < 0) formula = 0;
+				target.addDanoRecebido(formula);
+				return formula;
+		}
 }

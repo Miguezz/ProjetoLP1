@@ -26,10 +26,9 @@ public class Cacador extends ClasseMae {
 						self.setManaGasta(custo); // Diminui a mana do lançador de acordo com o valor da habilidade
 						int elemento = 2; // Terra
             double formulaDano = 15 + self.getEquipamento().getAtk();
-						double mult = new MultipDano().resultado(elemento, target.getEquipamento().getDefElemental());
-						formulaDano = formulaDano * mult;
-						formulaDano -= target.getDefesa();
+						formulaDano = MultipDano.getDanoPelaFormula(target, formulaDano, elemento, false);
 						// TODO: Implementar Status "Prender" (por 1 rodada)
+						target.getStatus().addStatus(5, 1);
             target.addDanoRecebido(formulaDano);
         }
         return true;
