@@ -190,6 +190,9 @@ public class Personagem implements Serializable{
     public int getManaGasta() {
         return manaGasta;
     }
+		public int getMana(){
+			return this.manaMaxima - this.manaGasta;
+		}
 
     /**
      * @param manaGasta the manaGasta to set

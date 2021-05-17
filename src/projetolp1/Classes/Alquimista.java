@@ -22,28 +22,50 @@ public class Alquimista extends ClasseMae {
     
 		@Override
     public boolean habDano(Personagem self, Personagem target){
-			int range = 1;
+			int custo = 20;
+			int range = 3;
+			if(self.getMana() >= custo){
         if(target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= range){
-						int elemento = 0;
-            double formulaDano = 10 + self.getDano();
+						self.setManaGasta(custo); // Diminui a mana do lançador de acordo com o valor da habilidade
+						int elemento = 0; // Fogo
+            double formulaDano = 15 + self.getEquipamento().getAtk();
 						double mult = new MultipDano().resultado(elemento, target.getEquipamento().getDefElemental());
 						formulaDano = formulaDano * mult;
+						formulaDano -= target.getDefesa();
+						// TODO: Implementar status de Burn
             target.setDanoRecebido(formulaDano);
+						return true;
         }
-        return true;
-    }
+			}
+			return false;
+		}
     
+		public boolean habDef(Personagem self){
+			int custo = 30;
+			if(self.getMana() >= custo){
+				// TODO: Implementar defesa de 20 por 2 turnos. Pode criar um tipo Status pra isso...
+			}
+			return true;
+		}
+
    
     @Override
     public boolean ultimate(Personagem self, Personagem target){
-			int range = 1;
-        if(target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= range){
-						int elemento = 0;
-            double formulaDano = 20 + self.getDano();
+			int range = 4;
+			int custo = 30;
+			if(self.getMana() >= custo){
+					if(target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= range){
+						self.setManaGasta(custo); // Diminui a mana do lançador de acordo com o valor da habilidade
+						int elemento = 3; // Vento
+            double formulaDano = 40;
 						double mult = new MultipDano().resultado(elemento, target.getEquipamento().getDefElemental());
 						formulaDano = formulaDano * mult;
+						// Ataque ignora defesa
             target.setDanoRecebido(formulaDano);
+						//TODO: Implementar paralisia de 1 turno
         }
-        return true;    
+				return true; 
+			}
+			return false;
 		}
 }

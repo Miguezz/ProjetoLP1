@@ -43,8 +43,7 @@ public class Equip implements Serializable{
         if(this.secundaria != null) atk += this.secundaria.getBuffAtacar();
         return atk;
     }
-    
-    
+
     public void removeArmor(Inventario x){
         if(this.armor != null)x.add(this.armor);
         this.armor = null;
