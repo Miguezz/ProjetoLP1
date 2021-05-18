@@ -42,6 +42,7 @@ public class Assassino extends ClasseMae {
 		}
     
                 
+                @Override
 		public boolean habDef(Mapas mapa, Personagem self, Personagem target){
 			int custo = 30;
 			if(self.getMana() >= custo){

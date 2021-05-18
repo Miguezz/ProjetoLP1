@@ -347,7 +347,7 @@ public class Personagem implements Serializable{
             int elemento = this.getEquipamento().getAtkElemental(); // elemento de acordo com a arma
             double formulaDano = this.danoBase + this.getEquipamento().getAtk();
             formulaDano = MultipDano.getDanoPelaFormula(target, formulaDano, elemento, false);
-            target.addDanoRecebido(danoRecebido);
+            target.addDanoRecebido(formulaDano);
             return true;
         }
         return false;

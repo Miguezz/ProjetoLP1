@@ -15,8 +15,9 @@ public abstract class ClasseMae implements Serializable{
     
     public abstract boolean habDano(Mapas mapa, Personagem self, Personagem target);
     
-//    public abstract boolean habDef(Mapas mapa, Personagem self, Personagem target);
+    public abstract boolean habDef(Mapas mapa, Personagem self, Personagem target);
     
+//    public abstract boolean habDef(Mapas mapa, Personagem self, Personagem target)
     public abstract boolean ultimate(Mapas mapa, Personagem self, Personagem alvo);
 
 }

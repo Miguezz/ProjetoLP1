@@ -33,7 +33,8 @@ public class Bruxo extends ClasseMae {
     return false;
     }
     
-    public boolean habDef(Personagem self, Personagem target){
+    @Override
+    public boolean habDef(Mapas mapa, Personagem self, Personagem target){
             int custo = (self.getVidaMaxima())/5;
             if(self.getVidaMaxima() - self.getDanoRecebido() > custo){
                     self.addDanoRecebido(custo); // TODO: Verificar se vai ser compativel com a mudança no addDanoRecebido que Leao ficou de fazer

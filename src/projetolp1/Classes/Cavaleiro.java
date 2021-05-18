@@ -35,7 +35,8 @@ public class Cavaleiro extends ClasseMae {
     return false;
     }
     
-    public boolean habDef(Personagem self){
+    @Override
+    public boolean habDef(Mapas mapa, Personagem self, Personagem target){
             int custo = 40;
             if(self.getMana() >= custo){
                     self.setManaGasta(self.getMana() + custo);

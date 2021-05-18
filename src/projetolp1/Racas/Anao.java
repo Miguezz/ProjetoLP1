@@ -21,8 +21,9 @@ public class Anao extends RacaBase {
     @Override
     public boolean HabUtility(Mapas mapa, Personagem self, Personagem target){ //Pele de pedra - recebe shield com base na vida perdida atual
         if(self.getManaMaxima()-self.getManaGasta() >= 25){
+            self.setManaGasta(self.getMana() + 25);
             self.setShield((int) ((self.getDanoRecebido())/2)); //recebe shield
-        return true;
+            return true;
         } else {
             System.out.println("Não é possivel usar a Pele de Pedra(Mana insuficiente)");
             return false;

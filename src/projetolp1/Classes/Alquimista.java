@@ -42,7 +42,8 @@ public class Alquimista extends ClasseMae {
             return false;
 	}
 
-	public boolean habDef(Personagem self) {
+        @Override
+	public boolean habDef(Mapas mapa, Personagem self, Personagem target) {
             int custo = 30;
             if (self.getMana() >= custo) {
                 self.setManaGasta(self.getMana() + custo);

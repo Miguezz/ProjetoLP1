@@ -24,37 +24,37 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-		public static void salvarArquivo(User u, String nomeArquivo){
-				File arq = new File(nomeArquivo);
-				try {
-					arq.delete();
-					arq.createNewFile();
+        public static void salvarArquivo(User u, String nomeArquivo){
+            File arq = new File(nomeArquivo);
+            try {
+                arq.delete();
+                arq.createNewFile();
 
-					ObjectOutputStream objOutput = new ObjectOutputStream(new FileOutputStream(arq));
-					objOutput.writeObject(u);
-					objOutput.close();
+                ObjectOutputStream objOutput = new ObjectOutputStream(new FileOutputStream(arq));
+                objOutput.writeObject(u);
+                objOutput.close();
 
-				} catch(IOException erro) {
-						System.out.printf("Erro: %s", erro.getMessage());
-				}
-		}	
+            } catch(IOException erro) {
+                System.out.printf("Erro: %s", erro.getMessage());
+            }
+        }	
 
-		public static User carregarArquivo(String nomeArquivo){
-				File arq = new File(nomeArquivo);
-				User user = new User();
-				try {
-					if (arq.exists()) {
-						 ObjectInputStream objInput = new ObjectInputStream(new FileInputStream(arq));
-						 user = (User)objInput.readObject();
-						 objInput.close();
-					}
-				} catch(IOException erro1) {
-						System.out.printf("Erro: %s", erro1.getMessage());
-				} catch(ClassNotFoundException erro2) {
-						System.out.printf("Erro: %s", erro2.getMessage());
-				}
-			return user;
-		}
+    public static User carregarArquivo(String nomeArquivo){
+        File arq = new File(nomeArquivo);
+        User user = new User();
+        try {
+            if (arq.exists()) {
+                ObjectInputStream objInput = new ObjectInputStream(new FileInputStream(arq));
+                user = (User)objInput.readObject();
+                objInput.close();
+            }
+        } catch(IOException erro1) {
+                        System.out.printf("Erro: %s", erro1.getMessage());
+        } catch(ClassNotFoundException erro2) {
+                        System.out.printf("Erro: %s", erro2.getMessage());
+        }
+        return user;
+    }
  
 
 

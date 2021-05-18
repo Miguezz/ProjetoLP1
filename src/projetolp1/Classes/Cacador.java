@@ -34,6 +34,7 @@ public class Cacador extends ClasseMae {
         return false;
     }
     
+    @Override
     public boolean habDef(Mapas mapa, Personagem self, Personagem target){
         int range = 2;
         int custo = 15;
