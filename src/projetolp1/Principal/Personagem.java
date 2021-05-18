@@ -243,9 +243,8 @@ public class Personagem implements Serializable{
         return manaGasta;
     }
 
-    
     public int getMana(){
-	    return this.manaMaxima - this.manaGasta;
+	return this.manaMaxima - this.manaGasta;
     }
 
     /**
