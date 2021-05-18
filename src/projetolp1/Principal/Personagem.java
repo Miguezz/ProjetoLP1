@@ -56,7 +56,7 @@ public class Personagem implements Serializable{
       this.danoRecebido = 0;
       this.equipamento = new Equip();
       this.status = new Status();
-      this.qtdMovimento = 1;
+      this.qtdMovimento = 3;
     }
     
     
@@ -232,7 +232,7 @@ public class Personagem implements Serializable{
            }
         }
         
-        setDanoRecebido(getDanoRecebido() - danoRecebido);
+        setDanoRecebido(getDanoRecebido() + danoRecebido);
         }
     
     
@@ -349,8 +349,7 @@ public class Personagem implements Serializable{
 }
 
     public boolean atacar(Mapas mapa, Personagem target){
-        // verifica o range
-        if(mapa.getRangeEntreBlocos(this.blocoAtual, target.getBlocoMapa()) <= this.getEquipamento().getArma().getRange()){
+        if(mapa.getRangeEntreBlocos(this.blocoAtual, target.getBlocoMapa()) <= this.getEquipamento().getRangeArma()){
             int elemento = this.getEquipamento().getAtkElemental(); // elemento de acordo com a arma
             double formulaDano = this.danoBase + this.getEquipamento().getAtk();
             formulaDano = MultipDano.getDanoPelaFormula(target, formulaDano, elemento, false);

@@ -49,14 +49,16 @@ public class Mapas {
     }
     
     public boolean insertOcupanteBloco(Object o, int x, int y){
-        BlocoMapa b = this.mapa[x][y];
-        if(b.getOcupante() == null){
-            b.setOcupante(o);
-            if(o instanceof Personagem){
-                Personagem p = (Personagem)o;
-                p.setBlocoMapa(b);
+        if(x <= this.getXMax() && x >= 0 && y <= this.getYMax() && y >= 0){
+            BlocoMapa b = this.mapa[x][y];
+            if(b.getOcupante() == null){
+                b.setOcupante(o);
+                if(o instanceof Personagem){
+                    Personagem p = (Personagem)o;
+                    p.setBlocoMapa(b);
+                }
+                return true;
             }
-            return true;
         }
         return false;
     }

@@ -5,9 +5,9 @@ class ArmaR1 extends Arma {
  *
  * @author Mingre Dingre
  */
-  ArmaR1(int qtdMaos){
-    super(1/*Range*/, 1 /*Dano*/, qtdMaos, qtdMaos*1.5/*modQtdMaos*/, 6);
-  }
+    public ArmaR1(int qtdMaos){
+      super(1/*Range*/, 1 /*Dano*/, qtdMaos, qtdMaos*1.5/*modQtdMaos*/, 6);
+    }
   
     ArmaR1(String nome, String desc,int qtdMaos){
     super(nome, desc, 1/*Range*/, 1 /*Dano*/, qtdMaos, qtdMaos*1.5/*modQtdMaos*/, 6);
@@ -23,13 +23,7 @@ class FacaInicial extends ArmaR1 {
     
 }
 
-class Espada extends ArmaR1 {
-    
-    Espada() {
-        super(1);
-    }
-    
-}
+
 
 class Machado extends ArmaR1 {
     

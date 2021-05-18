@@ -17,16 +17,23 @@ public class Equip implements Serializable{
 	
     public int getDefElemental(){
             if(armor == null)	{
-                    return 7;
+                    return 6;
             }
             return armor.getElemento();
     }
 
     public int getAtkElemental(){
             if(arma == null){
-                    return 7;
+                    return 6;
             }
             return arma.getElemento();
+    }
+    
+    public int getRangeArma(){
+        if(this.arma == null){
+            return 1;
+        }
+        return this.arma.getRange();
     }
 
     public int getDef(){

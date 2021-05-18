@@ -13,6 +13,56 @@ import java.io.Serializable;
  * @author Batata
  */
 public class User implements Serializable{
+    private String name ;
+    
+    private ArrayList<Personagem>PersonagensCriados = new ArrayList<>();
+    
+    private ArrayList<Personagem> Party = new ArrayList<>(); // n sei como deveriamos implementar isso,
+                                                     // vamos deixar só poder criar 5 persoangens, ou
+                                                     // remover 5, depois devolver pra PersonagensCriados?
+    private Inventario inventario = new Inventario();
+    
+    /**
+     * @return the inventario
+     */
+    public Inventario getInventario() {
+        return inventario;
+    }
+
+    /**
+     * @param inventario the inventario to set
+     */
+    public void setInventario(Inventario inventario) {
+        this.inventario = inventario;
+    }
+
+    /**
+     * @return the PersonagensCriados
+     */
+    public ArrayList<Personagem> getPersonagensCriados() {
+        return PersonagensCriados;
+    }
+
+    /**
+     * @param PersonagensCriados the PersonagensCriados to set
+     */
+    public void setPersonagensCriados(ArrayList<Personagem> PersonagensCriados) {
+        this.PersonagensCriados = PersonagensCriados;
+    }
+
+    /**
+     * @return the Party
+     */
+    public ArrayList<Personagem> getParty() {
+        return Party;
+    }
+
+    /**
+     * @param Party the Party to set
+     */
+    public void setParty(ArrayList<Personagem> Party) {
+        this.Party = Party;
+    }
 
     /**
      * @return the name
@@ -28,25 +78,16 @@ public class User implements Serializable{
         this.name = name;
     }
     
-    private String name ;
-    
-    ArrayList<Personagem>PersonagensCriados = new ArrayList<>();
-    
-    ArrayList<Personagem> Party = new ArrayList<>(); // n sei como deveriamos implementar isso,
-                                                     // vamos deixar só poder criar 5 persoangens, ou
-                                                     // remover 5, depois devolver pra PersonagensCriados?
-    Inventario inventario = new Inventario();
-	
-        public void listarParty(){
-            System.out.println("Party:");
-            for(int i = 0; i < Party.size(); i++){
-                    System.out.println(Party.get(i));
-            }
+    public void listarParty(){
+        System.out.println("Party:");
+        for(int i = 0; i < getParty().size(); i++){
+                System.out.println(getParty().get(i));
         }
-        
-        @Override
-        public String toString(){
-            return ("Jogador: " + this.name + "\n");
-        }
+    }
+
+    @Override
+    public String toString(){
+        return ("Jogador: " + this.name + "\n");
+    }
     
 }

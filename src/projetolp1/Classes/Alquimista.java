@@ -32,7 +32,7 @@ public class Alquimista extends ClasseMae {
                     self.setManaGasta(self.getManaGasta() + custo); // Diminui a mana do lançador de acordo com o valor da habilidade
                     int elemento = 0; // Fogo
                     double formulaDano = 15 + self.getEquipamento().getAtk();
-                    formulaDano = MultipDano.getDanoPelaFormula(target, 15 + self.getEquipamento().getAtk(), elemento,
+                    formulaDano = MultipDano.getDanoPelaFormula(target, formulaDano, elemento,
                                     false);
                     target.getStatus().addStatus(5, 3);
                     target.addDanoRecebido(formulaDano);
