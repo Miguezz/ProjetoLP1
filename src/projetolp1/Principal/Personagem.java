@@ -186,7 +186,9 @@ public class Personagem implements Serializable{
      * @return the vidaMaxima
      */
     public int getVidaMaxima() {
-        return vidaMaxima;
+        int vida=0;
+        if (getStatus().isStatus(11)) vida += 5;
+        return vidaMaxima + vida;
     }
 
     /**
@@ -240,8 +242,10 @@ public class Personagem implements Serializable{
     public int getManaGasta() {
         return manaGasta;
     }
+
+    
     public int getMana(){
-            return this.manaMaxima - this.manaGasta;
+	    return this.manaMaxima - this.manaGasta;
     }
 
     /**
@@ -271,6 +275,8 @@ public class Personagem implements Serializable{
     public int getDefesa() {
         int deftotal = this.defesa + this.equipamento.getDef();
                if (getStatus().isStatus(7)) deftotal += 20;
+               if (getStatus().isStatus(10)) deftotal += 10;
+               if (getStatus().isStatus(11)) deftotal += 5;
            return  deftotal;
     }
 
@@ -319,7 +325,9 @@ public class Personagem implements Serializable{
     }
     
     public int getDano(){
-        return this.danoBase + this.equipamento.getAtk();
+        int dano=0;
+        if (getStatus().isStatus(11)) dano += 5;
+        return this.danoBase + this.equipamento.getAtk()+dano;
     }
 
     public void atacar(){
@@ -331,6 +339,7 @@ public class Personagem implements Serializable{
         this.getStatus().ReduzirTempoNoFimDoTurno();
         if(this.getStatus().isStatus(1)) this.addDanoRecebido(Math.ceil(5 * MultipDano.resultado(0, this.getEquipamento().getDefElemental())));
         if(this.getStatus().isStatus(6)) this.setDanoRecebido(this.getDanoRecebido() + 10);
+        if(this.getStatus().isStatus(11)) this.setManaGasta(this.getMana() - 5);
     }
     
 }
