@@ -5,7 +5,7 @@
  */
 package projetolp1.Items.Equipamento;
 
-class ArmaduraMetalica extends Armadura{
+public class ArmaduraMetalica extends Armadura{
   ArmaduraMetalica(){
     super("Armadura Metálica", "Armadura resistente, feita de ferro", 7, 6);
   }
