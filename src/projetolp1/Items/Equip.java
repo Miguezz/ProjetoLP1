@@ -10,24 +10,24 @@ import projetolp1.Items.Equipamento.Secundaria;
 import java.io.Serializable;
 
 public class Equip implements Serializable{
-		int elemento;
-		public Armadura getArmor() {
+    int elemento;
+    public Armadura getArmor() {
         return armor;
     }
 	
-		public int getDefElemental(){
-			if(armor == null)	{
-				return 7;
-			}
-			return armor.getElemento();
-		}
+    public int getDefElemental(){
+            if(armor == null)	{
+                    return 7;
+            }
+            return armor.getElemento();
+    }
 
-		public int getAtkElemental(){
-			if(arma == null){
-				return 7;
-			}
-			return arma.getElemento();
-		}
+    public int getAtkElemental(){
+            if(arma == null){
+                    return 7;
+            }
+            return arma.getElemento();
+    }
 
     public int getDef(){
         int def = 0;

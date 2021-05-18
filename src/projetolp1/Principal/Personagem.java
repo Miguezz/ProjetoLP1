@@ -12,25 +12,14 @@ import projetolp1.Racas.*;
 import java.io.Serializable;
 import java.lang.Math;
 import projetolp1.Misc.MultipDano;
+import projetolp1.Mapa.BlocoMapa;
+import projetolp1.Mapa.Mapas;
 /**
  *
  * @author Batata
  */
 public class Personagem implements Serializable{
 
-    /**
-     * @return the equipamento
-     */
-    public Equip getEquipamento() {
-        return equipamento;
-    }
-
-    /**
-     * @param equipamento the equipamento to set
-     */
-    public void setEquipamento(Equip equipamento) {
-        this.equipamento = equipamento;
-    }
     private String nome;
     private int vidaMaxima;
     private double danoRecebido; // vidaMaxima - danoRecebido = vidaAtual
@@ -44,24 +33,22 @@ public class Personagem implements Serializable{
     private float modDano;
     private int shield;
     private Equip equipamento;
+    private BlocoMapa blocoAtual;
     
     //Inventario Removido
     // Equip equipamento -- talvez separar em slots? cabeca, armadura, botas.
     private int dano;
     private RacaBase  raca;
+    private int racaInt;
     private ClasseMae classe;
     
     Personagem(String nome, int classe, int raca){
       this.nome = nome;
       this.classe = this.getSetClasse(classe);
       this.raca = this.getSetRaca(raca);
-      
+      this.racaInt = raca;
       this.modDano = 1;
       this.danoBase = 5 + this.raca.getModDanoBase();
-      
-      
-      //this.dano = new Dano(0, danoBase * modDano);
-      
       this.defesa = 5 + this.raca.getModDefBase();
       this.manaMaxima = 50 + this.raca.getModManaMax();
       this.vidaMaxima = 100 + this.raca.getModVidaMax();
@@ -69,7 +56,47 @@ public class Personagem implements Serializable{
       this.danoRecebido = 0;
       this.equipamento = new Equip();
       this.status = new Status();
+    }
+    
+    
+    
+    public int getRacaInt(){ // necessario para printar no mapa. Pode tirar dps qnd tiver na parte grafica
+        return this.racaInt;
+    }
+    
+    public BlocoMapa getBlocoMapa(){
+        return this.blocoAtual;
+    }
+    
+    public void setBlocoMapa(BlocoMapa bloco){
+        this.blocoAtual = bloco;
+    }
+    
+    public boolean movimentarPersonagem(Mapas mapa, int x, int y){
+        BlocoMapa bAlvo = mapa.getBlocoPelaPos(x, y);
+        if(mapa.getRangeEntreBlocos(this.blocoAtual, bAlvo) >= this.qtdMovimento){
+            if(bAlvo.getOcupante() == null){
+                bAlvo.setOcupante(this);
+                this.blocoAtual.setOcupante(null);
+                this.blocoAtual = bAlvo;
+                return true;
+            }
+        }
+        return false;
+    }
+    
+     /**
+     * @return the equipamento
+     */
+    public Equip getEquipamento() {
+        return equipamento;
+    }
 
+    /**
+     * @param equipamento the equipamento to set
+     */
+    public void setEquipamento(Equip equipamento) {
+        this.equipamento = equipamento;
     }
     
     @Override
@@ -154,7 +181,6 @@ public class Personagem implements Serializable{
     public void setShield(int shield) {
         this.shield = shield;
     }
-    
     
     /**
      * @return the vidaMaxima
@@ -288,25 +314,12 @@ public class Personagem implements Serializable{
         this.qtdMovimento = qtdMovimento;
     }
 
-    /**
-     * @return the posicaoNoMapa
-     */
-    public int getPosicaoNoMapa() {
-        return posicaoNoMapa;
-    }
-
-    /**
-     * @param posicaoNoMapa the posicaoNoMapa to set
-     */
-    public void setPosicaoNoMapa(int posicaoNoMapa) {
-        this.posicaoNoMapa = posicaoNoMapa;
-    }
    
     public float getDanoBase(){
       return this.modDano;
     }
     
-    public void setDanoBase(float modDano){ //rever, setDanoBase deveria conter this.setDanoBase
+    public void setDanoBase(float modDano){ // rever, setDanoBase deveria conter this.setDanoBase
       this.modDano = modDano;
     }
     
