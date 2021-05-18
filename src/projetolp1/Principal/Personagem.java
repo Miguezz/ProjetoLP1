@@ -314,6 +314,16 @@ public class Personagem implements Serializable{
         
     }
     
+    public void andar(){
+        
+        
+    }
+    
+    public void usarhabilidade(){
+        
+        
+    }
+    
     public void endOfTurn(){
         this.getStatus().ReduzirTempoNoFimDoTurno();
         if(this.getStatus().isStatus(1)) this.addDanoRecebido(Math.ceil(5 * MultipDano.resultado(0, this.getEquipamento().getDefElemental())));

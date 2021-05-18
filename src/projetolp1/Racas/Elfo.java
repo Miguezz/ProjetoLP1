@@ -5,6 +5,7 @@
  */
 package projetolp1.Racas;
 
+import projetolp1.Misc.MultipDano;
 import projetolp1.Principal.Personagem;
 
 /**
@@ -12,15 +13,24 @@ import projetolp1.Principal.Personagem;
  * @author felip
  */
 public class Elfo extends RacaBase {
+
     public Elfo(Personagem p){
         modAtributo(1); // Mana
         modAtributo(1); // Mana
     } 
    
     @Override
-    public boolean HabUtility(Personagem p, Personagem q){
-
-        return true;
+    public boolean HabUtility(Personagem self, Personagem q){
+        //A habilidade do Elfo é buffar seu proximo ataque no proximo turno em 2.5x em dano
+        if(self.getMana() >= 25){
+            self.getStatus().addStatus(12,1);
+            //formula para aumentar2.5x o proximo golpe
+            self.setManaGasta(self.getManaGasta() + 25); 
+            return true;
+        }
+        else{
+            System.out.println("Mana Insuficiente!");
+            return false;
+        }
     }
-
 }

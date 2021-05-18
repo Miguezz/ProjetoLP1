@@ -32,7 +32,7 @@ public class Batata extends Consumivel {
         }else{
         p.addDanoRecebido(p.getDanoRecebido() - cura);
     }
-    if(p.getManaGasta() < Mana){
+        if(p.getManaGasta() < Mana){
         p.setManaGasta(0);
         }else{
         p.setManaGasta(p.getManaGasta() - Mana);
