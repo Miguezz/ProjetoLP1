@@ -20,8 +20,10 @@ public class Tiefling extends RacaBase {
     
     @Override
     public boolean HabUtility(Mapas mapa, Personagem self, Personagem target){ //Troca equivalente - Troca 20 de vida atual por 30 de mana
-           if(self.getVidaMaxima() - self.getDanoRecebido() > 20){
+        int vida = 20;   
+        if(self.getVidaMaxima() - self.getDanoRecebido() > vida){
                self.setManaGasta(self.getManaGasta() - 30);
+               self.setDanoRecebido(self.getDanoRecebido() + vida);
                return true;
            } else {
                System.out.println("Não é possivel usar a Troca Equivalente(Vida insuficiente)");

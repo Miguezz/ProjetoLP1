@@ -26,8 +26,7 @@ public class Dragonborn extends RacaBase {
         if(mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range){
             int elemento = 0;
             double formulaDano = 20;
-            double mult = new MultipDano().resultado(elemento, target.getEquipamento().getDefElemental());
-            formulaDano = formulaDano * mult;
+            formulaDano = MultipDano.getDanoPelaFormula(target, formulaDano, elemento, false);
             target.addDanoRecebido(formulaDano);
             target.getStatus().addStatus(1,3);
         }
