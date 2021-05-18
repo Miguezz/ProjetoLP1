@@ -182,6 +182,9 @@ public class Personagem implements Serializable{
      */
     public void setShield(int shield) {
         this.shield = shield;
+        if(this.shield == 0 && this.getStatus().isStatus(13)){
+            this.getStatus().cureStatus(13);
+        }
     }
     
     /**
@@ -235,6 +238,10 @@ public class Personagem implements Serializable{
     
     public void setDanoRecebido(double danoRecebido){
         this.danoRecebido = danoRecebido;
+        if(this.danoRecebido == 0 && this.getStatus().isStatus(13)) {
+            this.getStatus().cureStatus(13);
+                this.setShield(0);
+                    }
         //if(this.doRecebido == this.getVidaMaxima()) kill
     }
 

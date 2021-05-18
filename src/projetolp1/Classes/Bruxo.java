@@ -38,8 +38,8 @@ public class Bruxo extends ClasseMae {
             int custo = (self.getVidaMaxima())/5;
             if(self.getVidaMaxima() - self.getDanoRecebido() > custo){
                     self.addDanoRecebido(custo);
-                    // TODO: Implementar escudo de 3x vidaAtual
-                    // TODO: Implementar fim do escudo quando cura
+                    self.setShield(custo*3);
+                    self.getStatus().addStatus(13,999);
             }
             return false;
     }
