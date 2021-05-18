@@ -245,9 +245,8 @@ public class Personagem implements Serializable{
         return manaGasta;
     }
 
-    
     public int getMana(){
-	    return this.manaMaxima - this.manaGasta;
+	return this.manaMaxima - this.manaGasta;
     }
 
     /**
@@ -327,10 +326,20 @@ public class Personagem implements Serializable{
     }
     
     public int getDano(){
-        int dano=0;
+        int dano = this.danoBase + this.equipamento.getAtk();
+        if(getStatus().isStatus(12)){
+            dano = dano*2;
+            getStatus().cureStatus(12);
+        }
         if (getStatus().isStatus(11)) dano += 5;
         return this.danoBase + this.equipamento.getAtk()+dano;
+        
     }
+    public int seeDano(){
+        int dano = this.danoBase + this.equipamento.getAtk();
+        if (getStatus().isStatus(11)) dano += 5;
+        return this.danoBase + this.equipamento.getAtk()+dano;
+}
 
     public boolean atacar(Mapas mapa, Personagem target){
         // verifica o range

@@ -23,9 +23,11 @@ public class Elfo extends RacaBase {
     @Override
    public boolean HabUtility(Mapas mapa, Personagem self, Personagem target){
         //A habilidade do Elfo é buffar seu proximo ataque no proximo turno em 2.5x em dano
+
+        //A habilidade do Elfo é buffar seu proximo ataque no proximo turno em 2x em dano
         if(self.getMana() >= 25){
-            self.getStatus().addStatus(12,1);
-            //formula para aumentar2.5x o proximo golpe
+            self.getStatus().addStatus(12,999);
+            //formula para aumentar 2x o proximo golpe em getdano() em personagem dentro do if.
             self.setManaGasta(self.getManaGasta() + 25); 
             return true;
         }
