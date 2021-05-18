@@ -5,6 +5,7 @@
  */
 package projetolp1.Racas;
 
+import projetolp1.Mapa.Mapas;
 import projetolp1.Principal.Personagem;
 
 /**
@@ -18,8 +19,14 @@ public class Laponico extends RacaBase {
     }
     
     @Override
-    public boolean HabUtility(Personagem p, Personagem q){ // polimorfismo laponico
-           
+    public boolean HabUtility(Mapas mapa, Personagem self, Personagem target){ // polimorfismo laponico
+        if(self.getStatus().isStatus(11)){
+            self.getStatus().cureStatus(11);
+            return false;
+        }
+        if(self.getManaMaxima()- self.getManaGasta() >= 5){
+            self.getStatus().addStatus(11, 50);//maximo de turnos no jogo a definir
+        }     
         return true;
     }
 

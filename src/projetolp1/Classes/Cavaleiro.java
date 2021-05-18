@@ -5,6 +5,7 @@
  */
 package projetolp1.Classes;
 
+import projetolp1.Mapa.Mapas;
 import projetolp1.Misc.MultipDano;
 import projetolp1.Principal.Personagem;
 
@@ -18,17 +19,15 @@ public class Cavaleiro extends ClasseMae {
 //        super(self);
 //    }
 		@Override
-    public boolean habDano(Personagem self, Personagem target){
+    public boolean habDano(Mapas mapa, Personagem self, Personagem target){
 			int custo = 25;
 			int range = 1;
 			if(self.getMana() >= custo){
-				if(target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= range){
+				if(mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range){
 						self.setManaGasta(custo); // Diminui a mana do lançador de acordo com o valor da habilidade
 						int elemento = self.getEquipamento().getAtkElemental();
             double formulaDano = 5 + self.getEquipamento().getAtk() * 1.5;
-						double mult = new MultipDano().resultado(elemento, target.getEquipamento().getDefElemental());
-						formulaDano = formulaDano * mult;
-						formulaDano -= target.getDefesa();
+						formulaDano = MultipDano.getDanoPelaFormula(target, formulaDano, elemento, false);
             target.addDanoRecebido(formulaDano);
         }
         return true;
@@ -39,24 +38,22 @@ public class Cavaleiro extends ClasseMae {
 		public boolean habDef(Personagem self){
 			int custo = 40;
 			if(self.getMana() >= custo){
-                            self.getStatus().addStatus(9, 2); //status 9, status do cavaleiro
-                            self.setManaGasta(self.getManaGasta() + 40);
-                        }
+				self.getStatus().addStatus(9, 2); //status 9, status do cavaleiro
+				self.setManaGasta(self.getManaGasta() + 40);
+			}
 			return true;
 		}
    
     @Override
-    public boolean ultimate(Personagem self, Personagem target){
+    public boolean ultimate(Mapas mapa, Personagem self, Personagem target){
 			int custo = 45;
 			int range = 1;
 			if(self.getMana() >= custo){
-				if(target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= range){
+				if(mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range){
 						self.setManaGasta(custo); // Diminui a mana do lançador de acordo com o valor da habilidade
 						int elemento = self.getEquipamento().getAtkElemental();
             double formulaDano = self.getEquipamento().getAtk() * 3;
-						double mult = new MultipDano().resultado(elemento, target.getEquipamento().getDefElemental());
-						formulaDano = formulaDano * mult;
-						formulaDano -= target.getDefesa();
+						formulaDano = MultipDano.getDanoPelaFormula(target, formulaDano, elemento, false);
             target.addDanoRecebido(formulaDano);
         }
         return true;

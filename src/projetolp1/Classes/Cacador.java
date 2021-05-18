@@ -5,6 +5,7 @@
  */
 package projetolp1.Classes;
 
+import projetolp1.Mapa.Mapas;
 import projetolp1.Misc.MultipDano;
 import projetolp1.Principal.Personagem;
 
@@ -18,18 +19,17 @@ public class Cacador extends ClasseMae {
 //        super(self);
 //    }
 		@Override
-    public boolean habDano(Personagem self, Personagem target){
+    public boolean habDano(Mapas mapa, Personagem self, Personagem target){
 			int range = 4;
 			int custo = 30;
 			if(self.getMana() >= custo){
-				if(target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= range){
+				if(mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range){
 						self.setManaGasta(custo); // Diminui a mana do lançador de acordo com o valor da habilidade
 						int elemento = 2; // Terra
             double formulaDano = 15 + self.getEquipamento().getAtk();
-						double mult = new MultipDano().resultado(elemento, target.getEquipamento().getDefElemental());
-						formulaDano = formulaDano * mult;
-						formulaDano -= target.getDefesa();
+						formulaDano = MultipDano.getDanoPelaFormula(target, formulaDano, elemento, false);
 						// TODO: Implementar Status "Prender" (por 1 rodada)
+						target.getStatus().addStatus(5, 1);
             target.addDanoRecebido(formulaDano);
         }
         return true;
@@ -49,11 +49,11 @@ public class Cacador extends ClasseMae {
 		}
    
     @Override
-    public boolean ultimate(Personagem self, Personagem target){
+    public boolean ultimate(Mapas mapa, Personagem self, Personagem target){
 			int range = 3;
 			int custo = 45;
 			if(self.getMana() >= custo){
-				if(target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= range){
+				if(mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range){
 						self.setManaGasta(custo); // Diminui a mana do lançador de acordo com o valor da habilidade
 						int elemento = 2; // Terra
             double formulaDano = 30 + self.getEquipamento().getAtk() * 2;

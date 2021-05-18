@@ -26,6 +26,8 @@ public class Status implements Serializable{
     7-status do alquimista, defensivo (2 turnos, 20 armor)
     8-status do assassino, defensivo ( 2 turnos, 1 hit)
     9-status do cavaleiro, defensivo (2 turnos, 1/2 dano)
+    10-status da skill utility orc (3 turnos, +10 Defesa)
+    11-Status da skill utility laponico (5 de mana por turno, +5 de dano +5 de vida +5 de defesa)
     */
     
     

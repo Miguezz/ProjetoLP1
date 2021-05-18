@@ -6,6 +6,7 @@
 package projetolp1.Racas;
 import projetolp1.Principal.Personagem;
 import java.io.Serializable;
+import projetolp1.Mapa.Mapas;
 /**
  *
  * @author Batata
@@ -49,7 +50,7 @@ public abstract class RacaBase implements Serializable{
     }
 
 
-  public abstract boolean HabUtility(Personagem self, Personagem target);
+  public abstract boolean HabUtility(Mapas mapa, Personagem self, Personagem target);
 
   
   
