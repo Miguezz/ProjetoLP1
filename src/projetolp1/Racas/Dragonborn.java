@@ -22,14 +22,15 @@ public class Dragonborn extends RacaBase {
     @Override
     public boolean HabUtility(Mapas mapa, Personagem self, Personagem target){ //Flamethrower - Lança chamas tirando 20 de dano e status burn
         if(self.getManaMaxima()-self.getManaGasta() >= 30){
-        int range = 1;
-        if(mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range){
-            int elemento = 0;
-            double formulaDano = 20;
-            formulaDano = MultipDano.getDanoPelaFormula(target, formulaDano, elemento, false);
-            target.addDanoRecebido(formulaDano);
-            target.getStatus().addStatus(1,3);
-        }
+            int range = 1;
+            if(mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range){
+                self.setManaGasta(self.getManaGasta() + 30);
+                int elemento = 0;
+                double formulaDano = 20;
+                formulaDano = MultipDano.getDanoPelaFormula(target, formulaDano, elemento, false);
+                target.addDanoRecebido(formulaDano);
+                target.getStatus().addStatus(1,3);
+            }
         return true;
         } else {
             System.out.println("Não é possivel usar o Flamethrower(Mana insuficiente)");

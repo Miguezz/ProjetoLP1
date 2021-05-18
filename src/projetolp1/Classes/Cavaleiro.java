@@ -24,7 +24,7 @@ public class Cavaleiro extends ClasseMae {
         int range = 1;
         if(self.getMana() >= custo){
             if(mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range){
-                self.setManaGasta(self.getMana() + custo); // Diminui a mana do lançador de acordo com o valor da habilidade
+                self.setManaGasta(self.getManaGasta() + custo); // Diminui a mana do lançador de acordo com o valor da habilidade
                 int elemento = self.getEquipamento().getAtkElemental();
                 double formulaDano = 5 + self.getEquipamento().getAtk() * 1.5;
             formulaDano = MultipDano.getDanoPelaFormula(target, formulaDano, elemento, false);
@@ -39,7 +39,7 @@ public class Cavaleiro extends ClasseMae {
     public boolean habDef(Mapas mapa, Personagem self, Personagem target){
             int custo = 40;
             if(self.getMana() >= custo){
-                    self.setManaGasta(self.getMana() + custo);
+                    self.setManaGasta(self.getManaGasta() + custo);
                     self.getStatus().addStatus(9, 2); //status 9, status do cavaleiro
                     self.setManaGasta(self.getManaGasta() + 40);
             }
@@ -52,7 +52,7 @@ public class Cavaleiro extends ClasseMae {
         int range = 1;
         if(self.getMana() >= custo){
             if(mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range){
-                self.setManaGasta(self.getMana() + custo); // Diminui a mana do lançador de acordo com o valor da habilidade
+                self.setManaGasta(self.getManaGasta() + custo); // Diminui a mana do lançador de acordo com o valor da habilidade
                 int elemento = self.getEquipamento().getAtkElemental();
                 double formulaDano = self.getEquipamento().getAtk() * 3;
                                                     formulaDano = MultipDano.getDanoPelaFormula(target, formulaDano, elemento, false);

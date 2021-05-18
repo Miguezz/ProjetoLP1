@@ -37,16 +37,16 @@ public class User implements Serializable{
                                                      // remover 5, depois devolver pra PersonagensCriados?
     Inventario inventario = new Inventario();
 	
-		public void listarParty(){
-			System.out.println("Party:");
-			for(int i = 0; i < Party.size(); i++){
-				System.out.println(Party.get(i));
-			}
-		}
-
-		@Override
-		public String toString(){
-			return ("Jogador: " + this.name + "\n");
-		}
+        public void listarParty(){
+            System.out.println("Party:");
+            for(int i = 0; i < Party.size(); i++){
+                    System.out.println(Party.get(i));
+            }
+        }
+        
+        @Override
+        public String toString(){
+            return ("Jogador: " + this.name + "\n");
+        }
     
 }

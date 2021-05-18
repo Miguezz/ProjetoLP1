@@ -110,7 +110,7 @@ public class Personagem implements Serializable{
                 "\nVida Atual: " + (this.vidaMaxima - this.danoRecebido) +
                 "\nMana Max: " + this.manaMaxima + 
                 "\nMana Atual: " + (this.manaMaxima - this.manaGasta) +
-                "\nDano: " + getDano() + 
+                "\nDano: " + seeDano() + 
                 "\nDefesa: " + this.getEquipamento().getDef() +
                 "\nShield: " + this.shield + "\n");
     }

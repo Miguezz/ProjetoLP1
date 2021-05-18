@@ -21,7 +21,7 @@ public class Cacador extends ClasseMae {
         int custo = 30;
         if(self.getMana() >= custo){
             if(mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range){
-                self.setManaGasta(self.getMana() + custo); // Diminui a mana do lançador de acordo com o valor da habilidade
+                self.setManaGasta(self.getManaGasta() + custo); // Diminui a mana do lançador de acordo com o valor da habilidade
                 int elemento = 2; // Terra
                 double formulaDano = 15 + self.getEquipamento().getAtk();
                 formulaDano = MultipDano.getDanoPelaFormula(target, formulaDano, elemento, false);
@@ -40,7 +40,7 @@ public class Cacador extends ClasseMae {
         int custo = 15;
         if(self.getMana() >= custo){
             if(mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range){
-                self.setManaGasta(self.getMana() + custo);
+                self.setManaGasta(self.getManaGasta() + custo);
             // TODO: Implementar: colocar armadilha no mapa (interface grafica)
             // TODO: Implementar: Efeito da armadilha ("Prender" por 2 rodadas)
                 target.getStatus().addStatus(5, 2);
@@ -58,7 +58,7 @@ public class Cacador extends ClasseMae {
         int custo = 45;
         if(self.getMana() >= custo){
             if(mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range){
-                self.setManaGasta(self.getMana() + custo); // Diminui a mana do lançador de acordo com o valor da habilidade
+                self.setManaGasta(self.getManaGasta() + custo); // Diminui a mana do lançador de acordo com o valor da habilidade
                 int elemento = 2; // Terra
                 double formulaDano = 30 + self.getEquipamento().getAtk() * 2;
                 formulaDano = MultipDano.getDanoPelaFormula(target, formulaDano, elemento, false);

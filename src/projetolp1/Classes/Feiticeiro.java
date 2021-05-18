@@ -21,7 +21,7 @@ public class Feiticeiro extends ClasseMae {
             int range = 2;
             if (self.getMana() >= custo) {
                 if (mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range) {
-                    self.setManaGasta(self.getMana() + custo); // Diminui a mana do lançador de acordo com o valor da habilidade
+                    self.setManaGasta(self.getManaGasta() + custo); // Diminui a mana do lançador de acordo com o valor da habilidade
                     int elemento = 3; // Vento
                     double formulaDano = 20 + self.getEquipamento().getAtk();
                     formulaDano = MultipDano.getDanoPelaFormula(target, formulaDano, elemento, false);
@@ -36,7 +36,7 @@ public class Feiticeiro extends ClasseMae {
 	public boolean habDef(Mapas mapa, Personagem self, Personagem target) {
             int custo = 20;
             if (self.getMana() >= custo) {
-                self.setManaGasta(self.getMana() + custo);
+                self.setManaGasta(self.getManaGasta() + custo);
                 self.setShield(self.getManaMaxima() / 2);
             }
             return false;
@@ -48,7 +48,7 @@ public class Feiticeiro extends ClasseMae {
             int custo = 60;
             if (self.getMana() >= custo) {
                 if (mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range) {
-                    self.setManaGasta(self.getMana() + custo); // Diminui a mana do lançador de acordo com o valor da habilidade
+                    self.setManaGasta(self.getManaGasta() + custo); // Diminui a mana do lançador de acordo com o valor da habilidade
                     // TODO: Implementar area de ataque 4x3 e empurrar inimigos 2 blocos
                     // TODO: Implementar chance de congelar inimigos de 25% por 2 rodadas
                     int elemento = 1; // Agua
