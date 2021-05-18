@@ -383,7 +383,11 @@ public class Personagem implements Serializable{
         this.getStatus().ReduzirTempoNoFimDoTurno();
         if(this.getStatus().isStatus(1)) this.addDanoRecebido(Math.ceil(5 * MultipDano.resultado(0, this.getEquipamento().getDefElemental())));
         if(this.getStatus().isStatus(6)) this.setDanoRecebido(this.getDanoRecebido() + 10);
-        if(this.getStatus().isStatus(10)) this.setDefesa(this.getDefesa() + 10);
+        if(this.getStatus().isStatus(10)){
+            if(!this.getStatus().getStatusUnit(10).getFezEfeito()){
+                this.setDefesa(this.getDefesa() + 10);
+            }
+        }
         if(this.getStatus().isStatus(11)) this.setManaGasta(this.getMana() - 5);
     }
     

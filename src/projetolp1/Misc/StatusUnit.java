@@ -12,9 +12,19 @@ import java.io.Serializable;
  */
 public class StatusUnit implements Serializable{
 
+    private boolean fezEfeito;
     StatusUnit(int tipo, int dur){
      this.tipo = tipo;
      this.tempo = dur;
+     this.fezEfeito = false;
+    }
+    
+    public boolean getFezEfeito(){
+        return this.fezEfeito;
+    }
+    
+    public void setFezEfeito(boolean valor){
+        this.fezEfeito = valor;
     }
     
     /**

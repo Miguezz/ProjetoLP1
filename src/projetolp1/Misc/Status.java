@@ -50,6 +50,15 @@ public class Status implements Serializable{
         return false;
     }
     
+    public StatusUnit getStatusUnit(int tipo){
+        for(int cont = 0; cont < statusPlayer.size() ; cont++){
+            if (statusPlayer.get(cont).getTipo() == tipo){
+                return statusPlayer.get(cont);
+            }
+        }
+        return null;
+    }
+    
     public void ReduzirTempoNoFimDoTurno(){
      for(int cont = 0; cont < statusPlayer.size() ; cont++){ 		      
           statusPlayer.get(cont).decTempo();
