@@ -81,6 +81,7 @@ public class Personagem implements Serializable{
                     bAlvo.setOcupante(this);
                     this.blocoAtual.setOcupante(null);
                     this.blocoAtual = bAlvo;
+                    mapa.printMapa();
                     return true;
                 }
             }
@@ -111,8 +112,8 @@ public class Personagem implements Serializable{
                 "\nVida Atual: " + (this.vidaMaxima - this.danoRecebido) +
                 "\nMana Max: " + this.manaMaxima + 
                 "\nMana Atual: " + (this.manaMaxima - this.manaGasta) +
-                "\nDano: " + seeDano() + 
-                "\nDefesa: " + this.getEquipamento().getDef() +
+                "\nDano: " + this.getDano() + 
+                "\nDefesa: " + this.getDefesa() +
                 "\nShield: " + this.shield + "\n");
     }
     
@@ -194,7 +195,7 @@ public class Personagem implements Serializable{
     public int getVidaMaxima() {
         int vida=0;
         if (getStatus().isStatus(11)) vida += 5;
-        return vidaMaxima + vida;
+        return vidaMaxima + vida + this.getEquipamento().getVida();
     }
 
     /**
@@ -268,7 +269,7 @@ public class Personagem implements Serializable{
      * @return the manaMaxima
      */
     public int getManaMaxima() {
-        return manaMaxima;
+        return manaMaxima + this.getEquipamento().getMana();
     }
 
     /**
@@ -355,6 +356,7 @@ public class Personagem implements Serializable{
             double formulaDano = this.danoBase + this.getEquipamento().getAtk();
             formulaDano = MultipDano.getDanoPelaFormula(target, formulaDano, elemento, false);
             target.addDanoRecebido(formulaDano);
+            System.out.println(this.nome + " atacou " + target.getNome());
             return true;
         }
         return false;
@@ -368,13 +370,41 @@ public class Personagem implements Serializable{
         // 4 - Ultimate
         switch(habilidade){
             case 1:
-                return this.getClasse().habDano(mapa, this, target);
+                if(this.getClasse().habDano(mapa, this, target)){
+                    System.out.println(this.nome + " usou habilidade dano em " + target.getNome());
+                    System.out.println(this);
+                    System.out.println(target);
+                    return true;
+                }
+                System.out.println(this.nome + " nao conseguiu usar a habilidade dano");
+                return false;
             case 2:
-                return this.getClasse().habDef(mapa, this, target);
+                if(this.getClasse().habDef(mapa, this, target)){
+                    System.out.println(this.nome + " usou habilidade defesa em " + target.getNome());
+                    System.out.println(this);
+                    if(this != target) System.out.println(target);
+                    return true;
+                }
+                System.out.println(this.nome + " nao conseguiu usar a habilidade defesa");
+                return false;
             case 3:
-                return this.getRaca().HabUtility(mapa, this, target);
+                if(this.getRaca().HabUtility(mapa, this, target)){
+                    System.out.println(this.nome + " usou habilidade utility em " + target.getNome());
+                    System.out.println(this);
+                    if(this != target) System.out.println(target);
+                    return true;
+                }
+                System.out.println(this.nome + " nao conseguiu usar a habilidade utility");
+                return false;
             case 4:
-                return this.getClasse().ultimate(mapa, this, target);
+                if(this.getClasse().ultimate(mapa, this, target)){
+                    System.out.println(this.nome + " usou habilidade ultimate em " + target.getNome());
+                    System.out.println(this);
+                    System.out.println(target);
+                    return true;
+                }
+                System.out.println(this.nome + " nao conseguiu usar a habilidade ultimate");
+                return false;
         }
         return false;
     }
@@ -383,11 +413,6 @@ public class Personagem implements Serializable{
         this.getStatus().ReduzirTempoNoFimDoTurno();
         if(this.getStatus().isStatus(1)) this.addDanoRecebido(Math.ceil(5 * MultipDano.resultado(0, this.getEquipamento().getDefElemental())));
         if(this.getStatus().isStatus(6)) this.setDanoRecebido(this.getDanoRecebido() + 10);
-        if(this.getStatus().isStatus(10)){
-            if(!this.getStatus().getStatusUnit(10).getFezEfeito()){
-                this.setDefesa(this.getDefesa() + 10);
-            }
-        }
         if(this.getStatus().isStatus(11)) this.setManaGasta(this.getMana() - 5);
     }
     

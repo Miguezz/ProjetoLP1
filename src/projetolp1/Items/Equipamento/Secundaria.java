@@ -7,6 +7,11 @@ public class Secundaria extends Item implements Serializable{
     private int buffDef;
     private int buffVida;
     private int buffMana;
+    public int tipoBuff;
+    
+    Secundaria(String nome, String desc, int buffAtacar, int buffDef, int buffVida, int buffMana){
+        super(nome, desc);
+    }
     /**
      * @return the buffAtacar
      */
@@ -34,114 +39,4 @@ public class Secundaria extends Item implements Serializable{
     public int getBuffMana() {
         return buffMana;
     }
-    public int tipoBuff;
-    Secundaria(String nome, String desc, int tipoBuff){
-        super(nome, desc);
-        this.tipoBuff = tipoBuff;               
-        }
-    
-
-    /*public void SerEquipado(Personagem p){
-        switch(tipoBuff){
-            case 0:
-                //buff ataque
-            case 1:
-                //buff defesa
-            case 2:
-                //buff ataque
-                //buff vidaMaxima
-                //buff manaMaxima
-        }
-    }*/
-    
-        /*public void SerDesequipado(Personagem p){
-        switch(tipoBuff){
-            case 0:
-                //buff ataque
-            case 1:
-                //buff defesa
-            case 2:
-                //buff ataque
-                //buff vidaMaxima
-                //buff manaMaxima
-        }
-    }*/
-    
-    /*public void SerEquipado(Personagem p){
-        switch(tipoBuff){
-            case 0:
-                //buff ataque
-            case 1:
-                //buff defesa
-            case 2:
-                //buff ataque
-                //buff vidaMaxima
-                //buff manaMaxima
-        }
-    }*/
-    
-        /*public void SerDesequipado(Personagem p){
-        switch(tipoBuff){
-            case 0:
-                //buff ataque
-            case 1:
-                //buff defesa
-            case 2:
-                //buff ataque
-                //buff vidaMaxima
-                //buff manaMaxima
-        }
-    }*/
-    
-    /*public void SerEquipado(Personagem p){
-        switch(tipoBuff){
-            case 0:
-                //buff ataque
-            case 1:
-                //buff defesa
-            case 2:
-                //buff ataque
-                //buff vidaMaxima
-                //buff manaMaxima
-        }
-    }*/
-    
-        /*public void SerDesequipado(Personagem p){
-        switch(tipoBuff){
-            case 0:
-                //buff ataque
-            case 1:
-                //buff defesa
-            case 2:
-                //buff ataque
-                //buff vidaMaxima
-                //buff manaMaxima
-        }
-    }*/
-    
-    /*public void SerEquipado(Personagem p){
-        switch(tipoBuff){
-            case 0:
-                //buff ataque
-            case 1:
-                //buff defesa
-            case 2:
-                //buff ataque
-                //buff vidaMaxima
-                //buff manaMaxima
-        }
-    }*/
-    
-        /*public void SerDesequipado(Personagem p){
-        switch(tipoBuff){
-            case 0:
-                //buff ataque
-            case 1:
-                //buff defesa
-            case 2:
-                //buff ataque
-                //buff vidaMaxima
-                //buff manaMaxima
-        }
-    }*/
   }

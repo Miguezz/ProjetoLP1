@@ -6,14 +6,14 @@ public class Armadura extends Item {
 private int defArmadura;
 private int atkArmadura;
 private int elemento;
-  Armadura(String nome, String desc, int defArmadura, int elemento){
+  public Armadura(String nome, String desc, int defArmadura, int elemento){
     super(nome, desc);
     this.defArmadura = defArmadura;
     
     this.atkArmadura = 0;
 		this.elemento = elemento;
   }
-  Armadura(String nome, String desc, int defArmadura, int atkArmadura, int elemento){
+  public Armadura(String nome, String desc, int defArmadura, int atkArmadura, int elemento){
     super(nome, desc);
     this.defArmadura = defArmadura;
     

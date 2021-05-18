@@ -13,6 +13,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import projetolp1.Items.Consumiveis.PotionMana;
 import projetolp1.Mapa.Mapas;
 import projetolp1.Items.Equipamento.Armas.*;
 /**
@@ -57,27 +58,54 @@ public class Main {
     }
  
 
-
+    public static void usarTodasHabilidades(Personagem p, Mapas m, Personagem t1, Personagem t2, Personagem t3, Personagem t4, PotionMana pm){
+        p.atacar(m, t1);
+        System.out.println(t1);
+        System.out.println();
+        System.out.println("-----------------");
+        p.usarhabilidade(1, m, t1);
+        System.out.println();
+        System.out.println("-----------------");
+        pm.efeito(p);
+        p.usarhabilidade(2, m, t2);
+        System.out.println();
+        System.out.println("-----------------");
+        pm.efeito(p);
+        pm.efeito(p);
+        p.usarhabilidade(3, m, t3);
+        System.out.println();
+        System.out.println("-----------------");
+        pm.efeito(p);
+        pm.efeito(p);
+        pm.efeito(p);
+        p.usarhabilidade(4, m, t4);
+        System.out.println();
+        System.out.println("-----------------");
+    }
+    
+    
+    
     public static void main(String[] args) {
         Mapas m = new Mapas(7, 7); // Iniciando o mapa 7x7
         // Criando usuario
         User u = new User();
         u.setName("Jogador 1"); 
-        User u2 = new User();
-        u.setName("Jogador 2");
-        // Criando personagens
-        Personagem p = new Personagem("Personagem 1", 0, 0);
-        Personagem p2 = new Personagem("Personagem 2", 1, 1);
-        Personagem p3 = new Personagem("Personagem 3", 2, 2);
-        Personagem p4 = new Personagem("Personagem 4", 3, 3);
-        Personagem p5 = new Personagem("Personagem 5", 4, 4);
         
-        Personagem p6 = new Personagem("Personagem 6", 5, 5);
-        Personagem p7 = new Personagem("Personagem 7", 1, 5);
-        Personagem p8 = new Personagem("Personagem 8", 2, 4);
-        Personagem p9 = new Personagem("Personagem 9", 3, 6);
-        Personagem p10 = new Personagem("Personagem 10", 1, 3);
-        // Atribuindo os personagens a cada usuario
+        User u2 = new User();
+        u2.setName("Testes");
+        // Criando personagens
+        Personagem p = new Personagem("Laponico Alquimista", 0, 0);
+        Personagem p2 = new Personagem("Anao Assassino", 1, 1);
+        Personagem p3 = new Personagem("Dragonborn Bruxo", 2, 2);
+        Personagem p4 = new Personagem("Elfo Cacador", 3, 3);
+        Personagem p5 = new Personagem("Orc Cavaleiro", 4, 4);
+        Personagem p6 = new Personagem("Tiefling Feiticeiro", 5, 5);
+        Personagem p7 = new Personagem("Laponico Sacerdote", 6, 0);
+        
+        Personagem bonecoTestes = new Personagem("Boneco Testes", 4, 9);
+        bonecoTestes.setVidaMaxima(10000);
+        
+        // Atribuindo os personagens ao usuario
         u.getPersonagensCriados().add(p);
         u.getPersonagensCriados().add(p2);
         u.getPersonagensCriados().add(p3);
@@ -88,90 +116,56 @@ public class Main {
         u.getParty().add(p3);
         u.getParty().add(p4);
         u.getParty().add(p5);
+        u.getPersonagensCriados().add(p6);
+        u.getPersonagensCriados().add(p7);
+        u.getParty().add(p6);
+        u.getParty().add(p7);
         
-        u2.getPersonagensCriados().add(p6);
-        u2.getPersonagensCriados().add(p7);
-        u2.getPersonagensCriados().add(p8);
-        u2.getPersonagensCriados().add(p9);
-        u2.getPersonagensCriados().add(p10);
-        u2.getParty().add(p6);
-        u2.getParty().add(p7);
-        u2.getParty().add(p8);
-        u2.getParty().add(p9);
-        u2.getParty().add(p10);
-        // Inserindo os personagens no mapa
-        m.insertOcupanteBloco(p, 0, 0);
-        m.insertOcupanteBloco(p2, 1, 0);
-        m.insertOcupanteBloco(p3, 2, 0);
-        m.insertOcupanteBloco(p4, 3, 0);
-        m.insertOcupanteBloco(p5, 4, 0);
+        u2.getPersonagensCriados().add(bonecoTestes);
+        u2.getParty().add(bonecoTestes);
         
-        m.insertOcupanteBloco(p6, 6, 6);
-        m.insertOcupanteBloco(p7, 6, 5);
-        m.insertOcupanteBloco(p8, 6, 4);
-        m.insertOcupanteBloco(p9, 6, 3);
-        m.insertOcupanteBloco(p10, 6, 2);
+        // Inserindo os personagens no mapa (x, y)
+        m.insertOcupanteBloco(p, 0, 0);  // 0
+        m.insertOcupanteBloco(p2, 2, 3); // 1
+        m.insertOcupanteBloco(p3, 3, 4); // 2
+        m.insertOcupanteBloco(p4, 3, 2); // 3 
+        m.insertOcupanteBloco(p5, 4, 3); // 4
+        m.insertOcupanteBloco(p6, 4, 2); // 5
+        m.insertOcupanteBloco(p7, 4, 4); // 0
+        
+        m.insertOcupanteBloco(bonecoTestes, 3, 3);
         
         m.printMapa();
         System.out.println("");
         // Movimentacao dos personagens
         // Por enquanto cada um so pode mover em uma area de 3x3 a partir da posicao atual
-        p.movimentarPersonagem(m, 1, 2);
-        p2.movimentarPersonagem(m, 2, 2);
-        
-        p6.movimentarPersonagem(m, 4, 3);
-        p6.movimentarPersonagem(m, 2, 3);
-        p6.movimentarPersonagem(m, 1, 3);
-        p7.movimentarPersonagem(m, 4, 2);
-        p8.movimentarPersonagem(m, 7, 7); // Nao movimenta pq ta fora do mapa
-        p8.movimentarPersonagem(m, 4, 4);
-        p8.movimentarPersonagem(m, 2, 3);
-        
-        
-        
-        System.out.println(p);
+        p.movimentarPersonagem(m, 1, 1);
         System.out.println("");
-        System.out.println(p2);
+        p.movimentarPersonagem(m, 2, 2);
         System.out.println("");
-        System.out.println(p6);
-        System.out.println("");
-        System.out.println(p7);
+        p.movimentarPersonagem(m, 3, 3); // Nao funciona pq vai ficar em cima de outro Personagem
         
         Espada e = new Espada();
         p.getEquipamento().setGlobal(e, u.getInventario());
+        System.out.println("Equipando espada no " + p.getNome());
+        Runa r = new Runa();
+        p.getEquipamento().setGlobal(r, u.getInventario());
+//        Espada e = new Espada();
+//        p.getEquipamento().setGlobal(e, u.getInventario());
+//        System.out.println("Equipando espada no " + p.getNome());
+        PotionMana pm = new PotionMana(100, u.getInventario());
         
-        ArmaduraMetalica am = new ArmaduraMetalica();
-        p8.getEquipamento().setGlobal(am, u2.getInventario());
+//        ArmaduraMetalica am = new ArmaduraMetalica();
+//        p.getEquipamento().setGlobal(am, u2.getInventario());
         
-        p.atacar(m, p6);
-        System.out.println("P atacou P6 com uma espada");
-        p.usarhabilidade(2, m, p);
-        System.out.println("P usou habilidade de defesa");
-        p6.usarhabilidade(1, m, p);
-        System.out.println("P6 atacou P com uma habilidade");
-        
-        System.out.println(p);
-        System.out.println("");
-        System.out.println(p6);
-        
-        p.usarhabilidade(4, m, p8);
-        System.out.println("P atacou P8 com o ultimate");
-        p8.usarhabilidade(3, m, p8);
-        System.out.println("P8 usou a habilidade utility");
-        p8.endOfTurn();
-        System.out.println(p);
-        System.out.println("");
-        System.out.println(p8);
-        
-        
-        
-        
-        p.endOfTurn();
-        p6.endOfTurn();
-        
-        System.out.println(p);
-        System.out.println("");
-        System.out.println(p6);
+        usarTodasHabilidades(p, m, bonecoTestes, p, p, bonecoTestes, pm);// "Laponico Alquimista",
+        usarTodasHabilidades(p2, m, bonecoTestes, p2, p2, bonecoTestes, pm);// "Anao Assassino"
+        usarTodasHabilidades(p3, m, bonecoTestes, p3, bonecoTestes, bonecoTestes, pm);// "Dragonborn Bruxo"
+        usarTodasHabilidades(p4, m, bonecoTestes, p4, p4, bonecoTestes, pm);// "Elfo Cacador"
+        usarTodasHabilidades(p5, m, bonecoTestes, p5, p5, bonecoTestes, pm);// "Orc Cavaleiro"
+        usarTodasHabilidades(p6, m, bonecoTestes, p6, p6, bonecoTestes, pm);// "Tiefling Feiticeiro"
+        usarTodasHabilidades(p7, m, bonecoTestes, p7, p7, bonecoTestes, pm);// "Laponico Sacerdote"
+
 
 //        u.Party.add(p);
 //        ArrayList<Object> usuarios = new ArrayList<Object>();
@@ -191,7 +185,6 @@ public class Main {
 //        System.out.println(u2);
 //        u2.listarParty();
          
-         m.printMapa();
          
     } 
 } 

@@ -1,7 +1,8 @@
 package projetolp1.Items.Equipamento;
 
 public class Escudo extends Secundaria{
-    Escudo(){
-        super("Escudo", "Um escudo feito de madeira", 1);
+    public Escudo(){
+        super("Escudo", "Um escudo feito de madeira", 0, 5, 10, 0);
+        //int buffAtacar, int buffDef, int buffVida, int buffMana
     }
 }

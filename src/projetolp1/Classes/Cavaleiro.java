@@ -41,7 +41,6 @@ public class Cavaleiro extends ClasseMae {
             if(self.getMana() >= custo){
                     self.setManaGasta(self.getManaGasta() + custo);
                     self.getStatus().addStatus(9, 2); //status 9, status do cavaleiro
-                    self.setManaGasta(self.getManaGasta() + 40);
             }
             return true;
     }

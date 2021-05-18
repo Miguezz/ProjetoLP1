@@ -1,7 +1,8 @@
 package projetolp1.Items.Equipamento;
 
 public class Livro extends Secundaria{
-    Livro(){
-        super("Livro", "Um livro mágico", 0);
+    public Livro(){
+        super("Livro", "Um livro mágico", 5, 0, 0, 10);
+        //int buffAtacar, int buffDef, int buffVida, int buffMana
     }
 }

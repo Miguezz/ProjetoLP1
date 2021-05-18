@@ -53,7 +53,7 @@ public class Mapas {
     
     public boolean insertOcupanteBloco(Object o, int x, int y){
         if(x < this.getXMax() && x >= 0 && y < this.getYMax() && y >= 0){
-            BlocoMapa b = this.mapa[x][y];
+            BlocoMapa b = this.mapa[y][x];
             if(b.getOcupante() == null){
                 b.setOcupante(o);
                 if(o instanceof Personagem){
