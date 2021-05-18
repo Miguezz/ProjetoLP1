@@ -325,10 +325,20 @@ public class Personagem implements Serializable{
     }
     
     public int getDano(){
-        int dano=0;
+        int dano = this.danoBase + this.equipamento.getAtk();
+        if(getStatus().isStatus(12)){
+            dano = dano*2;
+            getStatus().cureStatus(12);
+        }
         if (getStatus().isStatus(11)) dano += 5;
         return this.danoBase + this.equipamento.getAtk()+dano;
+        
     }
+    public int seeDano(){
+        int dano = this.danoBase + this.equipamento.getAtk();
+        if (getStatus().isStatus(11)) dano += 5;
+        return this.danoBase + this.equipamento.getAtk()+dano;
+}
 
     public void atacar(){
         
