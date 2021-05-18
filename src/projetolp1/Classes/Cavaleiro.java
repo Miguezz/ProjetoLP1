@@ -5,6 +5,7 @@
  */
 package projetolp1.Classes;
 
+import projetolp1.Mapa.Mapas;
 import projetolp1.Misc.MultipDano;
 import projetolp1.Principal.Personagem;
 
@@ -18,11 +19,11 @@ public class Cavaleiro extends ClasseMae {
 //        super(self);
 //    }
 		@Override
-    public boolean habDano(Personagem self, Personagem target){
+    public boolean habDano(Mapas mapa, Personagem self, Personagem target){
 			int custo = 25;
 			int range = 1;
 			if(self.getMana() >= custo){
-				if(target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= range){
+				if(mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range){
 						self.setManaGasta(custo); // Diminui a mana do lançador de acordo com o valor da habilidade
 						int elemento = self.getEquipamento().getAtkElemental();
             double formulaDano = 5 + self.getEquipamento().getAtk() * 1.5;
@@ -44,11 +45,11 @@ public class Cavaleiro extends ClasseMae {
 		}
    
     @Override
-    public boolean ultimate(Personagem self, Personagem target){
+    public boolean ultimate(Mapas mapa, Personagem self, Personagem target){
 			int custo = 45;
 			int range = 1;
 			if(self.getMana() >= custo){
-				if(target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= range){
+				if(mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range){
 						self.setManaGasta(custo); // Diminui a mana do lançador de acordo com o valor da habilidade
 						int elemento = self.getEquipamento().getAtkElemental();
             double formulaDano = self.getEquipamento().getAtk() * 3;

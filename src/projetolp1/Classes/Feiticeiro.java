@@ -5,6 +5,7 @@
  */
 package projetolp1.Classes;
 
+import projetolp1.Mapa.Mapas;
 import projetolp1.Principal.Personagem;
 import projetolp1.Misc.MultipDano;
 
@@ -15,11 +16,11 @@ import projetolp1.Misc.MultipDano;
 public class Feiticeiro extends ClasseMae {
 
 	@Override
-	public boolean habDano(Personagem self, Personagem target) {
+	public boolean habDano(Mapas mapa, Personagem self, Personagem target) {
 		int custo = 35;
 		int range = 2;
 		if (self.getMana() >= custo) {
-			if (target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= range) {
+			if (mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range) {
 				self.setManaGasta(custo); // Diminui a mana do lançador de acordo com o valor da habilidade
 				int elemento = 3; // Vento
 				double formulaDano = 20 + self.getEquipamento().getAtk();
@@ -41,11 +42,11 @@ public class Feiticeiro extends ClasseMae {
 	}
 
 	@Override
-	public boolean ultimate(Personagem self, Personagem target) {
+	public boolean ultimate(Mapas mapa, Personagem self, Personagem target) {
 		int range = 3;
 		int custo = 60;
 		if (self.getMana() >= custo) {
-			if (target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= range) {
+			if (mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range) {
 				self.setManaGasta(custo); // Diminui a mana do lançador de acordo com o valor da habilidade
 				// TODO: Implementar area de ataque 4x3 e empurrar inimigos 2 blocos
 				// TODO: Implementar chance de congelar inimigos de 25% por 2 rodadas

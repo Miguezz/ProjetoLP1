@@ -5,6 +5,7 @@
  */
 package projetolp1.Classes;
 
+import projetolp1.Mapa.Mapas;
 import projetolp1.Principal.Personagem;
 import projetolp1.Misc.MultipDano;
 
@@ -27,8 +28,8 @@ public class Alquimista extends ClasseMae {
 		int custo = 20;
 		int range = 3;
 		if (self.getMana() >= custo) {
-			if (target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= range) {
-				self.setManaGasta(custo); // Diminui a mana do lançador de acordo com o valor da habilidade
+			if (mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range) {
+				self.setManaGasta(self.getMana() - custo); // Diminui a mana do lançador de acordo com o valor da habilidade
 				int elemento = 0; // Fogo
 				double formulaDano = 15 + self.getEquipamento().getAtk();
 				formulaDano = MultipDano.getDanoPelaFormula(target, 15 + self.getEquipamento().getAtk(), elemento,
@@ -51,12 +52,12 @@ public class Alquimista extends ClasseMae {
 	}
 
 	@Override
-	public boolean ultimate(Personagem self, Personagem target) {
+	public boolean ultimate(Mapas mapa, Personagem self, Personagem target) {
 		int range = 4;
 		int custo = 30;
 		if (self.getMana() >= custo) {
-			if (target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= range) {
-				self.setManaGasta(custo); // Diminui a mana do lançador de acordo com o valor da habilidade
+			if (mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range) {
+				self.setManaGasta(self.getMana() - custo); // Diminui a mana do lançador de acordo com o valor da habilidade
 				int elemento = 3; // Vento
 				double formulaDano = 40;
 				// Ataque ignora defesa

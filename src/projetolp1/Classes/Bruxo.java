@@ -5,6 +5,7 @@
  */
 package projetolp1.Classes;
 
+import projetolp1.Mapa.Mapas;
 import projetolp1.Misc.MultipDano;
 import projetolp1.Principal.Personagem;
 
@@ -18,11 +19,11 @@ public class Bruxo extends ClasseMae {
 //        super(self);
 //    }
  		@Override
-    public boolean habDano(Personagem self, Personagem target){
+    public boolean habDano(Mapas mapa, Personagem self, Personagem target){
 			int range = 3;
 			int custo = 30;
 			if(self.getMana() >= custo){
-				if(target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= range){
+				if(mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range){
 						self.setManaGasta(custo); // Diminui a mana do lançador de acordo com o valor da habilidade
 						int elemento = 5; // Sombrio
             double formulaDano = 10 + self.getEquipamento().getAtk();
@@ -46,11 +47,11 @@ public class Bruxo extends ClasseMae {
 		}
    
     @Override
-    public boolean ultimate(Personagem self, Personagem target){
+    public boolean ultimate(Mapas mapa, Personagem self, Personagem target){
 			int range = 4;
 			int custo = 60;
 			if(self.getMana() >= custo){
-				if(target.getPosicaoNoMapa() - self.getPosicaoNoMapa() <= range){
+				if(mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range){
 					// TODO: Implementar dano em area
 					// TODO: Implementar Status Burn por 3 turnos (para aliados e inimigos atingidos)
 						self.setManaGasta(custo); // Diminui a mana do lançador de acordo com o valor da habilidade

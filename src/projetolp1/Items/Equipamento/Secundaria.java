@@ -3,7 +3,10 @@ import projetolp1.Items.Item;
 import java.io.Serializable;
 
 public class Secundaria extends Item implements Serializable{
-
+    private int buffAtacar;
+    private int buffDef;
+    private int buffVida;
+    private int buffMana;
     /**
      * @return the buffAtacar
      */
@@ -37,7 +40,32 @@ public class Secundaria extends Item implements Serializable{
         this.tipoBuff = tipoBuff;               
         }
     
-    private int buffAtacar;
+
+    /*public void SerEquipado(Personagem p){
+        switch(tipoBuff){
+            case 0:
+                //buff ataque
+            case 1:
+                //buff defesa
+            case 2:
+                //buff ataque
+                //buff vidaMaxima
+                //buff manaMaxima
+        }
+    }*/
+    
+        /*public void SerDesequipado(Personagem p){
+        switch(tipoBuff){
+            case 0:
+                //buff ataque
+            case 1:
+                //buff defesa
+            case 2:
+                //buff ataque
+                //buff vidaMaxima
+                //buff manaMaxima
+        }
+    }*/
     
     /*public void SerEquipado(Personagem p){
         switch(tipoBuff){
@@ -64,7 +92,6 @@ public class Secundaria extends Item implements Serializable{
                 //buff manaMaxima
         }
     }*/
-    private int buffDef;
     
     /*public void SerEquipado(Personagem p){
         switch(tipoBuff){
@@ -91,34 +118,6 @@ public class Secundaria extends Item implements Serializable{
                 //buff manaMaxima
         }
     }*/
-    private int buffVida;
-    
-    /*public void SerEquipado(Personagem p){
-        switch(tipoBuff){
-            case 0:
-                //buff ataque
-            case 1:
-                //buff defesa
-            case 2:
-                //buff ataque
-                //buff vidaMaxima
-                //buff manaMaxima
-        }
-    }*/
-    
-        /*public void SerDesequipado(Personagem p){
-        switch(tipoBuff){
-            case 0:
-                //buff ataque
-            case 1:
-                //buff defesa
-            case 2:
-                //buff ataque
-                //buff vidaMaxima
-                //buff manaMaxima
-        }
-    }*/
-    private int buffMana;
     
     /*public void SerEquipado(Personagem p){
         switch(tipoBuff){
