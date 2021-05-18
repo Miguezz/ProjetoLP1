@@ -26,44 +26,45 @@ public class Assassino extends ClasseMae {
 		    
 		@Override
     public boolean habDano(Mapas mapa, Personagem self, Personagem target){
-			int custo = 25;
-			int range = 1;
-			if(self.getMana() >= custo){
-				if(mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range){
-						self.setManaGasta(self.getMana() - custo); // Diminui a mana do lançador de acordo com o valor da habilidade
-						int elemento = 5; // Sombrio
-            double formulaDano = 25;
-						formulaDano = MultipDano.getDanoPelaFormula(target, formulaDano, elemento, false);
-						target.addDanoRecebido(formulaDano);
+        int custo = 25;
+        int range = 1;
+        if(self.getMana() >= custo){
+            if(mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range){
+                self.setManaGasta(self.getMana() + custo); // Diminui a mana do lançador de acordo com o valor da habilidade
+                int elemento = 5; // Sombrio
+                double formulaDano = 25;
+                formulaDano = MultipDano.getDanoPelaFormula(target, formulaDano, elemento, false);
+                target.addDanoRecebido(formulaDano);
         }
         return true;
 			}
 			return false;
 		}
     
-		public boolean habDef(Personagem self){
+                
+		public boolean habDef(Mapas mapa, Personagem self, Personagem target){
 			int custo = 30;
 			if(self.getMana() >= custo){
+                                self.setManaGasta(self.getMana() + custo);
 				self.getStatus().addStatus(8, 2);
-        self.setManaGasta(self.getManaGasta() + 30);
 			}
 			return true;
 		}
    
     @Override
     public boolean ultimate(Mapas mapa, Personagem self, Personagem target){
-			int custo = 45;
-			int range = 2;
-			if(self.getMana() >= custo){
-				if(mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range){
-						self.setManaGasta(self.getMana() - custo); // Diminui a mana do lançador de acordo com o valor da habilidade
-						int elemento = 5; // Sombrio
-            double formulaDano = 20 + (self.getEquipamento().getAtk() * 2);
-						formulaDano = MultipDano.getDanoPelaFormula(target, formulaDano, elemento, false);
-						target.addDanoRecebido(formulaDano);
+        int custo = 45;
+        int range = 2;
+        if(self.getMana() >= custo){
+            if(mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range){
+                self.setManaGasta(self.getMana() + custo); // Diminui a mana do lançador de acordo com o valor da habilidade
+                int elemento = 5; // Sombrio
+                double formulaDano = 20 + (self.getEquipamento().getAtk() * 2);
+                formulaDano = MultipDano.getDanoPelaFormula(target, formulaDano, elemento, false);
+                target.addDanoRecebido(formulaDano);
+            }
+            return true;
         }
-        return true;
-			}
-        return false;
-		}
+    return false;
+    }
 }

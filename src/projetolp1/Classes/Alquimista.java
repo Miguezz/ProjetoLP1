@@ -25,30 +25,30 @@ public class Alquimista extends ClasseMae {
 
 	@Override
 	public boolean habDano(Mapas mapa, Personagem self, Personagem target) {
-		int custo = 20;
-		int range = 3;
-		if (self.getMana() >= custo) {
-			if (mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range) {
-				self.setManaGasta(self.getMana() - custo); // Diminui a mana do lançador de acordo com o valor da habilidade
-				int elemento = 0; // Fogo
-				double formulaDano = 15 + self.getEquipamento().getAtk();
-				formulaDano = MultipDano.getDanoPelaFormula(target, 15 + self.getEquipamento().getAtk(), elemento,
-						false);
-				target.getStatus().addStatus(5, 3);
-				target.addDanoRecebido(formulaDano);
-				return true;
-			}
-		}
-		return false;
+            int custo = 20;
+            int range = 3;
+            if (self.getMana() >= custo) {
+                if (mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range) {
+                    self.setManaGasta(self.getMana() + custo); // Diminui a mana do lançador de acordo com o valor da habilidade
+                    int elemento = 0; // Fogo
+                    double formulaDano = 15 + self.getEquipamento().getAtk();
+                    formulaDano = MultipDano.getDanoPelaFormula(target, 15 + self.getEquipamento().getAtk(), elemento,
+                                    false);
+                    target.getStatus().addStatus(5, 3);
+                    target.addDanoRecebido(formulaDano);
+                    return true;
+                }
+            }
+            return false;
 	}
 
-	public boolean habDef(Personagem self, Personagem target) {
-		int custo = 30;
-		if (self.getMana() >= custo) {
-			target.getStatus().addStatus(7, 2);
-			self.setManaGasta(self.getManaGasta() + 30);
-		}
-		return true;
+	public boolean habDef(Personagem self) {
+            int custo = 30;
+            if (self.getMana() >= custo) {
+                self.setManaGasta(self.getMana() + custo);
+                self.getStatus().addStatus(7, 2);
+            }
+            return true;
 	}
 
 	@Override
@@ -57,13 +57,13 @@ public class Alquimista extends ClasseMae {
 		int custo = 30;
 		if (self.getMana() >= custo) {
 			if (mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range) {
-				self.setManaGasta(self.getMana() - custo); // Diminui a mana do lançador de acordo com o valor da habilidade
-				int elemento = 3; // Vento
-				double formulaDano = 40;
-				// Ataque ignora defesa
-				formulaDano = MultipDano.getDanoPelaFormula(target, formulaDano, elemento, true);
-				target.getStatus().addStatus(4, 1);
-				target.addDanoRecebido(formulaDano);
+                            self.setManaGasta(self.getMana() + custo); // Diminui a mana do lançador de acordo com o valor da habilidade
+                            int elemento = 3; // Vento
+                            double formulaDano = 40;
+                            // Ataque ignora defesa
+                            formulaDano = MultipDano.getDanoPelaFormula(target, formulaDano, elemento, true);
+                            target.getStatus().addStatus(4, 1);
+                            target.addDanoRecebido(formulaDano);
 			}
 			return true;
 		}

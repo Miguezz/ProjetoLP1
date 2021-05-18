@@ -6,6 +6,8 @@
 
 package projetolp1.Mapa;
 
+import projetolp1.Principal.Personagem;
+
 /**
  *
  * @author Rafael Miguez
@@ -13,18 +15,29 @@ package projetolp1.Mapa;
 public class Mapas {
     //adicionar objeto obstaculo dps da av2.
     
-    private BlocoMapa [][] mapa;
-    public Mapas(){
-        for(int i = 0; i < 7; i++){
-            for(int j = 0; j < 7; j++){
+    private BlocoMapa[][] mapa = new BlocoMapa[7][7];
+    private int xMax;
+    private int yMax;
+    public Mapas(int xMax, int yMax){
+        this.xMax = xMax;
+        this.yMax = yMax;
+        for(int i = 0; i < yMax; i++){
+            for(int j = 0; j < xMax; j++){
                 mapa[i][j] = new BlocoMapa(i, j);
             }
         }
     }
     
+    public int getXMax(){
+        return this.xMax;
+    }
+    public int getYMax(){
+        return this.yMax;
+    }
+    
     public void printMapa(){
-        for(int i = 0; i < 7; i++){
-            for(int j = 0; j < 7; j++){
+        for(int i = 0; i < yMax; i++){
+            for(int j = 0; j < xMax; j++){
                 System.out.print(mapa[i][j]);
             }
             System.out.println();
@@ -39,17 +52,23 @@ public class Mapas {
         BlocoMapa b = this.mapa[x][y];
         if(b.getOcupante() == null){
             b.setOcupante(o);
+            if(o instanceof Personagem){
+                Personagem p = (Personagem)o;
+                p.setBlocoMapa(b);
+            }
             return true;
         }
         return false;
     }
     
     public int getRangeEntreBlocos(BlocoMapa b1, BlocoMapa b2){
-        int [] p1 = b1.getPosicao();
-        int [] p2 = b1.getPosicao();
-        if(p1[0] - p2[0] < p1[1] - p2[1]){
-            return p1[1] - p2[1];
+        int[] p1 = b1.getPosicao();
+        int[] p2 = b2.getPosicao();
+        if(p1[0] - p2[0] > p1[1] - p2[1]){
+            return Math.abs(p1[1] - p2[1]);
         }
-        return p1[0] - p2[0];
+        System.out.println(p1[0] + " " + p1[1]);
+        System.out.println(p2[0] + " " + p2[1]);
+        return  Math.abs(p1[0] - p2[0]);
     }
 }

@@ -15,56 +15,57 @@ import projetolp1.Principal.Personagem;
  */
 public class Cacador extends ClasseMae {
 
-//    public Cacador(Personagem self) {
-//        super(self);
-//    }
-		@Override
+    @Override
     public boolean habDano(Mapas mapa, Personagem self, Personagem target){
-			int range = 4;
-			int custo = 30;
-			if(self.getMana() >= custo){
-				if(mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range){
-						self.setManaGasta(custo); // Diminui a mana do lançador de acordo com o valor da habilidade
-						int elemento = 2; // Terra
-            double formulaDano = 15 + self.getEquipamento().getAtk();
-						formulaDano = MultipDano.getDanoPelaFormula(target, formulaDano, elemento, false);
-						// TODO: Implementar Status "Prender" (por 1 rodada)
-						target.getStatus().addStatus(5, 1);
-            target.addDanoRecebido(formulaDano);
-        }
-        return true;
-			}
-			return false; 
+        int range = 4;
+        int custo = 30;
+        if(self.getMana() >= custo){
+            if(mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range){
+                self.setManaGasta(self.getMana() + custo); // Diminui a mana do lançador de acordo com o valor da habilidade
+                int elemento = 2; // Terra
+                double formulaDano = 15 + self.getEquipamento().getAtk();
+                formulaDano = MultipDano.getDanoPelaFormula(target, formulaDano, elemento, false);
+                // TODO: Implementar Status "Prender" (por 1 rodada)
+                target.getStatus().addStatus(5, 1);
+                target.addDanoRecebido(formulaDano);
+            }
+            return true;
+            }
+        return false;
     }
     
-		public boolean habDef(Personagem self){
-			int range = 2;
-			int custo =	15;
-			if(self.getMana() >= custo){
-				// TODO: Implementar: colocar armadilha no mapa
-				// TODO: Implementar: Efeito da armadilha ("Prender" por 2 rodadas)
-				return true;
-			}
-			return false;
-		}
+    public boolean habDef(Mapas mapa, Personagem self, Personagem target){
+        int range = 2;
+        int custo = 15;
+        if(self.getMana() >= custo){
+            if(mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range){
+                self.setManaGasta(self.getMana() + custo);
+            // TODO: Implementar: colocar armadilha no mapa (interface grafica)
+            // TODO: Implementar: Efeito da armadilha ("Prender" por 2 rodadas)
+                target.getStatus().addStatus(5, 2);
+                return true;
+
+            }
+
+        }
+        return false;
+    }
    
     @Override
     public boolean ultimate(Mapas mapa, Personagem self, Personagem target){
-			int range = 3;
-			int custo = 45;
-			if(self.getMana() >= custo){
-				if(mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range){
-						self.setManaGasta(custo); // Diminui a mana do lançador de acordo com o valor da habilidade
-						int elemento = 2; // Terra
-            double formulaDano = 30 + self.getEquipamento().getAtk() * 2;
-						// TODO: Implementar Status Stun por 1 rodada
-						double mult = new MultipDano().resultado(elemento, target.getEquipamento().getDefElemental());
-						formulaDano = formulaDano * mult;
-						formulaDano -= target.getDefesa();
-            target.addDanoRecebido(formulaDano);
-        }
-        return true;
-			}
-			return false;   
-		}
+        int range = 3;
+        int custo = 45;
+        if(self.getMana() >= custo){
+            if(mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range){
+                self.setManaGasta(self.getMana() + custo); // Diminui a mana do lançador de acordo com o valor da habilidade
+                int elemento = 2; // Terra
+                double formulaDano = 30 + self.getEquipamento().getAtk() * 2;
+                formulaDano = MultipDano.getDanoPelaFormula(target, formulaDano, elemento, false);
+                target.getStatus().addStatus(2, 1);
+                target.addDanoRecebido(formulaDano);
+            }
+            return true;
+            }
+        return false;   
+    }
 }

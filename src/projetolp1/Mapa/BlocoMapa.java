@@ -41,10 +41,10 @@ public class BlocoMapa {
     public String toString(){
         if(this.ocupante instanceof Personagem){
             Personagem p = (Personagem) ocupante;
-            return(Integer.toString(p.getRacaInt()));
+            return(" " + Integer.toString(p.getRacaInt()) + " ");
         }else if(this.ocupante instanceof Obstaculo){
-            return("X");
+            return(" X ");
         }
-        return(".");
+        return(" . ");
     }
 }

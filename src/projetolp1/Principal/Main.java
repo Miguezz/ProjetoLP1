@@ -14,6 +14,7 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import projetolp1.Mapa.Mapas;
+import projetolp1.Mapa.Obstaculo;
 /**
  *
  * @author FelipeBrasileiro
@@ -60,7 +61,7 @@ public class Main {
     public static void main(String[] args) {
         User u = new User();
         u.setName("Jogador 1");
-        Personagem p = new Personagem("Teste 1", 1, 0);
+        Personagem p = new Personagem("Teste 1", 1, 2);
 //        u.PersonagensCriados.add(p);
 //        u.Party.add(p);
 //        ArrayList<Object> usuarios = new ArrayList<Object>();
@@ -79,8 +80,12 @@ public class Main {
 //        User u2 = carregarArquivo("usuario1.txt");
 //        System.out.println(u2);
 //        u2.listarParty();
-         Mapas m = new Mapas();
+         Mapas m = new Mapas(7, 7);
          m.insertOcupanteBloco(p, 0, 0);
+         m.insertOcupanteBloco(new Obstaculo(), 1, 1);
+         m.printMapa();
+         System.out.println("");
+         p.movimentarPersonagem(m, 1, 2);
          m.printMapa();
     } 
 } 

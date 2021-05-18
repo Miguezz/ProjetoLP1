@@ -56,8 +56,8 @@ public class Personagem implements Serializable{
       this.danoRecebido = 0;
       this.equipamento = new Equip();
       this.status = new Status();
+      this.qtdMovimento = 1;
     }
-    
     
     
     public int getRacaInt(){ // necessario para printar no mapa. Pode tirar dps qnd tiver na parte grafica
@@ -73,13 +73,15 @@ public class Personagem implements Serializable{
     }
     
     public boolean movimentarPersonagem(Mapas mapa, int x, int y){
-        BlocoMapa bAlvo = mapa.getBlocoPelaPos(x, y);
-        if(mapa.getRangeEntreBlocos(this.blocoAtual, bAlvo) >= this.qtdMovimento){
-            if(bAlvo.getOcupante() == null){
-                bAlvo.setOcupante(this);
-                this.blocoAtual.setOcupante(null);
-                this.blocoAtual = bAlvo;
-                return true;
+        if(x <= mapa.getXMax() && x >= 0 && y <= mapa.getYMax() && y >= 0){
+            BlocoMapa bAlvo = mapa.getBlocoPelaPos(x, y);
+            if(mapa.getRangeEntreBlocos(this.blocoAtual, bAlvo) <= this.qtdMovimento){
+                if(bAlvo.getOcupante() == null){
+                    bAlvo.setOcupante(this);
+                    this.blocoAtual.setOcupante(null);
+                    this.blocoAtual = bAlvo;
+                    return true;
+                }
             }
         }
         return false;
@@ -330,19 +332,35 @@ public class Personagem implements Serializable{
         return this.danoBase + this.equipamento.getAtk()+dano;
     }
 
-    public void atacar(){
-        
-        
+    public boolean atacar(Mapas mapa, Personagem target){
+        // verifica o range
+        if(mapa.getRangeEntreBlocos(this.blocoAtual, target.getBlocoMapa()) <= this.getEquipamento().getArma().getRange()){
+            int elemento = this.getEquipamento().getAtkElemental(); // elemento de acordo com a arma
+            double formulaDano = this.danoBase + this.getEquipamento().getAtk();
+            formulaDano = MultipDano.getDanoPelaFormula(target, formulaDano, elemento, false);
+            target.addDanoRecebido(danoRecebido);
+            return true;
+        }
+        return false;
     }
     
-    public void andar(){
-        
-        
-    }
     
-    public void usarhabilidade(){
-        
-        
+    public boolean usarhabilidade(int habilidade, Mapas mapa, Personagem target){
+        // 1 - Ataque
+        // 2 - Def
+        // 3 - Utility
+        // 4 - Ultimate
+        switch(habilidade){
+            case 1:
+                return this.getClasse().habDano(mapa, this, target);
+            case 2:
+                return this.getClasse().habDef(mapa, this, target);
+            case 3:
+                return this.getRaca().HabUtility(mapa, this, target);
+            case 4:
+                return this.getClasse().ultimate(mapa, this, target);
+        }
+        return false;
     }
     
     public void endOfTurn(){
