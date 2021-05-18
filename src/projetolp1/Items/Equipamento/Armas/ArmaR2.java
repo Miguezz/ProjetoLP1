@@ -15,10 +15,3 @@ class ArmaR2 extends Arma {
   
 }
 
-class lanca extends ArmaR2 {
-    
-    lanca() {
-        super(1);
-    }
-    
-}

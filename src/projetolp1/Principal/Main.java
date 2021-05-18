@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package projetolp1.Principal;
-import projetolp1.Items.Equipamento.PedacoDePano;
+import projetolp1.Items.Equipamento.*;
 import projetolp1.Principal.User;
 import java.io.File;
 import java.io.IOException;
@@ -59,11 +59,13 @@ public class Main {
 
 
     public static void main(String[] args) {
-        Mapas m = new Mapas(7, 7);
+        Mapas m = new Mapas(7, 7); // Iniciando o mapa 7x7
+        // Criando usuario
         User u = new User();
-        u.setName("Jogador 1");
+        u.setName("Jogador 1"); 
         User u2 = new User();
         u.setName("Jogador 2");
+        // Criando personagens
         Personagem p = new Personagem("Personagem 1", 0, 0);
         Personagem p2 = new Personagem("Personagem 2", 1, 1);
         Personagem p3 = new Personagem("Personagem 3", 2, 2);
@@ -75,7 +77,7 @@ public class Main {
         Personagem p8 = new Personagem("Personagem 8", 2, 4);
         Personagem p9 = new Personagem("Personagem 9", 3, 6);
         Personagem p10 = new Personagem("Personagem 10", 1, 3);
-        
+        // Atribuindo os personagens a cada usuario
         u.getPersonagensCriados().add(p);
         u.getPersonagensCriados().add(p2);
         u.getPersonagensCriados().add(p3);
@@ -97,7 +99,7 @@ public class Main {
         u2.getParty().add(p8);
         u2.getParty().add(p9);
         u2.getParty().add(p10);
-        
+        // Inserindo os personagens no mapa
         m.insertOcupanteBloco(p, 0, 0);
         m.insertOcupanteBloco(p2, 1, 0);
         m.insertOcupanteBloco(p3, 2, 0);
@@ -112,7 +114,8 @@ public class Main {
         
         m.printMapa();
         System.out.println("");
-        
+        // Movimentacao dos personagens
+        // Por enquanto cada um so pode mover em uma area de 3x3 a partir da posicao atual
         p.movimentarPersonagem(m, 1, 2);
         p2.movimentarPersonagem(m, 2, 2);
         
@@ -120,6 +123,11 @@ public class Main {
         p6.movimentarPersonagem(m, 2, 3);
         p6.movimentarPersonagem(m, 1, 3);
         p7.movimentarPersonagem(m, 4, 2);
+        p8.movimentarPersonagem(m, 7, 7); // Nao movimenta pq ta fora do mapa
+        p8.movimentarPersonagem(m, 4, 4);
+        p8.movimentarPersonagem(m, 2, 3);
+        
+        
         
         System.out.println(p);
         System.out.println("");
@@ -130,15 +138,33 @@ public class Main {
         System.out.println(p7);
         
         Espada e = new Espada();
-        
         p.getEquipamento().setGlobal(e, u.getInventario());
+        
+        ArmaduraMetalica am = new ArmaduraMetalica();
+        p8.getEquipamento().setGlobal(am, u2.getInventario());
+        
         p.atacar(m, p6);
         System.out.println("P atacou P6 com uma espada");
+        p.usarhabilidade(2, m, p);
+        System.out.println("P usou habilidade de defesa");
+        p6.usarhabilidade(1, m, p);
         System.out.println("P6 atacou P com uma habilidade");
-        p6.usarhabilidade(1, m, p);    
+        
         System.out.println(p);
         System.out.println("");
         System.out.println(p6);
+        
+        p.usarhabilidade(4, m, p8);
+        System.out.println("P atacou P8 com o ultimate");
+        p8.usarhabilidade(3, m, p8);
+        System.out.println("P8 usou a habilidade utility");
+        p8.endOfTurn();
+        System.out.println(p);
+        System.out.println("");
+        System.out.println(p8);
+        
+        
+        
         
         p.endOfTurn();
         p6.endOfTurn();
@@ -165,7 +191,7 @@ public class Main {
 //        System.out.println(u2);
 //        u2.listarParty();
          
-         
+         m.printMapa();
          
     } 
 } 

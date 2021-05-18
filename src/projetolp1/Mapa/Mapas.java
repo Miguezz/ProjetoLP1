@@ -45,11 +45,14 @@ public class Mapas {
     }
     
     public BlocoMapa getBlocoPelaPos(int x, int y){
-        return this.mapa[x][y];
+         if(x < this.getXMax() && x >= 0 && y < this.getYMax() && y >= 0){
+            return this.mapa[x][y];
+         }
+         return null;
     }
     
     public boolean insertOcupanteBloco(Object o, int x, int y){
-        if(x <= this.getXMax() && x >= 0 && y <= this.getYMax() && y >= 0){
+        if(x < this.getXMax() && x >= 0 && y < this.getYMax() && y >= 0){
             BlocoMapa b = this.mapa[x][y];
             if(b.getOcupante() == null){
                 b.setOcupante(o);
@@ -69,8 +72,8 @@ public class Mapas {
         if(p1[0] - p2[0] > p1[1] - p2[1]){
             return Math.abs(p1[1] - p2[1]);
         }
-        System.out.println(p1[0] + " " + p1[1]);
-        System.out.println(p2[0] + " " + p2[1]);
+//        System.out.println(p1[0] + " " + p1[1]);
+//        System.out.println(p2[0] + " " + p2[1]);
         return  Math.abs(p1[0] - p2[0]);
     }
 }

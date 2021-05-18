@@ -22,7 +22,7 @@ public class Orc extends RacaBase {
     public boolean HabUtility(Mapas mapa, Personagem self, Personagem target){ //Endurecimento - Ganha shield e defesa +10 por 3 turnos
         if(self.getManaMaxima()- self.getManaGasta() >= 25){
             self.setShield((int) Math.ceil((self.getDanoRecebido())/4)); //recebe shield
-            self.getStatus().addStatus(10, 3); //modificador de status +10 defesa por 3 turnos
+            self.getStatus().addStatus(10, 3); // modificador de status +10 defesa por 3 turnos
             self.setManaGasta(self.getManaGasta() + 25);
         return true;
         } else {

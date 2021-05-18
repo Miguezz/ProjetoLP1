@@ -75,6 +75,7 @@ public class Personagem implements Serializable{
     public boolean movimentarPersonagem(Mapas mapa, int x, int y){
         if(x <= mapa.getXMax() && x >= 0 && y <= mapa.getYMax() && y >= 0){
             BlocoMapa bAlvo = mapa.getBlocoPelaPos(x, y);
+            if(bAlvo == null) return false;
             if(mapa.getRangeEntreBlocos(this.blocoAtual, bAlvo) <= this.qtdMovimento){
                 if(bAlvo.getOcupante() == null){
                     bAlvo.setOcupante(this);
@@ -382,6 +383,7 @@ public class Personagem implements Serializable{
         this.getStatus().ReduzirTempoNoFimDoTurno();
         if(this.getStatus().isStatus(1)) this.addDanoRecebido(Math.ceil(5 * MultipDano.resultado(0, this.getEquipamento().getDefElemental())));
         if(this.getStatus().isStatus(6)) this.setDanoRecebido(this.getDanoRecebido() + 10);
+        if(this.getStatus().isStatus(10)) this.setDefesa(this.getDefesa() + 10);
         if(this.getStatus().isStatus(11)) this.setManaGasta(this.getMana() - 5);
     }
     
