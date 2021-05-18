@@ -13,6 +13,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import projetolp1.Mapa.Mapas;
 /**
  *
  * @author FelipeBrasileiro
@@ -57,26 +58,29 @@ public class Main {
 
 
     public static void main(String[] args) {
-				User u = new User();
-				u.setName("Jogador 1");
+        User u = new User();
+        u.setName("Jogador 1");
         Personagem p = new Personagem("Teste 1", 1, 0);
-				u.PersonagensCriados.add(p);
-				u.Party.add(p);
-				ArrayList<Object> usuarios = new ArrayList<Object>();
-				usuarios.add(u);
-        //Personagem p2 = new Personagem("Teste 2", 3, 2);
-        //System.out.println(p);
-        //User x = new User();
-        //x.inventario.add(new PedacoDePano());
-        //p.getEquipamento().setGlobal(x.inventario.get(0), x.inventario);
-        //p2.getClasse().habDano(p2, p);
-        //
-        //
-        //p.getRaca().HabUtility(p);
-        //System.out.println(p);
-				salvarArquivo(u, "usuario1.txt");
-				User u2 = carregarArquivo("usuario1.txt");
-				System.out.println(u2);
-				u2.listarParty();
-		} 
+//        u.PersonagensCriados.add(p);
+//        u.Party.add(p);
+//        ArrayList<Object> usuarios = new ArrayList<Object>();
+//        usuarios.add(u);
+//        //Personagem p2 = new Personagem("Teste 2", 3, 2);
+//        //System.out.println(p);
+//        //User x = new User();
+//        //x.inventario.add(new PedacoDePano());
+//        //p.getEquipamento().setGlobal(x.inventario.get(0), x.inventario);
+//        //p2.getClasse().habDano(p2, p);
+//        //
+//        //
+//        //p.getRaca().HabUtility(p);
+//        //System.out.println(p);
+//        salvarArquivo(u, "usuario1.txt");
+//        User u2 = carregarArquivo("usuario1.txt");
+//        System.out.println(u2);
+//        u2.listarParty();
+         Mapas m = new Mapas();
+         m.insertOcupanteBloco(p, 0, 0);
+         m.printMapa();
+    } 
 } 

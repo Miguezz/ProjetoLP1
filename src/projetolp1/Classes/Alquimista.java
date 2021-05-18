@@ -23,7 +23,7 @@ public class Alquimista extends ClasseMae {
 	 */
 
 	@Override
-	public boolean habDano(Personagem self, Personagem target) {
+	public boolean habDano(Mapas mapa, Personagem self, Personagem target) {
 		int custo = 20;
 		int range = 3;
 		if (self.getMana() >= custo) {
