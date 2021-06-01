@@ -12,7 +12,7 @@ public class MenuPrincipalPane extends Application {
         // TODO: Testar outros fxml
         stage.setResizable(false);
         stage.setTitle("Aventuras no Lapaverso");
-        Parent root = FXMLLoader.load(getClass().getResource("MenuPrincipalPane.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/MenuPrincipalPane.fxml"));
         // root.setId("pane");
         Scene scene = new Scene(root);
         scene.getStylesheets().addAll(this.getClass().getResource("menuprincipalpane.css").toExternalForm());

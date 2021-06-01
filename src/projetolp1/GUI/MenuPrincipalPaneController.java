@@ -11,7 +11,12 @@ import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -25,11 +30,30 @@ public class MenuPrincipalPaneController implements Initializable {
      */
 
     @FXML
-    private void acaoClick(ActionEvent event) {
-        System.out.println("Ola Mundo!");
-        File file = new File("src/resources/");
-        for (String fileNames : file.list())
-            System.out.println(fileNames);
+    private Button btnNovoJogo;
+
+    @FXML
+    private Button btnCarregarJogo;
+
+    @FXML
+    private AnchorPane panePrincipal;
+    
+    @FXML
+    private Button btnSair;
+
+    @FXML
+    private void acaoClick(ActionEvent event) throws Exception {
+        if (event.getSource() == btnNovoJogo) {
+            System.out.println("Novo Jogo");
+            AnchorPane newPane = FXMLLoader.load(getClass().getResource("fxml/SelecaoPersonagem.fxml"));
+            panePrincipal.getChildren().setAll(newPane);
+        } else if (event.getSource() == btnCarregarJogo) {
+            System.out.println("Carrega Jogo");
+        }else if (event.getSource() == btnSair) {
+            Stage stage = (Stage) btnSair.getScene().getWindow();
+            stage.close();
+        }
+
     }
 
     @Override

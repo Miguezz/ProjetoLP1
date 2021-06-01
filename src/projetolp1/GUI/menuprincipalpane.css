@@ -7,6 +7,13 @@
     -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);
 }
 
-#teste{
-    border-radius: 50;
+.botao {
+    -fx-background-image: url("../../resources/Botao.png");
+    -fx-background-size: cover;
+}
+
+
+.logo{
+    -fx-background-image: url("../../resources/Logo.png");
+    -fx-background-size: cover;
 }
