@@ -14,7 +14,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -24,9 +27,17 @@ import javafx.stage.Stage;
  */
 public class CriacaoUsuarioController  implements Initializable {
     
-    
+//    @FXML
+//    private Canvas canvas;
+//    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+//        // TODO
+//        GraphicsContext gc = canvas.getGraphicsContext2D();
+//        AnimatedImage boneco1 = new AnimatedImage();
+//        Image[] imageArray = new Image[4];
+//         for (int i = 0; i < 4; i++)
+//            imageArray[i] = new Image( "../resources/Laponico/LaponicoAlquimista-" + i + ".png" );
+//          
     }
 }
