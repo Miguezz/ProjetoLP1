@@ -20,20 +20,20 @@
                <children>
                   <Canvas fx:id="canvas" height="540.0" layoutX="16.0" layoutY="14.0" width="306.0" />
                </children></Pane>
-            <Button layoutX="785.0" layoutY="619.0" mnemonicParsing="false" text="Confirmar">
+            <Button layoutX="618.0" layoutY="633.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="142.0" styleClass="botao" stylesheets="@../menuprincipalpane.css" text="Confirmar">
                     <font>
                         <Font name="Alagard" size="16.0" />
                     </font>
                   </Button>
-            <Pane layoutX="520.0" layoutY="262.0" prefHeight="245.0" prefWidth="337.0" style="-fx-border-color: black; -fx-background-color: purple;">
+            <Pane layoutX="521.0" layoutY="100.0" prefHeight="504.0" prefWidth="337.0" style="-fx-border-color: black; -fx-background-color: purple; -fx-border-radius: 10; -fx-background-radius: 10;">
                <children>
-                  <Button fx:id="btnAntRaca" layoutX="23.0" layoutY="87.0" mnemonicParsing="false" onAction="#acaoClick" text="Anterior">
+                  <Button fx:id="btnAntRaca" layoutX="9.0" layoutY="79.0" mnemonicParsing="false" onAction="#acaoClick" prefHeight="42.0" prefWidth="77.0" styleClass="botao" stylesheets="@../menuprincipalpane.css" text="Anterior">
                     <font>
                         <Font name="Alagard" size="13.0" />
                     </font>
                   </Button>
                   
-                  <Button fx:id="btnProxRaca" layoutX="252.0" layoutY="87.0" mnemonicParsing="false" onAction="#acaoClick" text="Próximo">
+                  <Button fx:id="btnProxRaca" layoutX="252.0" layoutY="79.0" mnemonicParsing="false" onAction="#acaoClick" prefHeight="42.0" prefWidth="77.0" styleClass="botao" stylesheets="@../menuprincipalpane.css" text="Próximo">
                      <font>
                         <Font name="Alagard" size="13.0" />
                      </font></Button>
@@ -45,16 +45,16 @@
                            </font></Label>
                      </children>
                   </Pane>
-                  <TextField alignment="CENTER" layoutX="102.0" layoutY="29.0" onAction="#acaoClick" text="Personagem 1">
+                  <TextField fx:id="tfNome" alignment="CENTER" layoutX="102.0" layoutY="29.0" onAction="#acaoClick" text="Personagem 1">
                      <font>
                         <Font name="Alagard" size="13.0" />
                      </font></TextField>
-                  <Button fx:id="btnAntClasse" layoutX="23.0" layoutY="180.0" mnemonicParsing="false" onAction="#acaoClick" text="Anterior">
+                  <Button fx:id="btnAntClasse" layoutX="9.0" layoutY="172.0" mnemonicParsing="false" onAction="#acaoClick" prefHeight="42.0" prefWidth="77.0" styleClass="botao" stylesheets="@../menuprincipalpane.css" text="Anterior">
                     <font>
                         <Font name="Alagard" size="13.0" />
                     </font>
                   </Button>
-                  <Button fx:id="btnProxClasse" layoutX="252.0" layoutY="180.0" mnemonicParsing="false" onAction="#acaoClick" text="Próximo">
+                  <Button fx:id="btnProxClasse" layoutX="252.0" layoutY="172.0" mnemonicParsing="false" onAction="#acaoClick" prefHeight="42.0" prefWidth="77.0" styleClass="botao" stylesheets="@../menuprincipalpane.css" text="Próximo">
                     <font>
                         <Font name="Alagard" size="13.0" />
                     </font>
@@ -65,6 +65,55 @@
                            <font>
                               <Font name="Alagard" size="13.0" />
                            </font></Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="6.0" layoutY="235.0" prefHeight="245.0" prefWidth="325.0" style="-fx-border-color: black; -fx-border-radius: 10; -fx-background-color: white; -fx-background-radius: 10;">
+                     <children>
+                        <Label alignment="CENTER" layoutX="124.0" layoutY="14.0" prefHeight="17.0" prefWidth="77.0" text="Atributos">
+                           <font>
+                              <Font name="Alagard" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="47.0" layoutY="57.0" prefHeight="17.0" prefWidth="77.0" text="Ataque">
+                           <font>
+                              <Font name="Alagard" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="47.0" layoutY="117.0" prefHeight="17.0" prefWidth="77.0" text="Vida">
+                           <font>
+                              <Font name="Alagard" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="47.0" layoutY="87.0" prefHeight="17.0" prefWidth="77.0" text="Defesa">
+                           <font>
+                              <Font name="Alagard" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="47.0" layoutY="147.0" prefHeight="17.0" prefWidth="77.0" text="Mana">
+                           <font>
+                              <Font name="Alagard" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbAtaque" alignment="CENTER" layoutX="201.0" layoutY="57.0" prefHeight="17.0" prefWidth="77.0" text="10">
+                           <font>
+                              <Font name="Alagard" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbDefesa" alignment="CENTER" layoutX="201.0" layoutY="87.0" prefHeight="17.0" prefWidth="77.0" text="10">
+                           <font>
+                              <Font name="Alagard" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbVida" alignment="CENTER" layoutX="201.0" layoutY="117.0" prefHeight="17.0" prefWidth="77.0" text="10">
+                           <font>
+                              <Font name="Alagard" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbMana" alignment="CENTER" layoutX="201.0" layoutY="147.0" prefHeight="17.0" prefWidth="77.0" text="10">
+                           <font>
+                              <Font name="Alagard" size="16.0" />
+                           </font>
+                        </Label>
                      </children>
                   </Pane>
                </children>

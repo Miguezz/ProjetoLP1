@@ -42,7 +42,7 @@ public class Personagem implements Serializable{
     private int racaInt;
     private ClasseMae classe;
     
-    Personagem(String nome, int classe, int raca){
+    public Personagem(String nome, int classe, int raca){
       this.nome = nome;
       this.classe = this.getSetClasse(classe);
       this.raca = this.getSetRaca(raca);
