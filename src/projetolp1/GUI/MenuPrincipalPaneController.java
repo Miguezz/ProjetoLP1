@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -23,12 +24,14 @@ import javafx.stage.Stage;
  *
  * @author FelipeBrasileiro
  */
-public class MenuPrincipalPaneController implements Initializable {
+public class MenuPrincipalPaneController extends Stager implements Initializable {
 
     /**
      * Initializes the controller class.
      */
-
+    
+    
+    
     @FXML
     private Button btnNovoJogo;
 
@@ -44,9 +47,23 @@ public class MenuPrincipalPaneController implements Initializable {
     @FXML
     private void acaoClick(ActionEvent event) throws Exception {
         if (event.getSource() == btnNovoJogo) {
-            System.out.println("Novo Jogo");
-            AnchorPane newPane = FXMLLoader.load(getClass().getResource("fxml/SelecaoPersonagem.fxml"));
-            panePrincipal.getChildren().setAll(newPane);
+//            FXMLLoader loader = FXMLLoader.load(getClass().getResource("fxml/SelecaoPersonagem.fxml"));
+//            Parent root = loader.load();
+//            SelecaoPersonagensController spc = loader.getController();
+//            spc.setStage(this.mStage);
+//            AnchorPane newPane = FXMLLoader.load(getClass().getResource("fxml/SelecaoPersonagem.fxml"));
+//            panePrincipal.getChildren().setAll();
+
+           FXMLLoader loader = new FXMLLoader();
+           Parent root = (Parent)loader.load(getClass().getResource("fxml/CriacaoUsuario.fxml").openStream());
+           CriacaoUsuarioController cuc = loader.getController();
+           cuc.setStage(this.getStage());
+           Scene sc = new Scene(root);
+           sc.getStylesheets().addAll(this.getClass().getResource("menuprincipalpane.css").toExternalForm());
+           this.getStage().setScene(sc);
+           this.getStage().show();
+            
+            
         } else if (event.getSource() == btnCarregarJogo) {
             System.out.println("Carrega Jogo");
         }else if (event.getSource() == btnSair) {

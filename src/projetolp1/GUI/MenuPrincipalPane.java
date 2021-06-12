@@ -1,5 +1,6 @@
 package projetolp1.GUI;
 
+import projetolp1.GUI.MenuPrincipalPaneController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,7 +13,11 @@ public class MenuPrincipalPane extends Application {
         // TODO: Testar outros fxml
         stage.setResizable(false);
         stage.setTitle("Aventuras no Lapaverso");
-        Parent root = FXMLLoader.load(getClass().getResource("fxml/MenuPrincipalPane.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        Parent root = (Parent) loader.load(getClass().getResource("fxml/MenuPrincipalPane.fxml").openStream());
+        MenuPrincipalPaneController mppc = loader.getController();
+        mppc.setStage(stage);
+        
         // root.setId("pane");
         Scene scene = new Scene(root);
         scene.getStylesheets().addAll(this.getClass().getResource("menuprincipalpane.css").toExternalForm());

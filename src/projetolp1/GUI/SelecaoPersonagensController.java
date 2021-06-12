@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
@@ -24,12 +25,13 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import projetolp1.Principal.Personagem;
+import projetolp1.Principal.User;
 
 /**
  *
  * @author FelipeBrasileiro
  */
-public class SelecaoPersonagensController implements Initializable {
+public class SelecaoPersonagensController extends Stager implements Initializable {
     
     @FXML
     private Canvas canvas;
@@ -40,7 +42,7 @@ public class SelecaoPersonagensController implements Initializable {
     @FXML
     private TextField tfNome;
     @FXML
-    private Button btnProxClasse, btnAntClasse, btnProxRaca, btnAntRaca;
+    private Button btnProxClasse, btnAntClasse, btnProxRaca, btnAntRaca, btnConfirmar;
     
     @FXML
     AnimationTimer at;
@@ -49,7 +51,22 @@ public class SelecaoPersonagensController implements Initializable {
             classes= {"Alquimista", "Assassino", "Bruxo", "Cacador", "Cavaleiro", "Feiticeiro", "Sacerdote"};
     int contRaca = 0, contClasse = 0;
     
+    User u, u2;
     Personagem p;
+    int index, ord;
+    boolean replace;
+    String pNome;
+    public void setUser(User u, int index, boolean replace, User u2, int ord){
+        this.index = index;
+        this.replace = replace;
+        this.u = u;
+        this.u2 = u2;
+        this.ord = ord;
+    }
+    public void setPersonagem(Personagem p, String nome){
+        this.p = p;
+        this.pNome = nome;
+    }
     
     private void startAnimacao(GraphicsContext gc){
         final long startNanoTime = System.nanoTime();
@@ -58,7 +75,8 @@ public class SelecaoPersonagensController implements Initializable {
             @Override
             public void handle(long currentNanoTime)
             {
-                double t = (currentNanoTime - startNanoTime) / 10000000.0; 
+                double t = (currentNanoTime - startNanoTime) / 10000000.0;
+                // Pog pra limpar e atualizar o frame
                 gc.drawImage(new Image(getClass().getResource("../../resources/parede.png").toExternalForm()), 0, 0, 600, 600);
                 gc.drawImage( boneco.getFrame(t), -350, -200 );
                 
@@ -86,7 +104,7 @@ public class SelecaoPersonagensController implements Initializable {
     public void initialize(){
         this.lbRaca.setText(this.racas[this.contRaca]);
         this.lbClasse.setText(this.classes[this.contClasse]);
-        this.p = new Personagem(this.tfNome.getText(), this.contClasse, this.contRaca);
+        this.p = new Personagem(this.pNome, this.contClasse, this.contRaca);
         this.setAtributos();
         loadImage("../../resources/"+ this.racas[contRaca] +"/"+ this.classes[contClasse]
                 + "/" + this.racas[contRaca] + this.classes[contClasse], true);
@@ -108,7 +126,12 @@ public class SelecaoPersonagensController implements Initializable {
     
     @FXML
     private void acaoClick(ActionEvent event) throws Exception {
-        
+        if(this.u == null){
+            this.u = new User();
+        }
+        if(this.u2 == null){
+            this.u2 = new User();
+        }
         if (event.getSource() == this.btnProxRaca) {
             this.contRaca = (this.contRaca + 1) % this.racas.length; // limita ao max
             this.lbRaca.setText(this.racas[this.contRaca]);
@@ -151,6 +174,28 @@ public class SelecaoPersonagensController implements Initializable {
             this.p = new Personagem(this.tfNome.getText(), this.contClasse, this.contRaca);
             this.setAtributos();
 
+        }else if(event.getSource() == this.btnConfirmar){
+            System.out.println("AAAAAAA");
+            this.p = new Personagem(this.tfNome.getText(), this.contClasse, this.contRaca);
+            if(this.replace && (this.u.getParty().size() > 0 && this.u.getParty().size() > index)){
+                this.u.getParty().set(this.index, this.p);
+            }else{
+                u.getParty().add(p);
+            }
+            FXMLLoader loader = new FXMLLoader();
+            Parent root = (Parent)loader.load(getClass().getResource("fxml/CriacaoUsuario.fxml").openStream());
+            CriacaoUsuarioController cuc = loader.getController();
+            cuc.setStage(this.getStage());
+            if(this.ord == 1){
+                cuc.setUsers(this.u, this.u2);
+            }else{
+                cuc.setUsers(this.u2, this.u);
+            }
+            Scene sc = new Scene(root);
+            sc.getStylesheets().addAll(this.getClass().getResource("menuprincipalpane.css").toExternalForm());
+            this.getStage().setScene(sc);
+            this.getStage().show();
+            
         }
 
     }

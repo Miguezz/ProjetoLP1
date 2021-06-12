@@ -39,7 +39,7 @@ public class Personagem implements Serializable{
     // Equip equipamento -- talvez separar em slots? cabeca, armadura, botas.
     private int dano;
     private RacaBase  raca;
-    private int racaInt;
+    private int racaInt, classeInt;
     private ClasseMae classe;
     
     public Personagem(String nome, int classe, int raca){
@@ -47,6 +47,7 @@ public class Personagem implements Serializable{
       this.classe = this.getSetClasse(classe);
       this.raca = this.getSetRaca(raca);
       this.racaInt = raca;
+      this.classeInt = classe;
       this.modDano = 1;
       this.danoBase = 5 + this.raca.getModDanoBase();
       this.defesa = 5 + this.raca.getModDefBase();
@@ -58,7 +59,43 @@ public class Personagem implements Serializable{
       this.status = new Status();
       this.qtdMovimento = 3;
     }
-    
+    public String getRacaStr(){
+        switch(this.racaInt){
+            case 0:
+                return "Laponico";
+            case 1:
+                return "Anao";
+            case 2:
+                return "Dragonborn";
+            case 3:
+                return "Elfo";
+            case 4:
+                return "Orc";
+            case 5:
+                return "Tiefling";
+      }
+        return "None";
+    }
+    public String getClasseStr(){
+        switch(this.classeInt){
+            case 0:
+                return "Alquimista";
+            case 1:
+                return "Assassino";
+            case 2:
+                return "Bruxo";
+            case 3:
+                return "Cacador";
+            case 4:
+                return "Cavaleiro";
+            case 5:
+                return "Feiticeiro";
+            case 6:
+                return "Sacerdote";
+      }
+        
+        return "None";
+    }
     
     public int getRacaInt(){ // necessario para printar no mapa. Pode tirar dps qnd tiver na parte grafica
         return this.racaInt;
