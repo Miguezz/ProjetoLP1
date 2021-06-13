@@ -65,6 +65,7 @@ public class MenuPrincipalPaneController extends Stager implements Initializable
             System.out.println("Carrega Jogo");
             
         }else if (event.getSource() == Tutorial) {
+            System.out.println("Click");
            FXMLLoader loader = new FXMLLoader();
            Parent root = (Parent)loader.load(getClass().getResource("fxml/Tutorial.fxml").openStream());
            TutorialController tc = loader.getController();

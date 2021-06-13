@@ -39,20 +39,20 @@ public class TutorialController extends Stager implements Initializable {
     private Label Tutorialpag;
     
     
-    
+    @FXML
     private void acaoClick(ActionEvent event) throws Exception {
         int pag = 1;
         if (event.getSource() == MenuButton) {
             System.out.println("Voltando para o menu");
-       System.out.println("Novo Jogo");
-        FXMLLoader loader = new FXMLLoader();
-        Parent root = (Parent)loader.load(getClass().getResource("fxml/MenuPrincipalPane.fxml").openStream());
-        MenuPrincipalPaneController mpp = loader.getController();
-        mpp.setStage(this.getStage());
-        Scene sc = new Scene(root);
-        sc.getStylesheets().addAll(this.getClass().getResource("menuprincipalpane.css").toExternalForm());
-        this.getStage().setScene(sc);
-        this.getStage().show();
+            System.out.println("Novo Jogo");
+            FXMLLoader loader = new FXMLLoader();
+            Parent root = (Parent)loader.load(getClass().getResource("fxml/MenuPrincipalPane.fxml").openStream());
+            MenuPrincipalPaneController mpp = loader.getController();
+            mpp.setStage(this.getStage());
+            Scene sc = new Scene(root);
+            sc.getStylesheets().addAll(this.getClass().getResource("menuprincipalpane.css").toExternalForm());
+            this.getStage().setScene(sc);
+            this.getStage().show();
         } else if (event.getSource() == Proximo) {
             System.out.println("Passando a pagina");
             pag++;
@@ -86,7 +86,7 @@ public class TutorialController extends Stager implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
    
