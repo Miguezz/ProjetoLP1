@@ -30,7 +30,7 @@ public class TutorialController extends Stager implements Initializable {
     int pag=0;
     
     @FXML
-    private Pane ImagemTutorial;
+    private Pane ImagemTutorial, ImagemTutorialD, ImagemTutorialE;
     
     @FXML
     private Button MenuButton;
@@ -49,7 +49,6 @@ public class TutorialController extends Stager implements Initializable {
     private void acaoClick(ActionEvent event) throws Exception {
         if (event.getSource() == MenuButton) {
             System.out.println("Voltando para o menu");
-            System.out.println("Novo Jogo");
             FXMLLoader loader = new FXMLLoader();
             Parent root = (Parent)loader.load(getClass().getResource("fxml/MenuPrincipalPane.fxml").openStream());
             MenuPrincipalPaneController mpp = loader.getController();
@@ -79,6 +78,9 @@ public class TutorialController extends Stager implements Initializable {
     void passarpag(){
             switch(pag){
                 case 0:
+                    ImagemTutorialD.setVisible(false);
+                    ImagemTutorialE.setVisible(false);
+                    ImagemTutorial.setVisible(false);
                     
                     Tutorialpag.setText("Mapas(1/2)\n" +
 "\n" +
@@ -87,27 +89,38 @@ public class TutorialController extends Stager implements Initializable {
 "a passagem dos jogadores e seus posicionamentos");
                 break;
                 case 1:
-                    ImagemTutorial.setVisible(false);
+
+                    ImagemTutorialE.setStyle("-fx-background-size: 300; -fx-background-image: url(\"resources/Mapa10x10.png\")");
+                    ImagemTutorial.setStyle("-fx-background-size: 300; -fx-background-image: url(\"resources/Mapa15x15.png\")");
+                    ImagemTutorialD.setStyle("-fx-background-size: 300; -fx-background-image: url(\"resources/Mapa20x20.png\")");
+                    ImagemTutorialD.setVisible(true);
+                    ImagemTutorialE.setVisible(true);
+                    ImagemTutorial.setVisible(true);
                     Tutorialpag.setText("Mapas(2/2)\n" +
 "\n" +
 "Cada casa do mapa so pode ser ocupado por 1 personagem, seja aliado ou inimigo");
                 break;
                 case 2:
+                    ImagemTutorialD.setVisible(false);
+                    ImagemTutorialE.setVisible(false);
+                    ImagemTutorial.setStyle("-fx-background-size: 300; -fx-background-image: url(\"resources/Racas.png\")");
+                    ImagemTutorial.setVisible(true);
                     Tutorialpag.setText("Personagens\n" +
 "\n" +
 "Cada usuario tem a possibilidade de criar 5 personagens, que podem possuir dentre as \n" +
 "6 Racas e 7 Classes, tendo uma variacao de atributos com racas e mudanças de habilidades com as classes");
-                    ImagemTutorial.setStyle("-fx-background-size: 300; -fx-background-image: url(\"resources/Racas.png\")");
-                    ImagemTutorial.setVisible(true);
+                    
                 break;
                 case 3:
-                    ImagemTutorial.setVisible(false);
+                    ImagemTutorial.setStyle("-fx-background-size: 300; -fx-background-position: center; -fx-background-repeat: no-repeat; -fx-background-image: url(\"resources/Loja.png\")");
+                    ImagemTutorial.setVisible(true);
                     Tutorialpag.setText("Loja\n" +
 "\n" +
 "Após cada fim de partida, o vencedor receberá 25LP (LapaCoin) e o perdedor 5LP.\n" +
 "Liberando compras de novos equipamentos e consumiveis.");
                 break;
                 case 4:
+                    ImagemTutorial.setVisible(false);
                     Tutorialpag.setText("Ataque\n" +
 "\n" +
 "Para realizar um ataque ou utilizar uma habilidade, necessita estar dentro do alcance de ataque,\n" +
@@ -115,6 +128,8 @@ public class TutorialController extends Stager implements Initializable {
 "Para atacar, selecione o seu personagem e o personagem alvo depois clique em atacar.");
                 break;
                 case 5:
+                    ImagemTutorial.setVisible(true);
+                    ImagemTutorial.setStyle("-fx-background-size: 300; -fx-background-position: center; -fx-background-repeat: no-repeat; -fx-background-image: url(\"resources/Atributos.png\")");
                     Tutorialpag.setText("Atributos\n" +
 "\n" +
 "Cada personagem possui atributos que influencia nos ataques, uso de habilidades e na defesa do jogador, sendo eles:\n" +
@@ -129,7 +144,7 @@ public class TutorialController extends Stager implements Initializable {
 "Lembrando que os atributos podem aumentar com base na raça, itens ou habilidade.");
                 break;
                 case 6:
-                    ImagemTutorial.setStyle("-fx-background-size: 300; -fx-background-image: url(\"resources/Logo.png\")");
+                    ImagemTutorial.setStyle("-fx-background-size: 300; -fx-background-position: center; -fx-background-repeat: no-repeat; -fx-background-image: url(\"resources/Elementos.png\")");
                     ImagemTutorial.setVisible(true);
                     Tutorialpag.setText("Elementos\n" +
 "\n" +
@@ -137,6 +152,7 @@ public class TutorialController extends Stager implements Initializable {
 "tabela abaixo:");
                 break;
                 case 7:
+                    ImagemTutorial.setVisible(false);
                     Tutorialpag.setText("Habilidades\n" +
 "\n" +
 "Cada classe possui suas habilidades sendo elas unicas com caracteristicas diferentes, servem como ataques especiais para causar\n" +
