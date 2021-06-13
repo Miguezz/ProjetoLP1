@@ -167,7 +167,7 @@
                   </Pane>
                </children>
             </Pane>
-            <Button layoutX="840.0" layoutY="674.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="142.0" styleClass="botao" stylesheets="@../menuprincipalpane.css" text="Continuar">
+            <Button fx:id="btnContinuar" layoutX="840.0" layoutY="674.0" mnemonicParsing="false" onAction="#btnClick" prefHeight="71.0" prefWidth="142.0" styleClass="botao" stylesheets="@../menuprincipalpane.css" text="Continuar">
                <font>
                   <Font name="Alagard" size="16.0" />
                </font>

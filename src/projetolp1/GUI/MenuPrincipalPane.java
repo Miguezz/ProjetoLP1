@@ -1,6 +1,5 @@
 package projetolp1.GUI;
 
-import projetolp1.GUI.MenuPrincipalPaneController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

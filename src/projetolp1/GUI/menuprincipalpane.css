@@ -32,4 +32,7 @@
     -fx-background-position: -63,0;
 
 }
-
+.teste-mapa{
+        -fx-background-image: url("../../resources/Laponico/Alquimista/LaponicoAlquimista_0.png");
+        -fx-background-position: -35,0;
+}

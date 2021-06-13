@@ -14,11 +14,33 @@ public class BlocoMapa {
     private int[] posicao = new int[2];
     private Object ocupante;
     private Mapas mapa;
+    private String bg;
+    private String fg;
+    private String estilo;
     
     public BlocoMapa(int x, int y){
         this.posicao[0] = x;
         this.posicao[1] = y;
         this.ocupante = null;
+        this.estilo = "";
+    }
+    public void setEstilo(String estilo){
+        this.estilo = estilo;
+    }
+    public String getEstilo(){
+        return this.estilo;
+    }
+    public void setBg(String bg){
+        this.bg = bg;
+    }
+    public void setFg(String fg){
+        this.fg = fg;
+    }
+    public String getBg(){
+        return this.bg;
+    }
+    public String getFg(){
+        return this.fg;
     }
     
     public void setOcupante(Object ocupante){
