@@ -18,3 +18,9 @@
     -fx-background-image: url("../../resources/Logo.png");
     -fx-background-size: cover;
 }
+
+
+.TutorialPane {
+    -fx-background-image: url("../../resources/MenuGame.png");
+    font-family: Alagard;
+}
