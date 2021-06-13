@@ -1,22 +1,407 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import java.util.ArrayList?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projetolp1.GUI.MenuPrincipalPaneController">
-    <stylesheets>
-        <URL value="@menuprincipalpane.css" />
-    </stylesheets>
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projetolp1.GUI.CriacaoUsuarioController">
    <children>
       <Pane prefHeight="768.0" prefWidth="1024.0" styleClass="mainFxmlClass" stylesheets="@menuprincipalpane.css">
          <children>
-            <Pane layoutX="39.0" layoutY="48.0" prefHeight="603.0" prefWidth="406.0" style="-fx-border-color: black;">
+            <Pane layoutX="46.0" layoutY="48.0" prefHeight="603.0" prefWidth="406.0" style="-fx-border-color: black; -fx-border-radius: 10; -fx-background-color: purple; -fx-background-radius: 10;">
                <children>
-                  <Pane layoutX="45.0" layoutY="62.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-radius: 10 10 10 10; -fx-border-color: black;" />
-               </children></Pane>
-            <Pane layoutX="568.0" layoutY="48.0" prefHeight="603.0" prefWidth="406.0" style="-fx-border-color: black;" />
+                  <Pane fx:id="paneP1J1" layoutX="14.0" layoutY="98.0" onMouseClicked="#acaoClickJ1" prefHeight="71.0" prefWidth="379.0" style="-fx-border-color: black; -fx-border-radius: 10; -fx-background-color: white; -fx-background-radius: 10;">
+                     <children>
+                        <Pane fx:id="paneC1J1" layoutY="1.0" prefHeight="70.0" prefWidth="73.0" style="-fx-border-radius: 10 10 10 10; -fx-border-color: black; -fx-background-color: white; -fx-background-radius: 10;" styleClass="teste_cabeca" stylesheets="@../menuprincipalpane.css" />
+                        <Label layoutX="133.0" layoutY="6.0" prefHeight="17.0" prefWidth="37.0" text="Nome">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label layoutX="133.0" layoutY="28.0" text="Classe">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label layoutX="133.0" layoutY="49.0" prefHeight="17.0" prefWidth="37.0" text="Raça">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label fx:id="lbNomeP1J1" layoutX="226.0" layoutY="6.0" prefHeight="17.0" prefWidth="125.0">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label fx:id="lbClasseP1J1" layoutX="226.0" layoutY="27.0" prefHeight="17.0" prefWidth="125.0">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label fx:id="lbRacaP1J1" layoutX="226.0" layoutY="49.0" prefHeight="17.0" prefWidth="125.0">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                     </children>
+                  </Pane>
+                  <TextField alignment="CENTER" layoutX="111.0" layoutY="31.0" promptText="Jogador 1">
+                     <font>
+                        <Font name="Alagard" size="18.0" />
+                     </font>
+                  </TextField>
+                  <Pane fx:id="paneP2J1" layoutX="13.0" layoutY="198.0" onMouseClicked="#acaoClickJ1" prefHeight="71.0" prefWidth="379.0" style="-fx-border-color: black; -fx-border-radius: 10; -fx-background-color: white; -fx-background-radius: 10;">
+                     <children>
+                        <Pane fx:id="paneC2J1" layoutY="1.0" prefHeight="70.0" prefWidth="73.0" style="-fx-border-radius: 10 10 10 10; -fx-border-color: black; -fx-background-color: white; -fx-background-radius: 10;" styleClass="teste_cabeca" stylesheets="@../menuprincipalpane.css" />
+                        <Label layoutX="133.0" layoutY="6.0" prefHeight="17.0" prefWidth="37.0" text="Nome">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label layoutX="133.0" layoutY="28.0" text="Classe">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label layoutX="133.0" layoutY="49.0" prefHeight="17.0" prefWidth="37.0" text="Raça">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label fx:id="lbNomeP2J1" layoutX="226.0" layoutY="6.0" prefHeight="17.0" prefWidth="125.0">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label fx:id="lbClasseP2J1" layoutX="226.0" layoutY="27.0" prefHeight="17.0" prefWidth="125.0">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label fx:id="lbRacaP2J1" layoutX="226.0" layoutY="49.0" prefHeight="17.0" prefWidth="125.0">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="paneP3J1" layoutX="13.0" layoutY="298.0" onMouseClicked="#acaoClickJ1" prefHeight="71.0" prefWidth="379.0" style="-fx-border-color: black; -fx-border-radius: 10; -fx-background-color: white; -fx-background-radius: 10;">
+                     <children>
+                        <Pane fx:id="paneC3J1" layoutY="1.0" prefHeight="70.0" prefWidth="73.0" style="-fx-border-radius: 10 10 10 10; -fx-border-color: black; -fx-background-color: white; -fx-background-radius: 10;" styleClass="teste_cabeca" stylesheets="@../menuprincipalpane.css" />
+                        <Label layoutX="133.0" layoutY="6.0" prefHeight="17.0" prefWidth="37.0" text="Nome">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label layoutX="133.0" layoutY="28.0" text="Classe">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label layoutX="133.0" layoutY="49.0" prefHeight="17.0" prefWidth="37.0" text="Raça">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label fx:id="lbNomeP3J1" layoutX="226.0" layoutY="6.0" prefHeight="17.0" prefWidth="125.0">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label fx:id="lbClasseP3J1" layoutX="226.0" layoutY="27.0" prefHeight="17.0" prefWidth="125.0">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label fx:id="lbRacaP3J1" layoutX="226.0" layoutY="49.0" prefHeight="17.0" prefWidth="125.0">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="paneP4J1" layoutX="14.0" layoutY="398.0" onMouseClicked="#acaoClickJ1" prefHeight="71.0" prefWidth="379.0" style="-fx-border-color: black; -fx-border-radius: 10; -fx-background-color: white; -fx-background-radius: 10;">
+                     <children>
+                        <Pane fx:id="paneC4J1" layoutY="1.0" prefHeight="70.0" prefWidth="73.0" style="-fx-border-radius: 10 10 10 10; -fx-border-color: black; -fx-background-color: white; -fx-background-radius: 10;" styleClass="teste_cabeca" stylesheets="@../menuprincipalpane.css" />
+                        <Label layoutX="133.0" layoutY="6.0" prefHeight="17.0" prefWidth="37.0" text="Nome">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label layoutX="133.0" layoutY="28.0" text="Classe">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label layoutX="133.0" layoutY="49.0" prefHeight="17.0" prefWidth="37.0" text="Raça">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label fx:id="lbNomeP4J1" layoutX="226.0" layoutY="6.0" prefHeight="17.0" prefWidth="125.0">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label fx:id="lbClasseP4J1" layoutX="226.0" layoutY="27.0" prefHeight="17.0" prefWidth="125.0">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label fx:id="lbRacaP4J1" layoutX="226.0" layoutY="49.0" prefHeight="17.0" prefWidth="125.0">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="paneP5J1" layoutX="14.0" layoutY="498.0" onMouseClicked="#acaoClickJ1" prefHeight="71.0" prefWidth="379.0" style="-fx-border-color: black; -fx-border-radius: 10; -fx-background-color: white; -fx-background-radius: 10;">
+                     <children>
+                        <Pane fx:id="paneC5J1" layoutY="1.0" prefHeight="70.0" prefWidth="73.0" style="-fx-border-radius: 10 10 10 10; -fx-border-color: black; -fx-background-color: white; -fx-background-radius: 10;" styleClass="teste_cabeca" stylesheets="@../menuprincipalpane.css" />
+                        <Label layoutX="133.0" layoutY="6.0" prefHeight="17.0" prefWidth="37.0" text="Nome">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label layoutX="133.0" layoutY="28.0" text="Classe">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label layoutX="133.0" layoutY="49.0" prefHeight="17.0" prefWidth="37.0" text="Raça">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label fx:id="lbNomeP5J1" layoutX="226.0" layoutY="6.0" prefHeight="17.0" prefWidth="125.0">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label fx:id="lbClasseP5J1" layoutX="226.0" layoutY="27.0" prefHeight="17.0" prefWidth="125.0">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label fx:id="lbRacaP5J1" layoutX="226.0" layoutY="49.0" prefHeight="17.0" prefWidth="125.0">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Button layoutX="840.0" layoutY="674.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="142.0" styleClass="botao" stylesheets="@../menuprincipalpane.css" text="Continuar">
+               <font>
+                  <Font name="Alagard" size="16.0" />
+               </font>
+            </Button>
+            <Pane layoutX="576.0" layoutY="48.0" prefHeight="603.0" prefWidth="406.0" style="-fx-border-color: black; -fx-border-radius: 10; -fx-background-color: purple; -fx-background-radius: 10;">
+               <children>
+                  <Pane fx:id="paneP1J2" layoutX="14.0" layoutY="98.0" onMouseClicked="#acaoClickJ2" prefHeight="71.0" prefWidth="379.0" style="-fx-border-color: black; -fx-border-radius: 10; -fx-background-color: white; -fx-background-radius: 10;">
+                     <children>
+                        <Pane fx:id="paneC1J2" layoutY="1.0" prefHeight="70.0" prefWidth="73.0" style="-fx-border-radius: 10 10 10 10; -fx-border-color: black; -fx-background-color: white; -fx-background-radius: 10;" styleClass="teste_cabeca" stylesheets="@../menuprincipalpane.css" />
+                        <Label layoutX="133.0" layoutY="6.0" prefHeight="17.0" prefWidth="37.0" text="Nome">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label layoutX="133.0" layoutY="28.0" text="Classe">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label layoutX="133.0" layoutY="49.0" prefHeight="17.0" prefWidth="37.0" text="Raça">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label fx:id="lbNomeP1J2" layoutX="226.0" layoutY="6.0" prefHeight="17.0" prefWidth="125.0">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label fx:id="lbClasseP1J2" layoutX="226.0" layoutY="27.0" prefHeight="17.0" prefWidth="125.0">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label fx:id="lbRacaP1J2" layoutX="226.0" layoutY="49.0" prefHeight="17.0" prefWidth="125.0">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="paneP2J2" layoutX="13.0" layoutY="198.0" onMouseClicked="#acaoClickJ2" prefHeight="71.0" prefWidth="379.0" style="-fx-border-color: black; -fx-border-radius: 10; -fx-background-color: white; -fx-background-radius: 10;">
+                     <children>
+                        <Pane fx:id="paneC2J2" layoutY="1.0" prefHeight="70.0" prefWidth="73.0" style="-fx-border-radius: 10 10 10 10; -fx-border-color: black; -fx-background-color: white; -fx-background-radius: 10;" styleClass="teste_cabeca" stylesheets="@../menuprincipalpane.css" />
+                        <Label layoutX="133.0" layoutY="6.0" prefHeight="17.0" prefWidth="37.0" text="Nome">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label layoutX="133.0" layoutY="28.0" text="Classe">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label layoutX="133.0" layoutY="49.0" prefHeight="17.0" prefWidth="37.0" text="Raça">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label fx:id="lbNomeP2J2" layoutX="226.0" layoutY="6.0" prefHeight="17.0" prefWidth="125.0">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label fx:id="lbClasseP2J2" layoutX="226.0" layoutY="27.0" prefHeight="17.0" prefWidth="125.0">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label fx:id="lbRacaP2J2" layoutX="226.0" layoutY="49.0" prefHeight="17.0" prefWidth="125.0">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="paneP3J2" layoutX="13.0" layoutY="298.0" onMouseClicked="#acaoClickJ2" prefHeight="71.0" prefWidth="379.0" style="-fx-border-color: black; -fx-border-radius: 10; -fx-background-color: white; -fx-background-radius: 10;">
+                     <children>
+                        <Pane fx:id="paneC3J2" layoutY="1.0" prefHeight="70.0" prefWidth="73.0" style="-fx-border-radius: 10 10 10 10; -fx-border-color: black; -fx-background-color: white; -fx-background-radius: 10;" styleClass="teste_cabeca" stylesheets="@../menuprincipalpane.css" />
+                        <Label layoutX="133.0" layoutY="6.0" prefHeight="17.0" prefWidth="37.0" text="Nome">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label layoutX="133.0" layoutY="28.0" text="Classe">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label layoutX="133.0" layoutY="49.0" prefHeight="17.0" prefWidth="37.0" text="Raça">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label fx:id="lbNomeP3J2" layoutX="226.0" layoutY="6.0" prefHeight="17.0" prefWidth="125.0">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label fx:id="lbClasseP3J2" layoutX="226.0" layoutY="27.0" prefHeight="17.0" prefWidth="125.0">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label fx:id="lbRacaP3J2" layoutX="226.0" layoutY="49.0" prefHeight="17.0" prefWidth="125.0">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="paneP4J2" layoutX="14.0" layoutY="398.0" onMouseClicked="#acaoClickJ2" prefHeight="71.0" prefWidth="379.0" style="-fx-border-color: black; -fx-border-radius: 10; -fx-background-color: white; -fx-background-radius: 10;">
+                     <children>
+                        <Pane fx:id="paneC4J2" layoutY="1.0" prefHeight="70.0" prefWidth="73.0" style="-fx-border-radius: 10 10 10 10; -fx-border-color: black; -fx-background-color: white; -fx-background-radius: 10;" styleClass="teste_cabeca" stylesheets="@../menuprincipalpane.css" />
+                        <Label layoutX="133.0" layoutY="6.0" prefHeight="17.0" prefWidth="37.0" text="Nome">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label layoutX="133.0" layoutY="28.0" text="Classe">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label layoutX="133.0" layoutY="49.0" prefHeight="17.0" prefWidth="37.0" text="Raça">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label fx:id="lbNomeP4J2" layoutX="226.0" layoutY="6.0" prefHeight="17.0" prefWidth="125.0">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label fx:id="lbClasseP4J2" layoutX="226.0" layoutY="27.0" prefHeight="17.0" prefWidth="125.0">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label fx:id="lbRacaP4J2" layoutX="226.0" layoutY="49.0" prefHeight="17.0" prefWidth="125.0">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="paneP5J2" layoutX="14.0" layoutY="498.0" onMouseClicked="#acaoClickJ2" prefHeight="71.0" prefWidth="379.0" style="-fx-border-color: black; -fx-border-radius: 10; -fx-background-color: white; -fx-background-radius: 10;">
+                     <children>
+                        <Pane fx:id="paneC5J2" layoutY="1.0" prefHeight="70.0" prefWidth="73.0" style="-fx-border-radius: 10 10 10 10; -fx-border-color: black; -fx-background-color: white; -fx-background-radius: 10;" styleClass="teste_cabeca" stylesheets="@../menuprincipalpane.css" />
+                        <Label layoutX="133.0" layoutY="6.0" prefHeight="17.0" prefWidth="37.0" text="Nome">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label layoutX="133.0" layoutY="28.0" text="Classe">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label layoutX="133.0" layoutY="49.0" prefHeight="17.0" prefWidth="37.0" text="Raça">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label fx:id="lbNomeP5J2" layoutX="226.0" layoutY="6.0" prefHeight="17.0" prefWidth="125.0">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label fx:id="lbRacaP5J2" layoutX="226.0" layoutY="27.0" prefHeight="17.0" prefWidth="125.0">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                        <Label fx:id="lbClasseP5J2" layoutX="226.0" layoutY="49.0" prefHeight="17.0" prefWidth="125.0">
+                           <font>
+                              <Font name="Alagard" size="14.0" />
+                           </font></Label>
+                     </children>
+                  </Pane>
+                  <TextField alignment="CENTER" layoutX="112.0" layoutY="31.0" promptText="Jogador 2">
+                     <font>
+                        <Font name="Alagard" size="18.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </Pane>
          </children>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
       </Pane>
    </children>
+   <fx:define>
+        <ArrayList fx:id="labelListNRCJ1">
+            <fx:reference source="lbNomeP1J1" />
+            <fx:reference source="lbClasseP1J1" />
+            <fx:reference source="lbRacaP1J1" />
+            
+            <fx:reference source="lbNomeP2J1" />
+            <fx:reference source="lbClasseP2J1" />
+            <fx:reference source="lbRacaP2J1" />
+            
+            <fx:reference source="lbNomeP3J1" />
+            <fx:reference source="lbClasseP3J1" />
+            <fx:reference source="lbRacaP3J1" />
+            
+            <fx:reference source="lbNomeP4J1" />
+            <fx:reference source="lbClasseP4J1" />
+            <fx:reference source="lbRacaP4J1" />
+
+            <fx:reference source="lbNomeP5J1" />
+            <fx:reference source="lbClasseP5J1" />
+            <fx:reference source="lbRacaP5J1" />
+        </ArrayList>
+        <ArrayList fx:id="labelListNRCJ2">
+            <fx:reference source="lbNomeP1J2" />
+            <fx:reference source="lbClasseP1J2" />
+            <fx:reference source="lbRacaP1J2" />
+            
+            <fx:reference source="lbNomeP2J2" />
+            <fx:reference source="lbClasseP2J2" />
+            <fx:reference source="lbRacaP2J2" />
+            
+            <fx:reference source="lbNomeP3J2" />
+            <fx:reference source="lbClasseP3J2" />
+            <fx:reference source="lbRacaP3J2" />
+            
+            <fx:reference source="lbNomeP4J2" />
+            <fx:reference source="lbClasseP4J2" />
+            <fx:reference source="lbRacaP4J2" />
+
+            <fx:reference source="lbNomeP5J2" />
+            <fx:reference source="lbClasseP5J2" />
+            <fx:reference source="lbRacaP5J2" />
+        </ArrayList>
+        <ArrayList fx:id="paneListJ1">
+            <fx:reference source="paneP1J1" />
+            <fx:reference source="paneP2J1" />
+            <fx:reference source="paneP3J1" />
+            <fx:reference source="paneP4J1" />
+            <fx:reference source="paneP5J1" />
+        </ArrayList>
+        <ArrayList fx:id="paneListJ2">
+            <fx:reference source="paneP1J2" />
+            <fx:reference source="paneP2J2" />
+            <fx:reference source="paneP3J2" />
+            <fx:reference source="paneP4J2" />
+            <fx:reference source="paneP5J2" />
+        </ArrayList>
+        <ArrayList fx:id="paneListCabecasJ1">
+            <fx:reference source="paneC1J1" />
+            <fx:reference source="paneC2J1" />
+            <fx:reference source="paneC3J1" />
+            <fx:reference source="paneC4J1" />
+            <fx:reference source="paneC5J1" />
+        </ArrayList>
+        <ArrayList fx:id="paneListCabecasJ2">
+            <fx:reference source="paneC1J2" />
+            <fx:reference source="paneC2J2" />
+            <fx:reference source="paneC3J2" />
+            <fx:reference source="paneC4J2" />
+            <fx:reference source="paneC5J2" />
+        </ArrayList>
+    </fx:define>
 </AnchorPane>

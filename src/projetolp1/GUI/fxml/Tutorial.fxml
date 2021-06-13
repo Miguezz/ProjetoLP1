@@ -10,10 +10,10 @@
    <children>
       <Pane prefHeight="768.0" prefWidth="1024.0" styleClass="TutorialPane" stylesheets="@../menuprincipalpane.css">
          <children>
-            <Button layoutX="743.0" layoutY="634.0" mnemonicParsing="false" text="Button" />
-            <Button fx:id="MenuButton" layoutX="449.0" layoutY="618.0" mnemonicParsing="false" onAction="#acaoClick" prefHeight="63.0" prefWidth="127.0" styleClass="botao" text="Menu Principal" />
-            <Button layoutX="146.0" layoutY="634.0" mnemonicParsing="false" text="Button" />
+            <Button fx:id="MenuButton" layoutX="444.0" layoutY="623.0" mnemonicParsing="false" onAction="#acaoClick" prefHeight="75.0" prefWidth="150.0" styleClass="botao" text="Menu Principal" />
+            <Button fx:id="Anterior" layoutX="144.0" layoutY="623.0" mnemonicParsing="false" onAction="#acaoClick" prefHeight="50.0" prefWidth="100.0" styleClass="botao" text="Anterior" />
             <Label layoutX="37.0" layoutY="38.0" prefHeight="324.0" prefWidth="964.0" text="Label" />
+            <Button fx:id="Proximo" layoutX="794.0" layoutY="623.0" mnemonicParsing="false" onAction="#acaoClick" prefHeight="50.0" prefWidth="100.0" styleClass="botao" text="Proximo" />
          </children>
       </Pane>
    </children>

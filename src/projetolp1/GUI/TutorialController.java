@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -23,14 +24,24 @@ import javafx.stage.Stage;
  *
  * @author felip
  */
-public class TutorialController implements Initializable {
+public class TutorialController extends Stager implements Initializable {
     
     @FXML
     private Button MenuButton;
     
+    @FXML
+    private Button Proximo;
+    
+    @FXML
+    private Button Anterior;
+            
+    @FXML
+    private Label Tutorialpag;
+    
     
     
     private void acaoClick(ActionEvent event) throws Exception {
+        int pag = 1;
         if (event.getSource() == MenuButton) {
             System.out.println("Voltando para o menu");
        System.out.println("Novo Jogo");
@@ -42,12 +53,40 @@ public class TutorialController implements Initializable {
         sc.getStylesheets().addAll(this.getClass().getResource("menuprincipalpane.css").toExternalForm());
         this.getStage().setScene(sc);
         this.getStage().show();
-        } else if (event.getSource() == proximo) {
+        } else if (event.getSource() == Proximo) {
             System.out.println("Passando a pagina");
-        }else if (event.getSource() == anterior) {
+            pag++;
+            
+            switch(pag){
+                case 1:
+                    Tutorialpag.setText("Testando");
+                case 2:
+                    Tutorialpag.setText("Testando1");
+                case 3:
+                    Tutorialpag.setText("Testando2");
+                case 4:
+                    Tutorialpag.setText("Testando3");
+            }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        }else if (event.getSource() == Anterior) {
             System.out.println("Voltando a pagina");
         }
 
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
    
