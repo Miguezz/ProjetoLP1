@@ -42,16 +42,15 @@ public class CriacaoUsuarioController extends Stager implements Initializable {
     List<Label> labelListNRCJ1, labelListNRCJ2;
     
     @FXML
-    List<Pane> paneListJ1, paneListJ2;
+    List<Pane> paneListJ1, paneListJ2, paneListCabecasJ1, paneListCabecasJ2;
     
     User u1, u2;
     public void setUsers(User u1, User u2){
         this.u1 = u1;
+//        System.out.println(u1.getParty().get(0));
         this.u2 = u2;
-        System.out.println(u1.getParty().get(0).getNome());
         int i =0;
         if(u1.getParty().size() > 0){
-            System.out.println("AAA");
             for(Personagem p : u1.getParty()){
                 fillPane(1, p, i);
                 i+=3;
@@ -59,7 +58,7 @@ public class CriacaoUsuarioController extends Stager implements Initializable {
         }
         i = 0;
         if(u2.getParty().size() > 0){
-            for(Personagem p : u1.getParty()){
+            for(Personagem p : u2.getParty()){
                 fillPane(2, p, i);
                 i+=3;
             }
@@ -72,28 +71,67 @@ public class CriacaoUsuarioController extends Stager implements Initializable {
     
     @FXML
     private void fillPane(int user, Personagem p, int index){
-        int pos = index*3;
+        System.out.println("fillPane");
+        System.out.println(p);
+//        System.out.println(index + " "+  index);
         if(user == 1){
-            this.labelListNRCJ1.get(pos).setText(p.getNome());
-            this.labelListNRCJ1.get(pos+1).setText(p.getClasseStr());
-            this.labelListNRCJ1.get(pos+2).setText(p.getRacaStr());
+            if(index == 0){
+                this.paneListCabecasJ1.get(index).setStyle(
+                        "-fx-border-color: #000000;"
+                        +"-fx-border-radius: 10;"
+                        +"-fx-background-radius: 10;"
+                        +"-fx-background-size: 200;"
+                        +"-fx-background-position: -63,0;"
+                        + "-fx-background-image: url(\"resources/Cabecas/Cabeca" + p.getRacaStr() + ".png\")");
+            }
+            else{
+                this.paneListCabecasJ1.get(index/3).setStyle(
+                        "-fx-border-color: #000000;"
+                        +"-fx-border-radius: 10;"
+                        +"-fx-background-radius: 10;"
+                        +"-fx-background-size: 200;"
+                        +"-fx-background-position: -63,0;"
+                        + "-fx-background-image: url(\"resources/Cabecas/Cabeca" + p.getRacaStr() + ".png\")");
+            }
+                
+            this.labelListNRCJ1.get(index).setText(p.getNome());
+            this.labelListNRCJ1.get(index+1).setText(p.getClasseStr());
+            this.labelListNRCJ1.get(index+2).setText(p.getRacaStr());
         }
         else if(user == 2){
-            this.labelListNRCJ2.get(pos).setText(p.getNome());
-            this.labelListNRCJ2.get(pos+1).setText(p.getClasseStr());
-            this.labelListNRCJ2.get(pos+2).setText(p.getRacaStr());
+            if(index == 0){
+                this.paneListCabecasJ2.get(index).setStyle(
+                        "-fx-border-color: #000000;"
+                        +"-fx-border-radius: 10;"
+                        +"-fx-background-radius: 10;"
+                        +"-fx-background-size: 200;"
+                        +"-fx-background-position: -63,0;"
+                        + "-fx-background-image: url(\"resources/Cabecas/Cabeca" + p.getRacaStr() + ".png\")");
+            }
+            else{
+                this.paneListCabecasJ2.get(index/3).setStyle(
+                        "-fx-border-color: #000000;"
+                        +"-fx-border-radius: 10;"
+                        +"-fx-background-radius: 10;"
+                        +"-fx-background-size: 200;"
+                        +"-fx-background-position: -63,0;"
+                        + "-fx-background-image: url(\"resources/Cabecas/Cabeca" + p.getRacaStr() + ".png\")");
+            }
+            this.labelListNRCJ2.get(index).setText(p.getNome());
+            this.labelListNRCJ2.get(index+1).setText(p.getClasseStr());
+            this.labelListNRCJ2.get(index+2).setText(p.getRacaStr());
         }
         
     }
     
     @FXML
-    private void selecionarPersonagem(User u, Personagem p, int index, boolean replace, User u2, int ord) throws Exception{
+    private void selecionarPersonagem(User u, String nome, int index, boolean replace, User u2, int ord) throws Exception{
         FXMLLoader loader = new FXMLLoader();
         Parent root = (Parent)loader.load(getClass().getResource("fxml/SelecaoPersonagem.fxml").openStream());
         SelecaoPersonagensController spc = loader.getController();
         spc.setStage(this.getStage());
         spc.setUser(u, index, replace, u2, ord);
-        spc.setPersonagem(p, p.getNome());
+        spc.setPersonagem(nome);
         Scene sc = new Scene(root);
         sc.getStylesheets().addAll(this.getClass().getResource("menuprincipalpane.css").toExternalForm());
         this.getStage().setScene(sc);
@@ -110,9 +148,9 @@ public class CriacaoUsuarioController extends Stager implements Initializable {
         int i = 0;
         for(Pane pa : this.paneListJ1){
             if(event.getSource() == pa){
-                Personagem p = new Personagem("Personagem " + (i+1), 0, 0);
-                this.selecionarPersonagem(this.u1, p, i, true, this.u2, 1);
-                System.out.println(i);
+//                System.out.println(i);
+                this.selecionarPersonagem(this.u1, "Personagem " + (i+1), i, true, this.u2, 1);
+                
                 return;
             }
             i++;
@@ -123,9 +161,9 @@ public class CriacaoUsuarioController extends Stager implements Initializable {
         int i = 0;
         for(Pane pa : this.paneListJ2){
             if(event.getSource() == pa){
-                Personagem p = new Personagem("Personagem " + i+1, 0, 0);
-                this.selecionarPersonagem(this.u2, p, i, true, this.u1, 2);
-                System.out.println(i);
+//                System.out.println(i);
+                this.selecionarPersonagem(this.u2,"Personagem " + (i+1), i, true, this.u1, 2);
+                
                 return;
             }
             i++;

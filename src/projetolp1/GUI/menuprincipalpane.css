@@ -20,7 +20,7 @@
 }
 
 .teste_cabeca {
-    -fx-background-image: url("../../resources/Cabecas/CabecaLaponico.png");
+/*    -fx-background-image: url("../../resources/Cabecas/CabecaLaponico.png");*/
     -fx-background-size: 200;
     -fx-background-position: -63,0;
 

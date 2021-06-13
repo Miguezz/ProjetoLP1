@@ -41,7 +41,7 @@
                            </font></Label>
                      </children>
                   </Pane>
-                  <TextField fx:id="tfNome" alignment="CENTER" layoutX="102.0" layoutY="29.0" onAction="#acaoClick" text="Personagem 1">
+                  <TextField fx:id="tfNome" alignment="CENTER" layoutX="102.0" layoutY="29.0" onAction="#acaoClick" promptText="Nome">
                      <font>
                         <Font name="Alagard" size="13.0" />
                      </font></TextField>

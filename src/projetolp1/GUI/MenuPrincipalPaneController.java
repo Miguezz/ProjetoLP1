@@ -47,12 +47,6 @@ public class MenuPrincipalPaneController extends Stager implements Initializable
     @FXML
     private void acaoClick(ActionEvent event) throws Exception {
         if (event.getSource() == btnNovoJogo) {
-//            FXMLLoader loader = FXMLLoader.load(getClass().getResource("fxml/SelecaoPersonagem.fxml"));
-//            Parent root = loader.load();
-//            SelecaoPersonagensController spc = loader.getController();
-//            spc.setStage(this.mStage);
-//            AnchorPane newPane = FXMLLoader.load(getClass().getResource("fxml/SelecaoPersonagem.fxml"));
-//            panePrincipal.getChildren().setAll();
 
            FXMLLoader loader = new FXMLLoader();
            Parent root = (Parent)loader.load(getClass().getResource("fxml/CriacaoUsuario.fxml").openStream());

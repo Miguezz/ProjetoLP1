@@ -59,6 +59,36 @@ public class Personagem implements Serializable{
       this.status = new Status();
       this.qtdMovimento = 3;
     }
+    
+    public void setAtributos(int raca){
+        switch(raca){
+            case 0: // laponico
+                this.raca.modAtributo(0); // Vida
+                this.raca.modAtributo(1); // Mana
+                break;
+            case 1:// anao
+                this.raca.modAtributo(0); // Vida
+                this.raca.modAtributo(2); // Defesa
+                break;
+            case 3: // dragonborn
+                this.raca.modAtributo(2); // Def
+                this.raca.modAtributo(3); // Dano
+                break;
+            case 4: // elfo
+                this.raca.modAtributo(1); // Mana
+                this.raca.modAtributo(1); // Mana
+                break;
+            case 5: // orc
+                this.raca.modAtributo(0); // Vida
+                this.raca.modAtributo(0); // Vida
+                break;
+            case 6: // tiefling
+                this.raca.modAtributo(1); // Mana
+                this.raca.modAtributo(3); // Dano
+                break;
+        }
+    }
+    
     public String getRacaStr(){
         switch(this.racaInt){
             case 0:
@@ -153,7 +183,15 @@ public class Personagem implements Serializable{
                 "\nDefesa: " + this.getDefesa() +
                 "\nShield: " + this.shield + "\n");
     }
-    
+    public void setRaca(int raca){
+        this.raca = getSetRaca(raca);
+    }
+    public void setClasse(int classe){
+        this.classe = getSetClasse(classe);
+    }
+    public void setNome(String nome){
+        this.nome = nome;
+    }
     private RacaBase getSetRaca(int raca){
         switch(raca){
             case 0:
