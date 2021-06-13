@@ -140,7 +140,8 @@ public class SelecaoPersonagensController extends Stager implements Initializabl
             this.lbRaca.setText(this.racas[this.contRaca]);
             loadImage("../../resources/"+ this.racas[contRaca] +"/"+
                     this.classes[contClasse] + "/" + this.racas[contRaca] + this.classes[contClasse], false);
-            this.p.setRaca(contRaca);
+//            this.p.setRaca(contRaca);
+            this.p = new Personagem(this.pNome, this.contClasse, this.contRaca);
             this.setAtributos();
 
             
@@ -154,6 +155,7 @@ public class SelecaoPersonagensController extends Stager implements Initializabl
             loadImage("../../resources/"+ this.racas[contRaca] +"/"+ 
                     this.classes[contClasse] + "/" + this.racas[contRaca] + this.classes[contClasse], false);
             this.p.setRaca(contRaca);
+            this.p = new Personagem(this.pNome, this.contClasse, this.contRaca);
             this.setAtributos();
 
             
@@ -163,6 +165,7 @@ public class SelecaoPersonagensController extends Stager implements Initializabl
             loadImage("../../resources/"+ this.racas[contRaca] +"/"+ this.classes[contClasse] + "/" +
                     this.racas[contRaca] + this.classes[contClasse], false);
             this.p.setClasse(contClasse);
+            this.p = new Personagem(this.pNome, this.contClasse, this.contRaca);
             this.setAtributos();
             
         } else if (event.getSource() == this.btnAntClasse) {
@@ -175,6 +178,7 @@ public class SelecaoPersonagensController extends Stager implements Initializabl
             loadImage("../../resources/"+ this.racas[contRaca] +"/"+ this.classes[contClasse] + "/"
                     + this.racas[contRaca] + this.classes[contClasse], false);
             this.p.setClasse(contClasse);
+            this.p = new Personagem(this.pNome, this.contClasse, this.contRaca);
             this.setAtributos();
 
         }else if(event.getSource() == this.btnConfirmar){
