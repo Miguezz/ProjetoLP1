@@ -139,7 +139,7 @@ public class Personagem implements Serializable{
         this.blocoAtual = bloco;
     }
     
-    public boolean movimentarPersonagem(BlocoMapa bAlvo, int x, int y){
+    public boolean movimentarPersonagem(BlocoMapa bAlvo){
         if(bAlvo == null) return false;
         if(bAlvo.getRangeEntreBlocos(this.blocoAtual) <= this.qtdMovimento){
             System.out.println(bAlvo.getRangeEntreBlocos(this.blocoAtual));

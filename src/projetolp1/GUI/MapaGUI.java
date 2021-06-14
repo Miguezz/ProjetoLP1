@@ -61,7 +61,7 @@ public class MapaGUI extends Stager{
     
     @FXML
     protected void configurarMapa(BlocoMapa bm, int x, int y, int[][] mapa){ // Padrao 10x10
-        switch(mapa[y][x]){
+        switch(mapa[x][y]){
             case 0:
                 bm.setBg("resources/Mapa/Grama.png");
                 bm.setEstilo("-fx-background-size: 53;-fx-background-position: center; -fx-background-repeat: no-repeat;");
@@ -105,7 +105,7 @@ public class MapaGUI extends Stager{
     @FXML
     public void setImage(BlocoMapa bm){
         int[] pos = bm.getPosicao();
-        this.background[pos[1]][pos[0]].setStyle(
+        this.background[pos[0]][pos[1]].setStyle(
 //                "-fx-background-color: red;"
                 "-fx-background-size: 130;"
                 +"-fx-background-image: url(\""+ bm.getBg() +"\");" 
@@ -113,7 +113,7 @@ public class MapaGUI extends Stager{
         );
         if(bm.getOcupante() instanceof Personagem){
             System.out.println("SETANDO paneArray personagem");
-            this.paneArray[pos[1]][pos[0]].setStyle(
+            this.paneArray[pos[0]][pos[1]].setStyle(
                 "-fx-background-size: 130;"
                 +"-fx-background-image: url(\""+ bm.getFg() +"\");" 
                 +"-fx-background-position: -35,0;"

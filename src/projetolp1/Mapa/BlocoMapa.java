@@ -52,12 +52,17 @@ public class BlocoMapa {
     
     public void setOcupante(Object ocupante){
         if(ocupante instanceof Personagem) {
+            String raca = ((Personagem) ocupante).getRacaStr();
+            String classe = ((Personagem) ocupante).getClasseStr();
+            this.fg = "resources/"+raca+"/"+classe+"/"+raca+classe+"_0.png";
             ((Personagem) ocupante).setBlocoMapa(this);
             this.ocupante = ocupante;
         }else if(ocupante instanceof Obstaculo){
             this.ocupante = ocupante;
         }
         else{
+            System.out.println("NULO");
+            this.fg = "";
             this.ocupante = null;
         }
     }
