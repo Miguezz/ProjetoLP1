@@ -16,6 +16,7 @@ public class BlocoMapa {
     private Mapas mapa;
     private String bg;
     private String fg;
+//    private String time;
     private String estilo;
     
     public BlocoMapa(int x, int y){
@@ -24,6 +25,12 @@ public class BlocoMapa {
         this.ocupante = null;
         this.estilo = "";
     }
+//    public void setTime(String t){
+//        this.time = t;
+//    }
+//    public String getTime(){
+//        return this.time;
+//    }
     public void setEstilo(String estilo){
         this.estilo = estilo;
     }
@@ -44,9 +51,13 @@ public class BlocoMapa {
     }
     
     public void setOcupante(Object ocupante){
-        if(ocupante instanceof Personagem || ocupante instanceof Obstaculo){
+        if(ocupante instanceof Personagem) {
+            ((Personagem) ocupante).setBlocoMapa(this);
             this.ocupante = ocupante;
-        }else{
+        }else if(ocupante instanceof Obstaculo){
+            this.ocupante = ocupante;
+        }
+        else{
             this.ocupante = null;
         }
     }
@@ -68,5 +79,14 @@ public class BlocoMapa {
             return(" X ");
         }
         return(" . ");
+    }
+    
+    public int getRangeEntreBlocos(BlocoMapa b1){
+        int[] p1 = b1.getPosicao();
+        int[] p2 = this.getPosicao();
+        if(p1[0] - p2[0] > p1[1] - p2[1]){
+            return Math.abs(p1[1] - p2[1]);
+        }
+        return  Math.abs(p1[0] - p2[0]);
     }
 }

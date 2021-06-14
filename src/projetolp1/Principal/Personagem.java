@@ -139,21 +139,18 @@ public class Personagem implements Serializable{
         this.blocoAtual = bloco;
     }
     
-    public boolean movimentarPersonagem(Mapas mapa, int x, int y){
-        if(x <= mapa.getXMax() && x >= 0 && y <= mapa.getYMax() && y >= 0){
-            BlocoMapa bAlvo = mapa.getBlocoPelaPos(x, y);
-            if(bAlvo == null) return false;
-            if(mapa.getRangeEntreBlocos(this.blocoAtual, bAlvo) <= this.qtdMovimento){
-                if(bAlvo.getOcupante() == null){
-                    bAlvo.setOcupante(this);
-                    this.blocoAtual.setOcupante(null);
-                    this.blocoAtual = bAlvo;
-                    mapa.printMapa();
-                    return true;
-                }
+    public boolean movimentarPersonagem(BlocoMapa bAlvo, int x, int y){
+        if(bAlvo == null) return false;
+        if(bAlvo.getRangeEntreBlocos(this.blocoAtual) <= this.qtdMovimento){
+            System.out.println(bAlvo.getRangeEntreBlocos(this.blocoAtual));
+            if(bAlvo.getOcupante() == null){
+                bAlvo.setOcupante(this);
+                this.blocoAtual.setOcupante(null);
+                this.blocoAtual = bAlvo;
+                return true;
             }
         }
-        return false;
+    return false;
     }
     
      /**
@@ -172,6 +169,11 @@ public class Personagem implements Serializable{
     
     @Override
     public String toString(){
+        int [] pos = {-10,-10};
+        if(this.blocoAtual != null){
+            pos = this.blocoAtual.getPosicao();
+        }
+        
         return ("Nome: " + this.nome +
                 "\nRaca " + this.raca.getClass().getSimpleName() + 
                 "\nClasse: " + this.classe.getClass().getSimpleName() +
@@ -181,7 +183,8 @@ public class Personagem implements Serializable{
                 "\nMana Atual: " + (this.manaMaxima - this.manaGasta) +
                 "\nDano: " + this.getDano() + 
                 "\nDefesa: " + this.getDefesa() +
-                "\nShield: " + this.shield + "\n");
+                "\nShield: " + this.shield + 
+                "\nPosicao: " + pos[0] + " " + pos[1] + "\n");
     }
     public void setRaca(int raca){
         this.raca = getSetRaca(raca);
@@ -425,8 +428,8 @@ public class Personagem implements Serializable{
         return this.danoBase + this.equipamento.getAtk()+dano;
 }
 
-    public boolean atacar(Mapas mapa, Personagem target){
-        if(mapa.getRangeEntreBlocos(this.blocoAtual, target.getBlocoMapa()) <= this.getEquipamento().getRangeArma()){
+    public boolean atacar(BlocoMapa selfBloco, Personagem target){
+        if(selfBloco.getRangeEntreBlocos(target.getBlocoMapa()) <= this.getEquipamento().getRangeArma()){
             int elemento = this.getEquipamento().getAtkElemental(); // elemento de acordo com a arma
             double formulaDano = this.danoBase + this.getEquipamento().getAtk();
             formulaDano = MultipDano.getDanoPelaFormula(target, formulaDano, elemento, false);
@@ -438,14 +441,14 @@ public class Personagem implements Serializable{
     }
     
     
-    public boolean usarhabilidade(int habilidade, Mapas mapa, Personagem target){
+    public boolean usarhabilidade(int habilidade, BlocoMapa alvo, Personagem target){
         // 1 - Ataque
         // 2 - Def
         // 3 - Utility
         // 4 - Ultimate
         switch(habilidade){
             case 1:
-                if(this.getClasse().habDano(mapa, this, target)){
+                if(this.getClasse().habDano(alvo, this, target)){
                     System.out.println(this.nome + " usou habilidade dano em " + target.getNome());
                     System.out.println(this);
                     System.out.println(target);
@@ -454,7 +457,7 @@ public class Personagem implements Serializable{
                 System.out.println(this.nome + " nao conseguiu usar a habilidade dano");
                 return false;
             case 2:
-                if(this.getClasse().habDef(mapa, this, target)){
+                if(this.getClasse().habDef(alvo, this, target)){
                     System.out.println(this.nome + " usou habilidade defesa em " + target.getNome());
                     System.out.println(this);
                     if(this != target) System.out.println(target);
@@ -463,7 +466,7 @@ public class Personagem implements Serializable{
                 System.out.println(this.nome + " nao conseguiu usar a habilidade defesa");
                 return false;
             case 3:
-                if(this.getRaca().HabUtility(mapa, this, target)){
+                if(this.getRaca().HabUtility(alvo, this, target)){
                     System.out.println(this.nome + " usou habilidade utility em " + target.getNome());
                     System.out.println(this);
                     if(this != target) System.out.println(target);
@@ -472,7 +475,7 @@ public class Personagem implements Serializable{
                 System.out.println(this.nome + " nao conseguiu usar a habilidade utility");
                 return false;
             case 4:
-                if(this.getClasse().ultimate(mapa, this, target)){
+                if(this.getClasse().ultimate(alvo, this, target)){
                     System.out.println(this.nome + " usou habilidade ultimate em " + target.getNome());
                     System.out.println(this);
                     System.out.println(target);

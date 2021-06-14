@@ -5,6 +5,7 @@
  */
 package projetolp1.Racas;
 
+import projetolp1.Mapa.BlocoMapa;
 import projetolp1.Mapa.Mapas;
 import projetolp1.Principal.Personagem;
 
@@ -19,7 +20,7 @@ public class Laponico extends RacaBase {
     }
     
     @Override
-    public boolean HabUtility(Mapas mapa, Personagem self, Personagem target){ // polimorfismo laponico
+    public boolean HabUtility(BlocoMapa selfBloco, Personagem self, Personagem target){ // polimorfismo laponico
         if(self.getStatus().isStatus(11)){
             self.getStatus().cureStatus(11);
             return false;

@@ -144,9 +144,9 @@ public class CriacaoUsuarioController extends Stager implements Initializable {
     @FXML
     private void btnClick(ActionEvent event) throws Exception {
         // Inicia o jogo
-        if(this.u1.getParty().size() < 5 || this.u2.getParty().size() < 5){
-            return;
-        }
+//        if(this.u1.getParty().size() < 5 || this.u2.getParty().size() < 5){
+//            return;
+//        }
         FXMLLoader loader = new FXMLLoader();
         Parent root = (Parent)loader.load(getClass().getResource("fxml/Mapa10x10.fxml").openStream());
         Mapa10x10Controller mc = loader.getController();

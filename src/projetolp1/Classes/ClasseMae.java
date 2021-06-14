@@ -6,6 +6,7 @@
 package projetolp1.Classes;
 import projetolp1.Principal.Personagem;
 import java.io.Serializable;
+import projetolp1.Mapa.BlocoMapa;
 import projetolp1.Mapa.Mapas;
 /**
  *
@@ -13,11 +14,11 @@ import projetolp1.Mapa.Mapas;
  */
 public abstract class ClasseMae implements Serializable{
     
-    public abstract boolean habDano(Mapas mapa, Personagem self, Personagem target);
+    public abstract boolean habDano(BlocoMapa b, Personagem self, Personagem target);
     
-    public abstract boolean habDef(Mapas mapa, Personagem self, Personagem target);
+    public abstract boolean habDef(BlocoMapa b, Personagem self, Personagem target);
     
 //    public abstract boolean habDef(Mapas mapa, Personagem self, Personagem target)
-    public abstract boolean ultimate(Mapas mapa, Personagem self, Personagem alvo);
+    public abstract boolean ultimate(BlocoMapa b, Personagem self, Personagem alvo);
 
 }

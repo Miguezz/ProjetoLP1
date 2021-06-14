@@ -33,6 +33,15 @@
 
 }
 .teste-mapa{
-        -fx-background-image: url("../../resources/Laponico/Alquimista/LaponicoAlquimista_0.png");
-        -fx-background-position: -35,0;
+        -fx-background-image: url("../../resources/Times/TeamBlue.png");
+        -fx-background-position: center;
+        -fx-background-size: 100;
+}
+.fondo_personagem{
+        -fx-background-image: url("../../resources/fundopersonagem.png");
+        
+        -fx-background-size: 200;
+        -fx-background-radius: 10 10 0 0;
+        -fx-background-position: center;
+        -fx-background-repeat: no-repeat;
 }

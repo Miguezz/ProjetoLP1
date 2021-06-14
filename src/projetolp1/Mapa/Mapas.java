@@ -66,14 +66,5 @@ public class Mapas {
         return false;
     }
     
-    public int getRangeEntreBlocos(BlocoMapa b1, BlocoMapa b2){
-        int[] p1 = b1.getPosicao();
-        int[] p2 = b2.getPosicao();
-        if(p1[0] - p2[0] > p1[1] - p2[1]){
-            return Math.abs(p1[1] - p2[1]);
-        }
-//        System.out.println(p1[0] + " " + p1[1]);
-//        System.out.println(p2[0] + " " + p2[1]);
-        return  Math.abs(p1[0] - p2[0]);
-    }
+    
 }

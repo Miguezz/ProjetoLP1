@@ -5,6 +5,7 @@
  */
 package projetolp1.Racas;
 
+import projetolp1.Mapa.BlocoMapa;
 import projetolp1.Mapa.Mapas;
 import projetolp1.Misc.MultipDano;
 import projetolp1.Principal.Personagem;
@@ -20,10 +21,10 @@ public class Dragonborn extends RacaBase {
     }
     
     @Override
-    public boolean HabUtility(Mapas mapa, Personagem self, Personagem target){ //Flamethrower - Lança chamas tirando 20 de dano e status burn
+    public boolean HabUtility(BlocoMapa selfBloco, Personagem self, Personagem target){ //Flamethrower - Lança chamas tirando 20 de dano e status burn
         if(self.getManaMaxima()-self.getManaGasta() >= 30){
             int range = 1;
-            if(mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range){
+            if(selfBloco.getRangeEntreBlocos(target.getBlocoMapa()) <= range){
                 self.setManaGasta(self.getManaGasta() + 30);
                 int elemento = 0;
                 double formulaDano = 20;

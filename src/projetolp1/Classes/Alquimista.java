@@ -5,6 +5,7 @@
  */
 package projetolp1.Classes;
 
+import projetolp1.Mapa.BlocoMapa;
 import projetolp1.Mapa.Mapas;
 import projetolp1.Principal.Personagem;
 import projetolp1.Misc.MultipDano;
@@ -24,11 +25,11 @@ public class Alquimista extends ClasseMae {
 	 */
 
 	@Override
-	public boolean habDano(Mapas mapa, Personagem self, Personagem target) {
+	public boolean habDano(BlocoMapa b, Personagem self, Personagem target) {
             int custo = 20;
             int range = 3;
             if (self.getMana() >= custo) {
-                if (mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range) {
+                if (b.getRangeEntreBlocos(target.getBlocoMapa()) <= range) {
                     self.setManaGasta(self.getManaGasta() + custo); // Diminui a mana do lançador de acordo com o valor da habilidade
                     int elemento = 0; // Fogo
                     double formulaDano = 15 + self.getEquipamento().getAtk();
@@ -43,7 +44,7 @@ public class Alquimista extends ClasseMae {
 	}
 
         @Override
-	public boolean habDef(Mapas mapa, Personagem self, Personagem target) {
+	public boolean habDef(BlocoMapa b, Personagem self, Personagem target) {
             int custo = 30;
             if (self.getMana() >= custo) {
                 self.setManaGasta(self.getManaGasta() + custo);
@@ -53,11 +54,11 @@ public class Alquimista extends ClasseMae {
 	}
 
 	@Override
-	public boolean ultimate(Mapas mapa, Personagem self, Personagem target) {
+	public boolean ultimate(BlocoMapa b, Personagem self, Personagem target) {
 		int range = 4;
 		int custo = 30;
 		if (self.getMana() >= custo) {
-			if (mapa.getRangeEntreBlocos(self.getBlocoMapa(), target.getBlocoMapa()) <= range) {
+			if (b.getRangeEntreBlocos(target.getBlocoMapa()) <= range) {
                             self.setManaGasta(self.getManaGasta() + custo); // Diminui a mana do lançador de acordo com o valor da habilidade
                             int elemento = 3; // Vento
                             double formulaDano = 40;

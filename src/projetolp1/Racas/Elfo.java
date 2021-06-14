@@ -5,6 +5,7 @@
  */
 package projetolp1.Racas;
 
+import projetolp1.Mapa.BlocoMapa;
 import projetolp1.Misc.MultipDano;
 import projetolp1.Mapa.Mapas;
 import projetolp1.Principal.Personagem;
@@ -21,7 +22,7 @@ public class Elfo extends RacaBase {
     } 
    
     @Override
-   public boolean HabUtility(Mapas mapa, Personagem self, Personagem target){
+   public boolean HabUtility(BlocoMapa selfBloco, Personagem self, Personagem target){
         //A habilidade do Elfo é buffar seu proximo ataque no proximo turno em 2.5x em dano
 
         //A habilidade do Elfo é buffar seu proximo ataque no proximo turno em 2x em dano
