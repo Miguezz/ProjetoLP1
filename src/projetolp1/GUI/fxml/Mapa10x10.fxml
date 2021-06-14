@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 <?import java.util.ArrayList?>
-
 <AnchorPane id="AnchorPane" fx:id="panePrincipal" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projetolp1.GUI.Mapa10x10Controller">
 
    <children>
@@ -111,8 +110,8 @@
             </Pane>
             <Pane layoutX="24.0" layoutY="200.0" prefHeight="123.0" prefWidth="200.0" style="-fx-background-color: white;" styleClass="fondo_personagem" stylesheets="@../menuprincipalpane.css">
                <children>
-                  <ProgressBar layoutX="100.0" layoutY="25.0" prefHeight="20.0" prefWidth="94.0" progress="1.0" style="-fx-accent: red;" />
-                  <ProgressBar layoutX="100.0" layoutY="45.0" prefHeight="20.0" prefWidth="94.0" progress="1.0" />
+                  <ProgressBar fx:id="pbVidaP2J1" layoutX="100.0" layoutY="25.0" prefHeight="20.0" prefWidth="94.0" progress="1.0" style="-fx-accent: red;" />
+                  <ProgressBar fx:id="pbManaP2J1" layoutX="100.0" layoutY="45.0" prefHeight="20.0" prefWidth="94.0" progress="1.0" />
                   <Pane fx:id="paneCabecaP2J1" layoutX="14.0" layoutY="25.0" prefHeight="39.0" prefWidth="42.0" style="-fx-border-color: black; -fx-border-radius: 10;" />
                   <Label fx:id="lbNomeP2J1" alignment="CENTER" layoutX="12.0" layoutY="6.0" prefHeight="17.0" prefWidth="175.0" text="Nome">
                      <font>
@@ -126,8 +125,8 @@
             </Pane>
             <Pane layoutX="24.0" layoutY="323.0" prefHeight="123.0" prefWidth="200.0" style="-fx-background-color: white;" styleClass="fondo_personagem" stylesheets="@../menuprincipalpane.css">
                <children>
-                  <ProgressBar layoutX="100.0" layoutY="25.0" prefHeight="20.0" prefWidth="94.0" progress="1.0" style="-fx-accent: red;" />
-                  <ProgressBar layoutX="100.0" layoutY="45.0" prefHeight="20.0" prefWidth="94.0" progress="1.0" />
+                  <ProgressBar fx:id="pbVidaP3J1" layoutX="100.0" layoutY="25.0" prefHeight="20.0" prefWidth="94.0" progress="1.0" style="-fx-accent: red;" />
+                  <ProgressBar fx:id="pbManaP3J1" layoutX="100.0" layoutY="45.0" prefHeight="20.0" prefWidth="94.0" progress="1.0" />
                   <Pane fx:id="paneCabecaP3J1" layoutX="14.0" layoutY="25.0" prefHeight="39.0" prefWidth="42.0" style="-fx-border-color: black; -fx-border-radius: 10;" />
                   <Label fx:id="lbNomeP3J1" alignment="CENTER" layoutX="12.0" layoutY="6.0" prefHeight="17.0" prefWidth="175.0" text="Nome">
                      <font>
@@ -141,8 +140,8 @@
             </Pane>
             <Pane layoutX="24.0" layoutY="446.0" prefHeight="123.0" prefWidth="200.0" style="-fx-background-color: white;" styleClass="fondo_personagem" stylesheets="@../menuprincipalpane.css">
                <children>
-                  <ProgressBar layoutX="100.0" layoutY="25.0" prefHeight="20.0" prefWidth="94.0" progress="1.0" style="-fx-accent: red;" />
-                  <ProgressBar layoutX="100.0" layoutY="45.0" prefHeight="20.0" prefWidth="94.0" progress="1.0" />
+                  <ProgressBar fx:id="pbVidaP4J1" layoutX="100.0" layoutY="25.0" prefHeight="20.0" prefWidth="94.0" progress="1.0" style="-fx-accent: red;" />
+                  <ProgressBar fx:id="pbManaP4J1" layoutX="100.0" layoutY="45.0" prefHeight="20.0" prefWidth="94.0" progress="1.0" />
                   <Pane fx:id="paneCabecaP4J1" layoutX="14.0" layoutY="25.0" prefHeight="39.0" prefWidth="42.0" style="-fx-border-color: black; -fx-border-radius: 10;" />
                   <Label fx:id="lbNomeP4J1" alignment="CENTER" layoutX="12.0" layoutY="6.0" prefHeight="17.0" prefWidth="175.0" text="Nome">
                      <font>
@@ -156,8 +155,8 @@
             </Pane>
             <Pane layoutX="24.0" layoutY="569.0" prefHeight="123.0" prefWidth="200.0" style="-fx-background-color: white;" styleClass="fondo_personagem" stylesheets="@../menuprincipalpane.css">
                <children>
-                  <ProgressBar layoutX="100.0" layoutY="25.0" prefHeight="20.0" prefWidth="94.0" progress="1.0" style="-fx-accent: red;" />
-                  <ProgressBar layoutX="100.0" layoutY="45.0" prefHeight="20.0" prefWidth="94.0" progress="1.0" />
+                  <ProgressBar fx:id="pbVidaP5J1" layoutX="100.0" layoutY="25.0" prefHeight="20.0" prefWidth="94.0" progress="1.0" style="-fx-accent: red;" />
+                  <ProgressBar fx:id="pbManaP5J1" layoutX="100.0" layoutY="45.0" prefHeight="20.0" prefWidth="94.0" progress="1.0" />
                   <Pane fx:id="paneCabecaP5J1" layoutX="14.0" layoutY="25.0" prefHeight="39.0" prefWidth="42.0" style="-fx-border-color: black; -fx-border-radius: 10;" />
                   <Label fx:id="lbNomeP5J1" alignment="CENTER" layoutX="12.0" layoutY="6.0" prefHeight="17.0" prefWidth="175.0" text="Nome">
                      <font>
@@ -171,8 +170,8 @@
             </Pane>
             <Pane layoutX="800.0" layoutY="77.0" prefHeight="123.0" prefWidth="200.0" style="-fx-background-color: white;" styleClass="fondo_personagem" stylesheets="@../menuprincipalpane.css">
                <children>
-                  <ProgressBar layoutX="100.0" layoutY="25.0" prefHeight="20.0" prefWidth="94.0" progress="1.0" style="-fx-accent: red;" />
-                  <ProgressBar layoutX="100.0" layoutY="45.0" prefHeight="20.0" prefWidth="94.0" progress="1.0" />
+                  <ProgressBar fx:id="pbVidaP1J2" layoutX="100.0" layoutY="25.0" prefHeight="20.0" prefWidth="94.0" progress="1.0" style="-fx-accent: red;" />
+                  <ProgressBar fx:id="pbManaP1J2" layoutX="100.0" layoutY="45.0" prefHeight="20.0" prefWidth="94.0" progress="1.0" />
                   <Pane fx:id="paneCabecaP1J2" layoutX="14.0" layoutY="25.0" prefHeight="39.0" prefWidth="42.0" style="-fx-border-color: black; -fx-border-radius: 10;" />
                   <Label fx:id="lbNomeP1J2" alignment="CENTER" layoutX="12.0" layoutY="6.0" prefHeight="17.0" prefWidth="175.0" text="Nome">
                      <font>
@@ -186,8 +185,8 @@
             </Pane>
             <Pane layoutX="800.0" layoutY="200.0" prefHeight="123.0" prefWidth="200.0" style="-fx-background-color: white;" styleClass="fondo_personagem" stylesheets="@../menuprincipalpane.css">
                <children>
-                  <ProgressBar layoutX="100.0" layoutY="25.0" prefHeight="20.0" prefWidth="94.0" progress="1.0" style="-fx-accent: red;" />
-                  <ProgressBar layoutX="100.0" layoutY="45.0" prefHeight="20.0" prefWidth="94.0" progress="1.0" />
+                  <ProgressBar fx:id="pbVidaP2J2" layoutX="100.0" layoutY="25.0" prefHeight="20.0" prefWidth="94.0" progress="1.0" style="-fx-accent: red;" />
+                  <ProgressBar fx:id="pbManaP2J2" layoutX="100.0" layoutY="45.0" prefHeight="20.0" prefWidth="94.0" progress="1.0" />
                   <Pane fx:id="paneCabecaP2J2" layoutX="14.0" layoutY="25.0" prefHeight="39.0" prefWidth="42.0" style="-fx-border-color: black; -fx-border-radius: 10;" />
                   <Label fx:id="lbNomeP2J2" alignment="CENTER" layoutX="12.0" layoutY="6.0" prefHeight="17.0" prefWidth="175.0" text="Nome">
                      <font>
@@ -201,8 +200,8 @@
             </Pane>
             <Pane layoutX="800.0" layoutY="323.0" prefHeight="123.0" prefWidth="200.0" style="-fx-background-color: white;" styleClass="fondo_personagem" stylesheets="@../menuprincipalpane.css">
                <children>
-                  <ProgressBar layoutX="100.0" layoutY="25.0" prefHeight="20.0" prefWidth="94.0" progress="1.0" style="-fx-accent: red;" />
-                  <ProgressBar layoutX="100.0" layoutY="45.0" prefHeight="20.0" prefWidth="94.0" progress="1.0" />
+                  <ProgressBar fx:id="pbVidaP3J2" layoutX="100.0" layoutY="25.0" prefHeight="20.0" prefWidth="94.0" progress="1.0" style="-fx-accent: red;" />
+                  <ProgressBar fx:id="pbManaP3J2" layoutX="100.0" layoutY="45.0" prefHeight="20.0" prefWidth="94.0" progress="1.0" />
                   <Pane fx:id="paneCabecaP3J2" layoutX="14.0" layoutY="25.0" prefHeight="39.0" prefWidth="42.0" style="-fx-border-color: black; -fx-border-radius: 10;" />
                   <Label fx:id="lbNomeP3J2" alignment="CENTER" layoutX="12.0" layoutY="6.0" prefHeight="17.0" prefWidth="175.0" text="Nome">
                      <font>
@@ -216,8 +215,8 @@
             </Pane>
             <Pane layoutX="800.0" layoutY="446.0" prefHeight="123.0" prefWidth="200.0" style="-fx-background-color: white;" styleClass="fondo_personagem" stylesheets="@../menuprincipalpane.css">
                <children>
-                  <ProgressBar layoutX="100.0" layoutY="25.0" prefHeight="20.0" prefWidth="94.0" progress="1.0" style="-fx-accent: red;" />
-                  <ProgressBar layoutX="100.0" layoutY="45.0" prefHeight="20.0" prefWidth="94.0" progress="1.0" />
+                  <ProgressBar fx:id="pbVidaP4J2" layoutX="100.0" layoutY="25.0" prefHeight="20.0" prefWidth="94.0" progress="1.0" style="-fx-accent: red;" />
+                  <ProgressBar fx:id="pbManaP4J2" layoutX="100.0" layoutY="45.0" prefHeight="20.0" prefWidth="94.0" progress="1.0" />
                   <Pane fx:id="paneCabecaP4J2" layoutX="14.0" layoutY="25.0" prefHeight="39.0" prefWidth="42.0" style="-fx-border-color: black; -fx-border-radius: 10;" />
                   <Label fx:id="lbNomeP4J2" alignment="CENTER" layoutX="12.0" layoutY="6.0" prefHeight="17.0" prefWidth="175.0" text="Nome">
                      <font>
@@ -231,8 +230,8 @@
             </Pane>
             <Pane layoutX="800.0" layoutY="569.0" prefHeight="123.0" prefWidth="200.0" style="-fx-background-color: white;" styleClass="fondo_personagem" stylesheets="@../menuprincipalpane.css">
                <children>
-                  <ProgressBar layoutX="100.0" layoutY="25.0" prefHeight="20.0" prefWidth="94.0" progress="1.0" style="-fx-accent: red;" />
-                  <ProgressBar layoutX="100.0" layoutY="45.0" prefHeight="20.0" prefWidth="94.0" progress="1.0" />
+                  <ProgressBar fx:id="pbVidaP5J2" layoutX="100.0" layoutY="25.0" prefHeight="20.0" prefWidth="94.0" progress="1.0" style="-fx-accent: red;" />
+                  <ProgressBar fx:id="pbManaP5J2" layoutX="100.0" layoutY="45.0" prefHeight="20.0" prefWidth="94.0" progress="1.0" />
                   <Pane fx:id="paneCabecaP5J2" layoutX="14.0" layoutY="25.0" prefHeight="39.0" prefWidth="42.0" style="-fx-border-color: black; -fx-border-radius: 10;" />
                   <Label fx:id="lbNomeP5J2" alignment="CENTER" layoutX="12.0" layoutY="6.0" prefHeight="17.0" prefWidth="175.0" text="Nome">
                      <font>
@@ -246,7 +245,7 @@
             </Pane>
             <Pane layoutX="244.0" layoutY="622.0" prefHeight="123.0" prefWidth="536.0" style="-fx-border-color: black; -fx-border-radius: 10; -fx-background-color: white; -fx-background-radius: 10;">
                <children>
-                  <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="103.0" text="Ataque Básico">
+                  <Button fx:id="btnAtaque" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onClick" prefHeight="39.0" prefWidth="103.0" text="Ataque Básico">
                      <font>
                         <Font name="Alagard" size="13.0" />
                      </font>
@@ -266,7 +265,7 @@
                         <Font name="Alagard" size="13.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnMover" layoutX="450.0" layoutY="14.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="71.0" text="Mover">
+                  <Button fx:id="btnMover" layoutX="450.0" layoutY="14.0" mnemonicParsing="false" onAction="#onClick" prefHeight="39.0" prefWidth="71.0" text="Mover">
                      <font>
                         <Font name="Alagard" size="13.0" />
                      </font>
@@ -276,7 +275,7 @@
                         <Font name="Alagard" size="13.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnCancelar" layoutX="450.0" layoutY="67.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="71.0" text="Cancelar">
+                  <Button fx:id="btnCancelar" layoutX="450.0" layoutY="67.0" mnemonicParsing="false" onAction="#onClick" prefHeight="39.0" prefWidth="71.0" text="Cancelar">
                      <font>
                         <Font name="Alagard" size="13.0" />
                      </font>
@@ -318,6 +317,38 @@
             <fx:reference source="paneCabecaP3J2" />
             <fx:reference source="paneCabecaP4J2" />
             <fx:reference source="paneCabecaP5J2" />
+        </ArrayList>
+        <ArrayList fx:id="pbVMJ1">
+            <fx:reference source="pbVidaP1J1" />
+            <fx:reference source="pbManaP1J1" />
+
+            <fx:reference source="pbVidaP2J1" />
+            <fx:reference source="pbManaP2J1" />
+            
+            <fx:reference source="pbVidaP3J1" />
+            <fx:reference source="pbManaP3J1" />
+            
+            <fx:reference source="pbVidaP4J1" />
+            <fx:reference source="pbManaP4J1" />
+            
+            <fx:reference source="pbVidaP5J1" />
+            <fx:reference source="pbManaP5J1" />
+        </ArrayList>
+        <ArrayList fx:id="pbVMJ2">
+            <fx:reference source="pbVidaP1J2" />
+            <fx:reference source="pbManaP1J2" />
+
+            <fx:reference source="pbVidaP2J2" />
+            <fx:reference source="pbManaP2J2" />
+            
+            <fx:reference source="pbVidaP3J2" />
+            <fx:reference source="pbManaP3J2" />
+            
+            <fx:reference source="pbVidaP4J2" />
+            <fx:reference source="pbManaP4J2" />
+            
+            <fx:reference source="pbVidaP5J2" />
+            <fx:reference source="pbManaP5J2" />
         </ArrayList>
     </fx:define>
 </AnchorPane>

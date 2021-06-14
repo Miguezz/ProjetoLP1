@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -31,8 +32,12 @@ public class Mapa10x10Controller extends MapaGUI implements Initializable{
     ArrayList<Pane> paneListCabecasJ1, paneListCabecasJ2;
     
     @FXML
-    Button btnMover;
-    boolean btnMoverSelecionado = false;
+    ArrayList<ProgressBar> pbVMJ1, pbVMJ2;
+    
+    @FXML
+    Button btnMover, btnCancelar, btnAtaque;
+    boolean btnClicado = false;
+    boolean btnMoverSelecionado = false, btnAtaqueSelecionado = false;
     BlocoMapa blocoMapaSelecionado1 = null;
     
     @FXML
@@ -40,7 +45,6 @@ public class Mapa10x10Controller extends MapaGUI implements Initializable{
     User u, u2;
     
     public void setUsers(User u, User u2){
-        System.out.println("SET USERS");
         this.u = u;
         this.u2 = u2;
         addPersonagens();
@@ -49,6 +53,7 @@ public class Mapa10x10Controller extends MapaGUI implements Initializable{
     
     @FXML 
     public void initialize(URL url, ResourceBundle rb){
+        btnCancelar.setVisible(false);
         for(int i = 0; i < 10; i++){
             for(int j = 0; j < 10; j++){
                 bm[i][j] = new BlocoMapa(j, i);
@@ -117,12 +122,12 @@ public class Mapa10x10Controller extends MapaGUI implements Initializable{
             classe = p.getClasseStr();
             raca = p.getRacaStr();
             path = "/resources/" + raca + "/" + classe + "/"+raca+classe+"_0.png";
-            if(this.bm[i][8].getOcupante() != null){
-                this.bm[i][7].setOcupante(p);
-                this.bm[i][7].setFg(path);
+            if(this.bm[8][i].getOcupante() != null){
+                this.bm[7][i].setOcupante(p);
+                this.bm[7][i].setFg(path);
             }else{
-                this.bm[i][8].setOcupante(p);
-                this.bm[i][8].setFg(path);
+                this.bm[8][i].setOcupante(p);
+                this.bm[8][i].setFg(path);
             }
 //            this.bm[i][8].setTime("resources/Times/TeamRed.png");
             this.paneListCabecasJ2.get(i-1).setStyle(
@@ -145,9 +150,29 @@ public class Mapa10x10Controller extends MapaGUI implements Initializable{
     }
     
     @FXML
+    private void resetButtons(){
+        this.blocoMapaSelecionado1 = null;
+        this.btnMoverSelecionado = false;
+        this.btnAtaqueSelecionado = false;
+        this.btnClicado = false;
+        this.btnCancelar.setVisible(false);
+    }
+    
+    @FXML
     private void onClick(ActionEvent event) throws Exception{
         if(event.getSource() == btnMover){
+            resetButtons();
             this.btnMoverSelecionado = true;
+            this.btnClicado = true;
+            btnCancelar.setVisible(true);
+        }else if(event.getSource() == btnCancelar){
+            System.out.println("CANCELAR");
+            resetButtons();
+        }else if(event.getSource() == btnAtaque){
+            resetButtons();
+            this.btnAtaqueSelecionado = true;
+            this.btnClicado = true;
+            btnCancelar.setVisible(true);
         }
     }
     
@@ -163,48 +188,91 @@ public class Mapa10x10Controller extends MapaGUI implements Initializable{
         return null;
     }
     
+    
+    private int[] detectarPersonagem(Personagem p1){
+        int[] pe = {-10, -10};
+        int i = 0;
+        for(Personagem p : this.u.getParty()){
+            if(p == p1){
+                pe[0] = i;
+                pe[1] = 1;
+                return pe;
+            }
+            i+=2;
+        }
+        i = 0;
+        for(Personagem p : this.u2.getParty()){
+            if(p == p1){
+                pe[0] = i;
+                pe[1] = 2;
+                return pe;
+            }
+            i+=2;
+        }
+        return pe;
+    }
+    
     @FXML
     private void onPaneClick(MouseEvent event) throws Exception{
-
-        Pane pa = ((Pane)event.getSource());
-
-        int [] pos = detectarBloco(pa).getPosicao();
-
-        if(this.bm[pos[0]][pos[1]] == null) return;
-        System.out.println("CLICOU");
-        if(blocoMapaSelecionado1 == null){
-            System.out.println("B NULO");
-            if(this.bm[pos[0]][pos[1]].getOcupante() instanceof Personagem){
-                System.out.println("SETOU");
-                blocoMapaSelecionado1 = this.bm[pos[0]][pos[1]];
-            }else{
-                System.out.println("FALSE");
-                this.btnMoverSelecionado = false;
-            }
-        }else{
-            System.out.println("ELSE");
-            if(this.blocoMapaSelecionado1 != null){
-                System.out.println("MOVER SELECIONADO");
-                Personagem p = ((Personagem)blocoMapaSelecionado1.getOcupante());
-
-                int [] posAnt = blocoMapaSelecionado1.getPosicao();
-                System.out.println(posAnt);
-                System.out.println(p);
-                if(p.movimentarPersonagem(this.bm[pos[0]][pos[1]])){
-                    System.out.println(p);
-                    System.out.println("MOVEU");
-                    this.btnMoverSelecionado = false;
+        if(btnClicado){
+            Pane pa = ((Pane)event.getSource());
+            int [] pos = detectarBloco(pa).getPosicao(); // pega coordenada do pane
+            if(this.bm[pos[0]][pos[1]] == null) return;
+            System.out.println("CLICOU");
+            if(blocoMapaSelecionado1 == null){
+                if(this.bm[pos[0]][pos[1]].getOcupante() instanceof Personagem){
+                    blocoMapaSelecionado1 = this.bm[pos[0]][pos[1]];
+                }else{
                     this.blocoMapaSelecionado1 = null;
-                    this.bm[posAnt[1]][posAnt[0]].setOcupante(null);
-//                                this.paneArray[posAnt[1]][posAnt[0]].setStyle("-fx-background-image: none;");
-//                                this.paneArray[posAnt[1]][posAnt[0]].setStyle("-fx-background-image: none;");
-                    this.paneArray[posAnt[0]][posAnt[1]].setStyle("-fx-background-image: none;");
-                    this.bm[pos[0]][pos[1]].setOcupante(p);
-                    System.out.println(this.paneArray[posAnt[0]][posAnt[1]].getStyle());
-                    this.setImage(this.bm[pos[0]][pos[1]]);
-//                                this.setImage(this.bm[posAnt[1]][posAnt[0]]);
+                    this.btnMoverSelecionado = false;
+                    this.btnClicado = false;
+                    btnCancelar.setVisible(false);
                 }
-
+            }else{
+                if(btnMoverSelecionado){
+                    if(this.blocoMapaSelecionado1 != null){
+                    Personagem p = ((Personagem)blocoMapaSelecionado1.getOcupante());
+                    int [] posAnt = blocoMapaSelecionado1.getPosicao();
+                        if(p.movimentarPersonagem(this.bm[pos[0]][pos[1]])){
+                            this.btnMoverSelecionado = false;
+                            this.blocoMapaSelecionado1 = null;
+                            this.bm[posAnt[1]][posAnt[0]].setOcupante(null);
+                            this.paneArray[posAnt[0]][posAnt[1]].setStyle("-fx-background-image: none;");
+                            this.bm[pos[0]][pos[1]].setOcupante(p);
+                            this.setImage(this.bm[pos[0]][pos[1]]);
+                            btnCancelar.setVisible(false);
+                        }
+                    }
+                }else if(btnAtaqueSelecionado){
+                    if(this.blocoMapaSelecionado1 != null){
+                    Personagem p = ((Personagem)blocoMapaSelecionado1.getOcupante());
+                    Object o = this.bm[pos[0]][pos[1]].getOcupante();
+                        if(o instanceof Personagem){
+                            Personagem alvo = (Personagem)o;
+                            if(p.atacar(blocoMapaSelecionado1, (Personagem)this.bm[pos[0]][pos[1]].getOcupante())){
+                                this.btnMoverSelecionado = false;
+                                this.blocoMapaSelecionado1 = null;
+                                btnCancelar.setVisible(false);
+                                int[] pers = detectarPersonagem(alvo);
+                                if(pers[1] == 1){
+                                    double vidaMax = ((Personagem)this.bm[pos[0]][pos[1]].getOcupante()).getVidaMaxima();
+                                    double vidaAtual = ((Personagem)this.bm[pos[0]][pos[1]].getOcupante()).getVidaMaxima() - ((Personagem)this.bm[pos[0]][pos[1]].getOcupante()).getDanoRecebido();
+                     
+                                    int pos0 = pers[0];
+                                    pbVMJ1.get(pos0).setProgress((vidaAtual)/vidaMax);
+                                    
+                                    
+                                }else if(pers[1] == 2){
+                                    double vidaMax = ((Personagem)this.bm[pos[0]][pos[1]].getOcupante()).getVidaMaxima();
+                                    double vidaAtual = ((Personagem)this.bm[pos[0]][pos[1]].getOcupante()).getVidaMaxima() - ((Personagem)this.bm[pos[0]][pos[1]].getOcupante()).getDanoRecebido();
+                                    int pos0 = pers[0];
+                                    pbVMJ2.get(pos0).setProgress((vidaAtual)/vidaMax);
+                                }
+                                resetButtons();
+                            }
+                        }
+                    }
+                }
             }
         }
     }

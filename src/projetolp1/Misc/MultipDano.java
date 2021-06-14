@@ -18,23 +18,23 @@ public class MultipDano {
 	// 5 - Sombrio
 	// 6 - Neutro
    private static double[][] tabela = {{0.1,0.5,1.5,1,0.9,1.2,1},
-                                {1.5,0.1,1,0.5,0.9,1.2,1},
-                                {0.5,1,0.1,1.5,0.9,1.2,1},
-                                {1,1.5,0.5,0.1,0.9,1.2,1},
-                                {0.8,0.8,0.8,0.8,0.1,2,1},
-                                {1.1,1.1,1.1,1.1,2,0.1,1.5},
-                                {1,1,1,1,0.5,1.2,1}};
+                                        {1.5,0.1,1,0.5,0.9,1.2,1},
+                                        {0.5,1,0.1,1.5,0.9,1.2,1},
+                                        {1,1.5,0.5,0.1,0.9,1.2,1},
+                                        {0.8,0.8,0.8,0.8,0.1,2,1},
+                                        {1.1,1.1,1.1,1.1,2,0.1,1.5},
+                                        {1,1,1,1,0.5,1.2,1}};
     
     public static double resultado(int ataque, int def){
         return tabela[ataque][def];
     }
 		
 		public static double getDanoPelaFormula(Personagem target, double formula, int elemento, boolean ignoraDef){
-				double mult = MultipDano.resultado(elemento, target.getEquipamento().getDefElemental());
-				formula = formula * mult;
-				if(!ignoraDef) formula -= target.getDefesa();
-				if(formula < 0) formula = 0;
-				target.addDanoRecebido(formula);
-				return formula;
+                    double mult = MultipDano.resultado(elemento, target.getEquipamento().getDefElemental());
+                    formula = formula * mult;
+                    if(!ignoraDef) formula -= target.getDefesa();
+                    if(formula < 0) formula = 0;
+//                    target.addDanoRecebido(formula);
+                    return formula;
 		}
 }

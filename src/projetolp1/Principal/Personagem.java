@@ -57,7 +57,7 @@ public class Personagem implements Serializable{
       this.danoRecebido = 0;
       this.equipamento = new Equip();
       this.status = new Status();
-      this.qtdMovimento = 3;
+      this.qtdMovimento = 2;
     }
     
     public void setAtributos(int raca){
@@ -434,7 +434,9 @@ public class Personagem implements Serializable{
             double formulaDano = this.danoBase + this.getEquipamento().getAtk();
             formulaDano = MultipDano.getDanoPelaFormula(target, formulaDano, elemento, false);
             target.addDanoRecebido(formulaDano);
+            System.out.println("DANO: " + formulaDano);
             System.out.println(this.nome + " atacou " + target.getNome());
+            System.out.println(target);
             return true;
         }
         return false;
