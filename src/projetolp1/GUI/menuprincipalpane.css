@@ -45,3 +45,9 @@
         -fx-background-position: center;
         -fx-background-repeat: no-repeat;
 }
+
+.loja{
+        -fx-background-image: url("../../resources/Loja.png");
+        -fx-background-position: center;
+        -fx-background-repeat: no-repeat;
+}
