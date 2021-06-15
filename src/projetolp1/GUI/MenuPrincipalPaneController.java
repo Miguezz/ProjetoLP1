@@ -46,6 +46,9 @@ public class MenuPrincipalPaneController extends Stager implements Initializable
     
     @FXML
     private Button btnSair;
+    
+    @FXML
+    private Button lojateste;
 
     @FXML
     private void acaoClick(ActionEvent event) throws Exception {
@@ -74,9 +77,20 @@ public class MenuPrincipalPaneController extends Stager implements Initializable
            sc.getStylesheets().addAll(this.getClass().getResource("menuprincipalpane.css").toExternalForm());
            this.getStage().setScene(sc);
            this.getStage().show();
+           
         }else if (event.getSource() == btnSair) {
             Stage stage = (Stage) btnSair.getScene().getWindow();
             stage.close();
+        }else if(event.getSource() == lojateste){
+           System.out.println("Click");
+           FXMLLoader loader = new FXMLLoader();
+           Parent root = (Parent)loader.load(getClass().getResource("fxml/Loja.fxml").openStream());
+           LojaController lj = loader.getController();
+           lj.setStage(this.getStage());
+           Scene sc = new Scene(root);
+           sc.getStylesheets().addAll(this.getClass().getResource("menuprincipalpane.css").toExternalForm());
+           this.getStage().setScene(sc);
+           this.getStage().show();
         }
 
     }
