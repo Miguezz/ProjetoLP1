@@ -88,4 +88,12 @@ public class BlocoMapa {
         }
         return  Math.abs(p1[0] - p2[0]);
     }
+    public int getRangeEntreBlocos(BlocoMapa b1, int range){
+        int[] p1 = b1.getPosicao();
+        int[] p2 = this.getPosicao();
+        if(Math.abs(p1[0] - p2[0]) > range || Math.abs(p1[1] - p2[1]) > range){
+            return Math.abs(range * 2);
+        }
+        return range;
+    }
 }

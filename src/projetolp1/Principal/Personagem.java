@@ -151,7 +151,7 @@ public class Personagem implements Serializable{
     
     public boolean movimentarPersonagem(BlocoMapa bAlvo, User u){
         if(bAlvo == null) return false;
-        if(bAlvo.getRangeEntreBlocos(this.blocoAtual) <= this.qtdMovimento){
+        if(bAlvo.getRangeEntreBlocos(this.blocoAtual, this.qtdMovimento) <= this.qtdMovimento){
             System.out.println(bAlvo.getRangeEntreBlocos(this.blocoAtual));
             if(bAlvo.getOcupante() == null){
                 bAlvo.setOcupante(this);
@@ -441,7 +441,8 @@ public class Personagem implements Serializable{
 }
 
     public boolean atacar(BlocoMapa selfBloco, Personagem target, User dono){
-        if(selfBloco.getRangeEntreBlocos(target.getBlocoMapa()) <= this.getEquipamento().getRangeArma()){
+        int range = this.getEquipamento().getRangeArma();
+        if(selfBloco.getRangeEntreBlocos(target.getBlocoMapa(), range) <= range){
             int elemento = this.getEquipamento().getAtkElemental(); // elemento de acordo com a arma
             double formulaDano = getDano();
             formulaDano = MultipDano.getDanoPelaFormula(target, formulaDano, elemento, false);

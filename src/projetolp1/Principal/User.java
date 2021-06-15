@@ -117,4 +117,13 @@ public class User implements Serializable{
         this.qtdAcoes = 5;
         this.setVez(false);
     }
+    
+    
+    public double getEnergiaVital(){
+        int soma = 0;
+        for(Personagem p : this.Party){
+            soma += p.getVidaMaxima() - p.getDanoRecebido();
+        }
+        return soma;
+    }
 }

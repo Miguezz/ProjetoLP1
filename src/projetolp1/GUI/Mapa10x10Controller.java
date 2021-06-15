@@ -86,7 +86,7 @@ public class Mapa10x10Controller extends MapaGUI implements Initializable{
         this.u2 = u2;
         addPersonagens();
         updateImages();
-        this.jogo = new Jogo(this.u, this.u2, turnos);
+        this.jogo = new Jogo(this.u, this.u2, 5);//turnos);
         int usuarioSorteado = jogo.sortearJogador();
         if(usuarioSorteado == 1){
             this.u.setVez(true);
@@ -273,10 +273,25 @@ public class Mapa10x10Controller extends MapaGUI implements Initializable{
             this.contJogada = 0;
             boolean cabou = this.jogo.mudaTurno();
             this.lbQtdAcoes.setText("Rounds: " + this.jogo.getRoundAtual() + " / " + this.jogo.getRounds());
-            if(cabou){    // Muda pra tela do final + recompensa
-                
-            }
+            System.out.println("U1: " + this.u.getEnergiaVital());
+            System.out.println("U2: " + this.u.getEnergiaVital());
             
+            if(this.u.getEnergiaVital() <= 0){
+                System.out.println("U2 GANHOU");
+            }
+            if(this.u2.getEnergiaVital() <= 0){
+                System.out.println("U1 GANHOU");
+            }
+            if(cabou){    // Muda pra tela do final + recompensa
+                System.out.println("CABOU VIDA");
+                if(this.u.getEnergiaVital() > this.u2.getEnergiaVital()){
+                    System.out.println("U GANHOU");
+                }else if(this.u.getEnergiaVital() == this.u2.getEnergiaVital()){
+                    System.out.println("U2 GANHOU");
+                }else{
+                    System.out.println("EMPATE");
+                }
+            }
         }
     }
     
@@ -342,7 +357,7 @@ public class Mapa10x10Controller extends MapaGUI implements Initializable{
                     Object o = this.bm[pos[0]][pos[1]].getOcupante();
                         if(o instanceof Personagem){
                             Personagem alvo = (Personagem)o;
-                            if(this.u.getVez()){
+                            if(this.u.getVez() && !p.getTime().equals("red")){
                                 if(p.atacar(blocoMapaSelecionado1, (Personagem)this.bm[pos[0]][pos[1]].getOcupante(), this.u)){
                                     this.btnMoverSelecionado = false;
                                     this.blocoMapaSelecionado1 = null;
@@ -355,7 +370,7 @@ public class Mapa10x10Controller extends MapaGUI implements Initializable{
                                     this.mudarTurno();
                                     
                                 }
-                            }else if(this.u2.getVez()){
+                            }else if(this.u2.getVez() && p.getTime().equals("red")){
                                 if(p.atacar(blocoMapaSelecionado1, (Personagem)this.bm[pos[0]][pos[1]].getOcupante(), this.u2)){
                                     this.btnMoverSelecionado = false;
                                     this.blocoMapaSelecionado1 = null;

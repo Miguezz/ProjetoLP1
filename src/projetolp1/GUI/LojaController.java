@@ -32,7 +32,6 @@ public class LojaController extends Stager implements Initializable {
     private Label LapaCoinU1, LapaCoinU2, VenderJogador;
 
     private void acaoClick(ActionEvent event) throws Exception {
-        
         if (event.getSource() == Voltar) {
             System.out.println("Voltando para o menu");
             FXMLLoader loader = new FXMLLoader();
@@ -47,10 +46,12 @@ public class LojaController extends Stager implements Initializable {
             System.out.println("Usuario 1 comprou 1 item");
         }else if (event.getSource() == ComprarU2){
             System.out.println("Usuario 2 comprou 1 item");
+        
         }
+    }
 
-    
+    @FXML
     public void initialize(URL url, ResourceBundle rb) {
         
-    }   
+    }
 }

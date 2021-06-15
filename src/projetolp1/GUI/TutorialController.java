@@ -84,7 +84,7 @@ public class TutorialController extends Stager implements Initializable {
                     
                     Tutorialpag.setText("Mapas(1/2)\n" +
 "\n" +
-"No jogo existe 3 mapas, sendo 10x10, 15x15 e 20x20 respectivamente,\n" +
+"No jogo existe 3 mapas 10x10,\n" +
 "cada mapa, possui seu formato diferente com diferentes obstaculos que bloqueiam\n" +
 "a passagem dos jogadores e seus posicionamentos");
                 break;
