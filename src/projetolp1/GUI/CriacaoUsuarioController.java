@@ -22,6 +22,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -47,11 +48,19 @@ public class CriacaoUsuarioController extends Stager implements Initializable {
     @FXML
     Button btnContinuar, btnLoja, btnInventario, btnMenu;
     
+    @FXML
+    TextField nomeUsuario1, nomeUsuario2;
+    
     User u1, u2;
     public void setUsers(User u1, User u2){
         this.u1 = u1;
-//        System.out.println(u1.getParty().get(0));
         this.u2 = u2;
+        if(u1 != null){
+            nomeUsuario1.setText(this.u1.getName());
+        }
+        if(u2 != null){
+            nomeUsuario2.setText(this.u2.getName());
+        }
         int i =0;
         if(u1.getParty().size() > 0){
             for(Personagem p : u1.getParty()){
@@ -140,9 +149,26 @@ public class CriacaoUsuarioController extends Stager implements Initializable {
     }
     
     @FXML
+    private void setNomeUsuarios(){
+        String nome1;
+        String nome2;
+        if((nome1 = this.nomeUsuario1.getText()) != null){
+            this.u1.setName(nome1);
+        }else{
+            this.u1.setName("Jogador 1");
+        }
+        if((nome2 = this.nomeUsuario2.getText()) != null){
+            this.u2.setName(nome2);
+        }else{
+            this.u2.setName("Jogador 2");
+        }
+    }
+    
+    @FXML
     private void btnClick(ActionEvent event) throws Exception {
         // Inicia o jogo
         if(event.getSource() == btnContinuar){
+            setNomeUsuarios();
             FXMLLoader loader = new FXMLLoader();
             Parent root = (Parent)loader.load(getClass().getResource("fxml/SelecaoMapa.fxml").openStream());
             System.out.println("SELECAO MAPA");
@@ -155,7 +181,7 @@ public class CriacaoUsuarioController extends Stager implements Initializable {
             this.getStage().show();
             
         }else if(event.getSource() == btnLoja){
-            
+            setNomeUsuarios();
         }
         
     }
@@ -165,7 +191,7 @@ public class CriacaoUsuarioController extends Stager implements Initializable {
         int i = 0;
         for(Pane pa : this.paneListJ1){
             if(event.getSource() == pa){
-//                System.out.println(i);
+                if(this.u1 != null ) setNomeUsuarios();
                 this.selecionarPersonagem(this.u1, "Personagem " + (i+1), i, true, this.u2, 1);
                 
                 return;
@@ -178,7 +204,7 @@ public class CriacaoUsuarioController extends Stager implements Initializable {
         int i = 0;
         for(Pane pa : this.paneListJ2){
             if(event.getSource() == pa){
-//                System.out.println(i);
+                if(this.u2 != null) setNomeUsuarios();
                 this.selecionarPersonagem(this.u2,"Personagem " + (i+1), i, true, this.u1, 2);
                 
                 return;

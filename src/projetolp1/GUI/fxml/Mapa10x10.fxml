@@ -281,9 +281,14 @@
                      </font>
                   </Button>
                </children></Pane>
-            <Label alignment="CENTER" layoutX="390.0" layoutY="29.0" prefHeight="17.0" prefWidth="245.0" text="Vez de Jogador 1">
+            <Label fx:id="vezUsuario" alignment="CENTER" layoutX="390.0" layoutY="19.0" prefHeight="17.0" prefWidth="245.0" text="Vez de Jogador 1">
                <font>
                   <Font name="Alagard" size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbQtdAcoes" layoutX="461.0" layoutY="52.0" text="Ações: X / 6">
+               <font>
+                  <Font name="Alagard" size="18.0" />
                </font>
             </Label>
          </children>

@@ -104,8 +104,8 @@ public class SelecaoPersonagensController extends Stager implements Initializabl
     public void initialize(){
         this.lbRaca.setText(this.racas[this.contRaca]);
         this.lbClasse.setText(this.classes[this.contClasse]);
-        this.p = new Personagem(this.pNome, this.contClasse, this.contRaca);
-        this.setAtributos();
+//        this.p = new Personagem(this.pNome, this.contClasse, this.contRaca);
+//        this.setAtributos();
         loadImage("../../resources/"+ this.racas[contRaca] +"/"+ this.classes[contClasse]
                 + "/" + this.racas[contRaca] + this.classes[contClasse], true);
     }
@@ -124,7 +124,6 @@ public class SelecaoPersonagensController extends Stager implements Initializabl
         System.gc();
         initialize();
         System.gc();
-
     }
     
     @FXML
@@ -196,6 +195,7 @@ public class SelecaoPersonagensController extends Stager implements Initializabl
 //                System.out.println(u.getParty().get(0));
             }
 //            System.out.println("Tamanho: " + this.u.getParty().size());
+            
             FXMLLoader loader = new FXMLLoader();
             Parent root = (Parent)loader.load(getClass().getResource("fxml/CriacaoUsuario.fxml").openStream());
             CriacaoUsuarioController cuc = loader.getController();

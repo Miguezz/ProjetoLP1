@@ -149,7 +149,7 @@ public class Personagem implements Serializable{
         this.blocoAtual = bloco;
     }
     
-    public boolean movimentarPersonagem(BlocoMapa bAlvo){
+    public boolean movimentarPersonagem(BlocoMapa bAlvo, User u){
         if(bAlvo == null) return false;
         if(bAlvo.getRangeEntreBlocos(this.blocoAtual) <= this.qtdMovimento){
             System.out.println(bAlvo.getRangeEntreBlocos(this.blocoAtual));
@@ -157,6 +157,7 @@ public class Personagem implements Serializable{
                 bAlvo.setOcupante(this);
                 this.blocoAtual.setOcupante(null);
                 this.blocoAtual = bAlvo;
+                u.endOfTurn();
                 return true;
             }
         }
@@ -332,7 +333,7 @@ public class Personagem implements Serializable{
         if(this.danoRecebido == 0 && this.getStatus().isStatus(13)) {
             this.getStatus().cureStatus(13);
                 this.setShield(0);
-                    }
+        }
         //if(this.doRecebido == this.getVidaMaxima()) kill
     }
 
@@ -376,7 +377,7 @@ public class Personagem implements Serializable{
                if (getStatus().isStatus(7)) deftotal += 20;
                if (getStatus().isStatus(10)) deftotal += 10;
                if (getStatus().isStatus(11)) deftotal += 5;
-           return  deftotal;
+           return deftotal;
     }
 
     /**
@@ -439,7 +440,7 @@ public class Personagem implements Serializable{
         return this.danoBase + this.equipamento.getAtk()+dano;
 }
 
-    public boolean atacar(BlocoMapa selfBloco, Personagem target){
+    public boolean atacar(BlocoMapa selfBloco, Personagem target, User dono){
         if(selfBloco.getRangeEntreBlocos(target.getBlocoMapa()) <= this.getEquipamento().getRangeArma()){
             int elemento = this.getEquipamento().getAtkElemental(); // elemento de acordo com a arma
             double formulaDano = getDano();
@@ -448,18 +449,20 @@ public class Personagem implements Serializable{
             System.out.println("DANO: " + formulaDano);
             System.out.println(this.nome + " atacou " + target.getNome());
             System.out.println(target);
+            dono.endOfTurn();
+            
             return true;
         }
         return false;
     }
-    
+
     
     public boolean usarhabilidade(int habilidade, BlocoMapa alvo, Personagem target){
         // 1 - Ataque
         // 2 - Def
         // 3 - Utility
         // 4 - Ultimate
-        switch(habilidade){
+            switch(habilidade){
             case 1:
                 if(this.getClasse().habDano(alvo, this, target)){
                     System.out.println(this.nome + " usou habilidade dano em " + target.getNome());
@@ -496,7 +499,7 @@ public class Personagem implements Serializable{
                 }
                 System.out.println(this.nome + " nao conseguiu usar a habilidade ultimate");
                 return false;
-        }
+            }
         return false;
     }
     

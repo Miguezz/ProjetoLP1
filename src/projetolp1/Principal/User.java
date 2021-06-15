@@ -13,7 +13,7 @@ import java.io.Serializable;
  * @author Batata
  */
 public class User implements Serializable{
-    private String name ;
+    private String name;
     
     private ArrayList<Personagem>PersonagensCriados = new ArrayList<>();
     
@@ -22,9 +22,29 @@ public class User implements Serializable{
                                                      // remover 5, depois devolver pra PersonagensCriados?
     private Inventario inventario = new Inventario();
     
-    /**
-     * @return the inventario
-     */
+    private boolean vez = false;
+
+    private int qtdAcoes;
+    
+    public User(){
+        this.qtdAcoes = 5;
+    }
+    
+    public int getQtdAcoes(){
+        return this.qtdAcoes;
+    }
+    public void setQtdAcoes(int qtd){
+        this.qtdAcoes = qtd;
+    }
+    
+    public void setVez(boolean vez){
+        this.vez = vez;
+    }
+    
+    public boolean getVez(){
+        return this.vez;
+    }
+    
     public Inventario getInventario() {
         return inventario;
     }
@@ -90,4 +110,11 @@ public class User implements Serializable{
         return ("Jogador: " + this.name + "\n");
     }
     
+    public void endOfTurn(){
+        this.Party.forEach(p -> {
+            p.endOfTurn();
+        });
+        this.qtdAcoes = 5;
+        this.setVez(false);
+    }
 }
