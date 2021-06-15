@@ -90,9 +90,9 @@ public class TutorialController extends Stager implements Initializable {
                 break;
                 case 1:
 
-                    ImagemTutorialE.setStyle("-fx-background-size: 300; -fx-background-image: url(\"resources/Mapa10x10.png\")");
-                    ImagemTutorial.setStyle("-fx-background-size: 300; -fx-background-image: url(\"resources/Mapa15x15.png\")");
-                    ImagemTutorialD.setStyle("-fx-background-size: 300; -fx-background-image: url(\"resources/Mapa20x20.png\")");
+                    ImagemTutorialE.setStyle("-fx-background-size: 300; -fx-background-image: url(\"resources/Laponia.png\")");
+                    ImagemTutorial.setStyle("-fx-background-size: 300; -fx-background-image: url(\"resources/Deserto.png\")");
+                    ImagemTutorialD.setStyle("-fx-background-size: 300; -fx-background-image: url(\"resources/ValePedra.png\")");
                     ImagemTutorialD.setVisible(true);
                     ImagemTutorialE.setVisible(true);
                     ImagemTutorial.setVisible(true);
