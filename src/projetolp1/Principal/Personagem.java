@@ -41,7 +41,7 @@ public class Personagem implements Serializable{
     private RacaBase  raca;
     private int racaInt, classeInt;
     private ClasseMae classe;
-    
+    private String time;
     public Personagem(String nome, int classe, int raca){
       this.nome = nome;
       this.classe = this.getSetClasse(classe);
@@ -49,7 +49,7 @@ public class Personagem implements Serializable{
       this.racaInt = raca;
       this.classeInt = classe;
       this.modDano = 1;
-      this.danoBase = 5 + this.raca.getModDanoBase();
+      this.danoBase = 10 + this.raca.getModDanoBase();
       this.defesa = 5 + this.raca.getModDefBase();
       this.manaMaxima = 50 + this.raca.getModManaMax();
       this.vidaMaxima = 100 + this.raca.getModVidaMax();
@@ -57,7 +57,18 @@ public class Personagem implements Serializable{
       this.danoRecebido = 0;
       this.equipamento = new Equip();
       this.status = new Status();
-      this.qtdMovimento = 3;
+      this.qtdMovimento = 1;
+      
+    }
+    public void setTime(String t){
+        this.time = t;
+    }
+    public String getTime(){
+        return this.time;
+    }
+   
+    public void setMovimento(int mov){
+        this.qtdMovimento = mov;
     }
     
     public void setAtributos(int raca){
@@ -123,7 +134,6 @@ public class Personagem implements Serializable{
             case 6:
                 return "Sacerdote";
       }
-        
         return "None";
     }
     
@@ -202,6 +212,7 @@ public class Personagem implements Serializable{
             case 1:
                 return new Anao(this);
             case 2:
+                this.setMovimento(2);
                 return new Dragonborn(this);
             case 3:
                 return new Elfo(this);
@@ -419,7 +430,7 @@ public class Personagem implements Serializable{
             getStatus().cureStatus(12);
         }
         if (getStatus().isStatus(11)) dano += 5;
-        return this.danoBase + this.equipamento.getAtk()+dano;
+        return dano;
         
     }
     public int seeDano(){
@@ -431,10 +442,12 @@ public class Personagem implements Serializable{
     public boolean atacar(BlocoMapa selfBloco, Personagem target){
         if(selfBloco.getRangeEntreBlocos(target.getBlocoMapa()) <= this.getEquipamento().getRangeArma()){
             int elemento = this.getEquipamento().getAtkElemental(); // elemento de acordo com a arma
-            double formulaDano = this.danoBase + this.getEquipamento().getAtk();
+            double formulaDano = getDano();
             formulaDano = MultipDano.getDanoPelaFormula(target, formulaDano, elemento, false);
             target.addDanoRecebido(formulaDano);
+            System.out.println("DANO: " + formulaDano);
             System.out.println(this.nome + " atacou " + target.getNome());
+            System.out.println(target);
             return true;
         }
         return false;

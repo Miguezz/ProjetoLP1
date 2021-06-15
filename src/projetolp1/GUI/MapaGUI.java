@@ -57,6 +57,17 @@ public class MapaGUI extends Stager{
                         {4,5,4,4,4,4,4,4,5,4},
                         {4,4,4,4,4,4,4,4,4,4}};
     
+    int[][] mapaValePedra={{3,2,2,2,2,2,2,2,2,3},
+                            {3,2,2,2,3,3,2,2,2,3},
+                            {3,3,3,2,2,2,2,3,3,3},
+                            {3,3,3,2,2,2,2,3,3,3},
+                            {3,2,2,2,6,6,2,2,2,3},
+                            {3,2,2,2,6,6,2,2,2,3},
+                            {3,3,3,2,2,2,2,3,3,3},
+                            {3,3,3,2,2,2,2,3,3,3},
+                            {3,2,2,2,3,3,2,2,2,3},
+                            {3,2,2,2,2,2,2,2,2,3}};
+    
     BlocoMapa[][] bm = new BlocoMapa[10][10];
     
     @FXML
@@ -112,13 +123,14 @@ public class MapaGUI extends Stager{
                 +"-fx-background-position: -35,0;" + bm.getEstilo()
         );
         if(bm.getOcupante() instanceof Personagem){
-            System.out.println("SETANDO paneArray personagem");
             this.paneArray[pos[0]][pos[1]].setStyle(
                 "-fx-background-size: 130;"
-                +"-fx-background-image: url(\""+ bm.getFg() +"\");" 
+                +"-fx-background-image: url(\"" + bm.getFg() + "\");" 
                 +"-fx-background-position: -35,0;"
+                +"-fx-border-color:" + ((Personagem)bm.getOcupante()).getTime() + ";"
             );
-
+        }else{
+            this.paneArray[pos[0]][pos[1]].setStyle("");
         }
         
     }

@@ -45,7 +45,7 @@ public class CriacaoUsuarioController extends Stager implements Initializable {
     List<Pane> paneListJ1, paneListJ2, paneListCabecasJ1, paneListCabecasJ2;
     
     @FXML
-    Button btnContinuar;
+    Button btnContinuar, btnLoja, btnInventario, btnMenu;
     
     User u1, u2;
     public void setUsers(User u1, User u2){
@@ -76,7 +76,6 @@ public class CriacaoUsuarioController extends Stager implements Initializable {
     private void fillPane(int user, Personagem p, int index){
         System.out.println("fillPane");
         System.out.println(p);
-//        System.out.println(index + " "+  index);
         if(user == 1){
             if(index == 0){
                 this.paneListCabecasJ1.get(index).setStyle(
@@ -124,7 +123,6 @@ public class CriacaoUsuarioController extends Stager implements Initializable {
             this.labelListNRCJ2.get(index+1).setText(p.getClasseStr());
             this.labelListNRCJ2.get(index+2).setText(p.getRacaStr());
         }
-        
     }
     
     @FXML
@@ -144,18 +142,22 @@ public class CriacaoUsuarioController extends Stager implements Initializable {
     @FXML
     private void btnClick(ActionEvent event) throws Exception {
         // Inicia o jogo
-//        if(this.u1.getParty().size() < 5 || this.u2.getParty().size() < 5){
-//            return;
-//        }
-        FXMLLoader loader = new FXMLLoader();
-        Parent root = (Parent)loader.load(getClass().getResource("fxml/Mapa10x10.fxml").openStream());
-        Mapa10x10Controller mc = loader.getController();
-        Scene sc = new Scene(root);
-        mc.setStage(this.getStage());
-        mc.setUsers(this.u1, this.u2);
-        sc.getStylesheets().addAll(this.getClass().getResource("menuprincipalpane.css").toExternalForm());
-        this.getStage().setScene(sc);
-        this.getStage().show();
+        if(event.getSource() == btnContinuar){
+            FXMLLoader loader = new FXMLLoader();
+            Parent root = (Parent)loader.load(getClass().getResource("fxml/SelecaoMapa.fxml").openStream());
+            System.out.println("SELECAO MAPA");
+            SelecaoMapaController smc = loader.getController();
+            Scene sc = new Scene(root);
+            smc.setStage(this.getStage());
+            smc.setUsers(this.u1, this.u2);
+            sc.getStylesheets().addAll(this.getClass().getResource("menuprincipalpane.css").toExternalForm());
+            this.getStage().setScene(sc);
+            this.getStage().show();
+            
+        }else if(event.getSource() == btnLoja){
+            
+        }
+        
     }
     
     @FXML

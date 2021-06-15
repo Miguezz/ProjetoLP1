@@ -16,7 +16,6 @@ public class BlocoMapa {
     private Mapas mapa;
     private String bg;
     private String fg;
-//    private String time;
     private String estilo;
     
     public BlocoMapa(int x, int y){
@@ -25,12 +24,7 @@ public class BlocoMapa {
         this.ocupante = null;
         this.estilo = "";
     }
-//    public void setTime(String t){
-//        this.time = t;
-//    }
-//    public String getTime(){
-//        return this.time;
-//    }
+    
     public void setEstilo(String estilo){
         this.estilo = estilo;
     }

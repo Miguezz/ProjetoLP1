@@ -1,7 +1,7 @@
 /*
  * Empty Stylesheet file.
  */
-
+/*<?import java.util.ArrayList?>*/
 .mainFxmlClass {
     -fx-background-image: url("../../resources/MenuGame.png");
     -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);

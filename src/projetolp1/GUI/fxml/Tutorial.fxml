@@ -15,7 +15,11 @@
                   <Font name="Alagard" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="Anterior" layoutX="141.0" layoutY="667.0" mnemonicParsing="false" onAction="#acaoClick" prefHeight="50.0" prefWidth="100.0" styleClass="botao" text="Anterior" />
+            <Button fx:id="Anterior" layoutX="141.0" layoutY="667.0" mnemonicParsing="false" onAction="#acaoClick" prefHeight="50.0" prefWidth="100.0" styleClass="botao" text="Anterior">
+             <font>
+                  <Font name="Alagard" size="15.0" />
+               </font>
+           </Button>
             <Button fx:id="Proximo" layoutX="788.0" layoutY="667.0" mnemonicParsing="false" onAction="#acaoClick" prefHeight="50.0" prefWidth="100.0" styleClass="botao" text="Proximo">
                <font>
                   <Font name="Alagard" size="15.0" />
