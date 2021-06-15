@@ -9,4 +9,8 @@ public class Manteau extends Armadura{
   public Manteau(){
     super("Manteau", "Uma capa de couro", 2, 6);
   }
+  
+    public Manteau(int elemento){
+    super("Manteau", "Uma capa de couro", 2, elemento);
+  }
 }

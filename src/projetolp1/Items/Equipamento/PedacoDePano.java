@@ -9,4 +9,8 @@ public class PedacoDePano extends Armadura{
     public PedacoDePano(){
     super("Pedaço de pano", "Pedaço de pano sujo, só protege do frio", 1, 6);
   }
+    
+    public PedacoDePano(int elemento){
+    super("Pedaço de pano", "Pedaço de pano sujo, só protege do frio", 1, elemento);
+  }
 }

@@ -9,4 +9,8 @@ public class ArmaduraMetalica extends Armadura{
   public ArmaduraMetalica(){
     super("Armadura Metálica", "Armadura resistente, feita de ferro", 7, 6);
   }
+  
+  public ArmaduraMetalica(int elemento){
+    super("Armadura Metálica", "Armadura resistente, feita de ferro", 7, elemento);
+  }
 }
